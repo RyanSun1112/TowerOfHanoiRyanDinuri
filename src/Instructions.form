@@ -9,6 +9,16 @@
       <background color="-24692"/>
     </properties>
     <border type="none"/>
-    <children/>
+    <children>
+      <component id="8d96c" class="javax.swing.JButton" binding="Back">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <contentAreaFilled value="false"/>
+          <text value="Back"/>
+        </properties>
+      </component>
+    </children>
   </grid>
 </form>
