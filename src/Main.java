@@ -3,7 +3,7 @@
 public class Main {
     public static void main(String[] args) {
         //StartPage cool = new StartPage();
-        testClassTheSecond class2 = new testClassTheSecond();
-        class2.someMethod();
+        testClassTheSecond cool = new testClassTheSecond();
+        cool.homePage();
     }
 }
