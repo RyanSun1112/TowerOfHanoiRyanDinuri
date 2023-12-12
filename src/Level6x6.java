@@ -62,6 +62,7 @@ public class Level6x6 extends JFrame{
                 drag4 = false;
                 drag6 = false;
                 drag5 = false;
+                //fasfsf
 
             }
         });
