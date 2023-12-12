@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="Level4x4">
-  <grid id="27dc6" binding="Level4x4" layout-manager="GridBagLayout">
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="Level6x6">
+  <grid id="27dc6" binding="Level6x6" layout-manager="GridBagLayout">
     <constraints>
       <xy x="20" y="20" width="500" height="400"/>
     </constraints>
@@ -9,56 +9,73 @@
     </properties>
     <border type="none"/>
     <children>
-      <component id="44acb" class="javax.swing.JLabel" binding="First">
+      <component id="2f43e" class="javax.swing.JLabel" binding="First">
         <constraints>
           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
-          <background color="-16777216"/>
-          <foreground color="-394241"/>
           <opaque value="true"/>
-          <text value="edrtfgyhu]"/>
+          <text value="First"/>
         </properties>
       </component>
-      <component id="a90d5" class="javax.swing.JLabel" binding="Second">
+      <component id="fa459" class="javax.swing.JLabel" binding="Second">
         <constraints>
           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
           <opaque value="true"/>
-          <text value=" second"/>
+          <text value="Second"/>
         </properties>
       </component>
-      <component id="c351e" class="javax.swing.JLabel" binding="Third">
+      <component id="ebb0" class="javax.swing.JLabel" binding="Third">
         <constraints>
           <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
           <opaque value="true"/>
-          <text value="thrid"/>
+          <text value="Third"/>
         </properties>
       </component>
-      <component id="b8476" class="javax.swing.JLabel" binding="Fourth">
+      <component id="8b978" class="javax.swing.JLabel" binding="Fourth">
         <constraints>
           <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
           <opaque value="true"/>
-          <text value="fourth"/>
+          <text value="Fourth"/>
         </properties>
       </component>
-      <component id="7d0b2" class="javax.swing.JButton" binding="back">
+      <component id="19fb9" class="javax.swing.JLabel" binding="Fifth">
+        <constraints>
+          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="0.0" weighty="0.0"/>
+        </constraints>
+        <properties>
+          <opaque value="true"/>
+          <text value="Fifth"/>
+        </properties>
+      </component>
+      <component id="fe4f7" class="javax.swing.JLabel" binding="Sixth">
+        <constraints>
+          <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="0.0" weighty="0.0"/>
+        </constraints>
+        <properties>
+          <opaque value="true"/>
+          <text value="Sixth"/>
+        </properties>
+      </component>
+      <component id="90477" class="javax.swing.JButton" binding="Back">
         <constraints>
           <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
           <contentAreaFilled value="false"/>
-          <label value="Back"/>
           <opaque value="false"/>
           <text value="Back"/>
         </properties>

@@ -4,36 +4,29 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-
-public class Level4x4 extends JFrame {
-    private JPanel Level4x4;
-    private JLabel First;
+public class Level5x5 extends JFrame{
+    private JPanel Level5x5;
     private JLabel Fourth;
+    private JLabel First;
     private JLabel Second;
     private JLabel Third;
-    private JButton back;
+    private JLabel Fifth;
+    private JButton Back;
     private boolean drag1 = false;
     private boolean drag2 = false;
 
     private boolean drag3 = false;
 
     private boolean drag4 = false;
-
-    private int mouseX = 200;
-    private int mouseY = 100;
-
-    public Level4x4() {
-        setContentPane(Level4x4);
+    private boolean drag5 = false;
+    public Level5x5(){
+        setContentPane(Level5x5);
         setTitle("eTransfer");
         setSize(800,600);
         setLocationRelativeTo(null);
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-
-
-
-
-        Level4x4.addMouseListener(new MouseAdapter() {
+        Level5x5.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 if(drag1 == true){
@@ -48,6 +41,9 @@ public class Level4x4 extends JFrame {
                 } else if(drag4 == true){
                     Fourth.setBounds(e.getX(), e.getY(), 50,50);
                     drag4 = false;
+                } else if(drag5 == true){
+                    Fifth.setBounds(e.getX(), e.getY(), 50,50);
+                    drag5 = false;
                 }
             }
         });
@@ -58,6 +54,8 @@ public class Level4x4 extends JFrame {
                 drag2 = false;
                 drag3 = false;
                 drag4 = false;
+                drag5 = false;
+
             }
         });
         Second.addMouseListener(new MouseAdapter() {
@@ -67,6 +65,10 @@ public class Level4x4 extends JFrame {
                 drag2 = true;
                 drag3 = false;
                 drag4 = false;
+                drag5 = false;
+
+
+
             }
         });
         Third.addMouseListener(new MouseAdapter() {
@@ -77,6 +79,10 @@ public class Level4x4 extends JFrame {
                 drag3 = true;
                 drag2 = false;
                 drag4 = false;
+                drag5 = false;
+
+
+
             }
         });
         Fourth.addMouseListener(new MouseAdapter() {
@@ -87,9 +93,27 @@ public class Level4x4 extends JFrame {
                 drag4 = true;
                 drag2 = false;
                 drag3 = false;
+                drag5 = false;
+
+
+
             }
         });
-        back.addActionListener(new ActionListener() {
+        Fifth.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                drag1 = false;
+
+                drag5 = true;
+                drag2 = false;
+                drag3 = false;
+                drag4 = false;
+
+
+
+            }
+        });
+        Back.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();

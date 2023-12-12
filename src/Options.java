@@ -30,5 +30,19 @@ public class Options extends JFrame {
                 Level4x4 cool = new Level4x4();
             }
         });
+        Level5x5.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                Level5x5 cool = new Level5x5();
+            }
+        });
+        Level6x6.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                Level6x6 cool = new Level6x6();
+            }
+        });
     }
 }
