@@ -19,6 +19,7 @@ public class Options extends JFrame {
         Back.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                //uhihiiojpk
                 dispose();
                 StartPage cool = new StartPage();
             }
