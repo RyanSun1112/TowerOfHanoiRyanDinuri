@@ -9,9 +9,12 @@ public class StartPage extends JFrame {
     private JButton exit;
 
     public StartPage(){
+        //Icon backgroundIcon = new ImageIcon("C:\\Users\\Dinuri\\Downloads\\artPortfolio\\Digital\\towersOfHanoi_homePage.png");
+        //JLabel background = new JLabel(backgroundIcon);
+
         setContentPane(Start);
         setTitle("eTransfer");
-        setSize(800,600);
+        setSize(1344,756);
         setLocationRelativeTo(null);
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -37,5 +40,9 @@ public class StartPage extends JFrame {
                 Options cool = new Options();
             }
         });
+
+
+        //background.setBounds(0,0,1344,756);
+        //Start.add(background,JLayeredPane.DEFAULT_LAYER);
     }
 }
