@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.URL;
 
 public class Instructions extends JFrame{
     private JPanel instructions;
@@ -10,7 +11,9 @@ public class Instructions extends JFrame{
     public Instructions(){
 
         JLayeredPane pane = new JLayeredPane();
-        Icon backgroundIcon = new ImageIcon("C:\\Users\\Dinuri\\Downloads\\artPortfolio\\Digital\\towersOfHanoi_instructionsPage.png");
+        ClassLoader classloader = Thread.currentThread().getContextClassLoader();
+        URL url = classloader.getResource("towersOfHanoi_instructionsPage.png");
+        Icon backgroundIcon = new ImageIcon(url);
         JLabel background = new JLabel(backgroundIcon);
 
         Back.addActionListener(new ActionListener() {

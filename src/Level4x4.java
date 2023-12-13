@@ -3,6 +3,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.net.URL;
 
 
 public class Level4x4 extends JFrame {
@@ -26,7 +27,9 @@ public class Level4x4 extends JFrame {
     public Level4x4() {
 
         JLayeredPane pane = new JLayeredPane();
-        Icon backgroundIcon = new ImageIcon("C:\\Users\\Dinuri\\Downloads\\artPortfolio\\Digital\\towersOfHanoi_gamePage.png");
+        ClassLoader classloader = Thread.currentThread().getContextClassLoader();
+        URL url = classloader.getResource("towersOfHanoi_gamePage.png");
+        Icon backgroundIcon = new ImageIcon(url);
         JLabel background = new JLabel(backgroundIcon);
 
         frame.addMouseListener(new MouseAdapter() {

@@ -4,6 +4,7 @@ import java.awt.event.ActionListener;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 
 public class StartPage {
     //INSTANCE VARIABLES
@@ -42,8 +43,9 @@ public class StartPage {
     //PAGE METHODS
     public void homePage() {
         JLayeredPane pane = new JLayeredPane();
-        File folder = new File("C:\\Users\\Dinuri\\Downloads\\artPortfolio\\Digital\\towersOfHanoi_homePage.png");
-        Icon backgroundIcon = new ImageIcon(String.valueOf(folder));
+        ClassLoader classloader = Thread.currentThread().getContextClassLoader();
+        URL url = classloader.getResource("towersOfHanoi_homePage.png");
+        Icon backgroundIcon = new ImageIcon(url);
         JLabel background = new JLabel(backgroundIcon);
 
         JButton instructionsButton = new JButton("how to play");
