@@ -7,12 +7,12 @@ import java.awt.event.MouseEvent;
 
 public class Level4x4 extends JFrame {
     private JPanel Level4x4; //program doesn't run unless this line is present :0
-    private JFrame frame = new JFrame("The Towers of Hanoi.");
+    private JFrame frame = new JFrame("The Towers of Hanoi...");
     private JLabel First;
     private JLabel Fourth;
     private JLabel Second;
     private JLabel Third;
-    private JButton back;
+    private JButton Back;
     private boolean drag1 = false;
     private boolean drag2 = false;
 
@@ -98,15 +98,15 @@ public class Level4x4 extends JFrame {
         Fourth.setBounds(150, 0, 50,50);
         pane.add(Fourth);
 
-        back.addActionListener(new ActionListener() {
+        Back.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.setVisible(false);
                 Options cool = new Options();
             }
         });
-        back.setBounds(200, 0, 50,50);
-        pane.add(back);
+        Back.setBounds(200, 0, 50,50);
+        pane.add(Back);
 
         background.setBounds(0,0,1344,756);
         pane.add(background,JLayeredPane.DEFAULT_LAYER);
