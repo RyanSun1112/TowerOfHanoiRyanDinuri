@@ -48,7 +48,6 @@ public class Options extends JFrame {
     public Options() {
 
         JLayeredPane pane = new JLayeredPane();
-        //Icon backgroundIcon = new ImageIcon("towersOfHanoi_optionsPage.png");
         ClassLoader classloader = Thread.currentThread().getContextClassLoader();
         URL url = classloader.getResource("towersOfHanoi_optionsPage.png");
         Icon backgroundIcon = new ImageIcon(url);
@@ -98,12 +97,12 @@ public class Options extends JFrame {
         Level6x6.setBounds(150,0,50,50);
         pane.add(Level6x6);
 
-        background.setBounds(0,0,1344,756);
+        background.setBounds(0,0,1152,648);
         pane.add(background,JLayeredPane.DEFAULT_LAYER);
 
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.add(pane);
-        frame.setSize(1344,776);
+        frame.setSize(1152,648);
         frame.setVisible(true);
     }
 }
