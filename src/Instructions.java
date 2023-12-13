@@ -58,12 +58,12 @@ public class Instructions extends JFrame{
 
         pane.add(Back);
 
-        background.setBounds(0,0,1344,756);
+        background.setBounds(0,0,1152,648);
         pane.add(background,JLayeredPane.DEFAULT_LAYER);
 
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.add(pane);
-        frame.setSize(1344,756);
+        frame.setSize(1152,678);
         frame.setVisible(true);
 
     }
