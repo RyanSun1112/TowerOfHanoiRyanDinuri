@@ -4,10 +4,7 @@ import java.awt.event.ActionListener;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.URL;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class StartPage {
     //INSTANCE VARIABLES
@@ -16,18 +13,11 @@ public class StartPage {
 
 
     //FORMATTING METHODS
-    private Font theNormalFont(int size) {
+    private Font theNormalFont(int size){
 
         GraphicsEnvironment graphics = GraphicsEnvironment.getLocalGraphicsEnvironment();
         ClassLoader classloader = Thread.currentThread().getContextClassLoader();
-
-        try(InputStream stream = classloader.getResourceAsStream("CaviarDreams.ttf")) {
-            Font font = Font.createFont(Font.TRUETYPE_FONT,stream);
-        } catch (FontFormatException | IOException x) {
-            //Logger.getLogger(FontLoader.class.getName()).log(Level.SEVERE,null,x);
-        }
-
-        URL url = classloader.getResource("CaviarDreams/CaviarDreams.ttf");
+        URL url = classloader.getResource("CaviarDreams.ttf");
         File fontFile = new File(String.valueOf(url));
         Font caviarDreams = null;
 
@@ -38,6 +28,7 @@ public class StartPage {
         } catch (IOException | FontFormatException e) {
             System.out.println("ERROR! Code in 'e.printStackTrace()' to print stack trace: ");
         }
+
         return caviarDreams;
     }
 
@@ -99,12 +90,12 @@ public class StartPage {
         playButton.setBounds(35,565,376,80);
         pane.add(playButton);
 
-        background.setBounds(0,0,1344,756);
+        background.setBounds(0,0,1152,648);
         pane.add(background,JLayeredPane.DEFAULT_LAYER);
 
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.add(pane);
-        frame.setSize(1344,756);
+        frame.setSize(1152,678);
         frame.setVisible(true);
     }
 
