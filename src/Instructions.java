@@ -17,7 +17,7 @@ public class Instructions extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
-                testClassTheSecond cool = new testClassTheSecond();
+                StartPage cool = new StartPage();
                 cool.homePage();
             }
         });

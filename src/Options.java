@@ -21,7 +21,7 @@ public class Options extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 //uhihiiojpk
                 dispose();
-                testClassTheSecond cool = new testClassTheSecond();
+                StartPage cool = new StartPage();
                 cool.homePage();
             }
         });

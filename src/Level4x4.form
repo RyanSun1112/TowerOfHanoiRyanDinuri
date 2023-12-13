@@ -15,10 +15,10 @@
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
-          <background color="-16777216"/>
+          <background color="-13947600"/>
           <foreground color="-394241"/>
           <opaque value="true"/>
-          <text value="edrtfgyhu]"/>
+          <text value="first"/>
         </properties>
       </component>
       <component id="a90d5" class="javax.swing.JLabel" binding="Second">
@@ -38,7 +38,7 @@
         </constraints>
         <properties>
           <opaque value="true"/>
-          <text value="thrid"/>
+          <text value="third"/>
         </properties>
       </component>
       <component id="b8476" class="javax.swing.JLabel" binding="Fourth">
