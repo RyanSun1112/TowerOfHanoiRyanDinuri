@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 
@@ -10,6 +11,8 @@ public class Options extends JFrame {
 
     //INSTANCE VARIABLES
     private JPanel options;
+    public static File myObj;
+
     private JFrame frame = new JFrame("The Towers of Hanoi...");
     private JButton Level4x4;
     private JButton Level5x5;
@@ -46,7 +49,16 @@ public class Options extends JFrame {
 
     //OTHER METHODS
     public Options() {
-
+        myObj = new File("filename.txt"); // Specify the filename
+        try {
+            FileWriter myWriter = new FileWriter("filename.txt");
+            myWriter.write("0");
+            myWriter.close();
+            System.out.println("Successfully wrote to the file.");
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
         JLayeredPane pane = new JLayeredPane();
         ClassLoader classloader = Thread.currentThread().getContextClassLoader();
         URL url = classloader.getResource("towersOfHanoi_optionsPage.png");
@@ -56,6 +68,7 @@ public class Options extends JFrame {
         Back.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                //uhihiiojpk
                 frame.setVisible(false);
                 StartPage cool = new StartPage();
                 cool.homePage();
@@ -69,7 +82,7 @@ public class Options extends JFrame {
         Level4x4.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                frame.setVisible(false);
+                dispose();
                 Level4x4 cool = new Level4x4();
             }
         });
@@ -79,7 +92,7 @@ public class Options extends JFrame {
         Level5x5.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                frame.setVisible(false);
+                dispose();
                 Level5x5 cool = new Level5x5();
             }
         });
@@ -89,7 +102,7 @@ public class Options extends JFrame {
         Level6x6.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                frame.setVisible(false);
+                dispose();
                 Level6x6 cool = new Level6x6();
             }
         });
@@ -101,7 +114,7 @@ public class Options extends JFrame {
 
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.add(pane);
-        frame.setSize(1152,678);
+        frame.setSize(1152,648);
         frame.setVisible(true);
     }
 }
