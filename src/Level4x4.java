@@ -3,7 +3,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.net.URL;
+import java.io.File;  // Import the File class
+import java.util.Scanner;
 
 
 public class Level4x4 extends JFrame {
@@ -14,6 +19,7 @@ public class Level4x4 extends JFrame {
     private JLabel Second;
     private JLabel Third;
     private JButton Back;
+    private JLabel Moves;
     private boolean drag1 = false;
     private boolean drag2 = false;
 
@@ -23,9 +29,25 @@ public class Level4x4 extends JFrame {
 
     private int mouseX = 200;
     private int mouseY = 100;
-
+    public void check(){
+        try{
+            Scanner myReader = new Scanner(Options.myObj);
+            String data = myReader.nextLine();
+            int writing = Integer.parseInt(data);
+            writing++;
+            FileWriter myWriter = new FileWriter("filename.txt");
+            Moves.setText("Moves: " + Integer.toString(writing));
+            myWriter.write(Integer.toString(writing));
+            myWriter.close();
+            myReader.close();
+        } catch (FileNotFoundException ex) {
+            System.out.println("An error occurred.");
+            ex.printStackTrace();
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
+        }
+    }
     public Level4x4() {
-
         JLayeredPane pane = new JLayeredPane();
         ClassLoader classloader = Thread.currentThread().getContextClassLoader();
         URL url = classloader.getResource("towersOfHanoi_gamePage.png");
@@ -36,17 +58,25 @@ public class Level4x4 extends JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 if(drag1 == true){
+
+                    check();
                     First.setBounds(e.getX(), e.getY(), 50,50);
                     drag1 = false;
                 }else if(drag2 == true){
                     Second.setBounds(e.getX(), e.getY(), 50,50);
                     drag2 = false;
+                    check();
+
                 }else if(drag3 == true){
                     Third.setBounds(e.getX(), e.getY(), 50,50);
                     drag3 = false;
+                    check();
+
                 } else if(drag4 == true){
                     Fourth.setBounds(e.getX(), e.getY(), 50,50);
                     drag4 = false;
+                    check();
+
                 }
             }
         });
@@ -110,6 +140,8 @@ public class Level4x4 extends JFrame {
         });
         Back.setBounds(200, 0, 50,50);
         pane.add(Back);
+        Moves.setBounds(100,100, 100, 10);
+        pane.add(Moves);
 
         background.setBounds(0,0,1152,648);
         pane.add(background,JLayeredPane.DEFAULT_LAYER);
