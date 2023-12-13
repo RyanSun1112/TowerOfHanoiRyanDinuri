@@ -4,7 +4,10 @@ import java.awt.event.ActionListener;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class StartPage {
     //INSTANCE VARIABLES
@@ -16,8 +19,18 @@ public class StartPage {
     private Font theNormalFont(int size) {
 
         GraphicsEnvironment graphics = GraphicsEnvironment.getLocalGraphicsEnvironment();
-        File fontFile = new File("C:\\Users\\Dinuri\\Pictures\\Saved Pictures\\Other\\Fonts\\CaviarDreams\\CaviarDreams.ttf\\");
+        ClassLoader classloader = Thread.currentThread().getContextClassLoader();
+
+        try(InputStream stream = classloader.getResourceAsStream("CaviarDreams.ttf")) {
+            Font font = Font.createFont(Font.TRUETYPE_FONT,stream);
+        } catch (FontFormatException | IOException x) {
+            //Logger.getLogger(FontLoader.class.getName()).log(Level.SEVERE,null,x);
+        }
+
+        URL url = classloader.getResource("CaviarDreams/CaviarDreams.ttf");
+        File fontFile = new File(String.valueOf(url));
         Font caviarDreams = null;
+
         try {
             caviarDreams = Font.createFont(Font.TRUETYPE_FONT,fontFile).deriveFont(Font.BOLD,size);
             graphics.registerFont(Font.createFont(Font.TRUETYPE_FONT, fontFile));
