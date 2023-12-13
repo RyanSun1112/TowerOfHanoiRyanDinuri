@@ -6,7 +6,8 @@ import java.awt.event.MouseEvent;
 
 
 public class Level4x4 extends JFrame {
-    private JPanel Level4x4;
+    private JPanel Level4x4; //program doesn't run unless this line is present :0
+    private JFrame frame = new JFrame("cool");
     private JLabel First;
     private JLabel Fourth;
     private JLabel Second;
@@ -23,17 +24,12 @@ public class Level4x4 extends JFrame {
     private int mouseY = 100;
 
     public Level4x4() {
-        setContentPane(Level4x4);
-        setTitle("eTransfer");
-        setSize(800,600);
-        setLocationRelativeTo(null);
-        setVisible(true);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
 
+        JLayeredPane pane = new JLayeredPane();
+        Icon backgroundIcon = new ImageIcon("C:\\Users\\Dinuri\\Downloads\\artPortfolio\\Digital\\towersOfHanoi_gamePage.png");
+        JLabel background = new JLabel(backgroundIcon);
 
-
-
-        Level4x4.addMouseListener(new MouseAdapter() {
+        frame.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 if(drag1 == true){
@@ -51,6 +47,7 @@ public class Level4x4 extends JFrame {
                 }
             }
         });
+
         First.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -60,6 +57,9 @@ public class Level4x4 extends JFrame {
                 drag4 = false;
             }
         });
+        First.setBounds(0, 0, 50,50);
+        pane.add(First);
+
         Second.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -69,6 +69,9 @@ public class Level4x4 extends JFrame {
                 drag4 = false;
             }
         });
+        Second.setBounds(50, 0, 50,50);
+        pane.add(Second);
+
         Third.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -79,6 +82,9 @@ public class Level4x4 extends JFrame {
                 drag4 = false;
             }
         });
+        Third.setBounds(100, 0, 50,50);
+        pane.add(Third);
+
         Fourth.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -89,12 +95,25 @@ public class Level4x4 extends JFrame {
                 drag3 = false;
             }
         });
+        Fourth.setBounds(150, 0, 50,50);
+        pane.add(Fourth);
+
         back.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                dispose();
+                frame.setVisible(false);
                 Options cool = new Options();
             }
         });
+        back.setBounds(200, 0, 50,50);
+        pane.add(back);
+
+        background.setBounds(0,0,1344,756);
+        pane.add(background,JLayeredPane.DEFAULT_LAYER);
+
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        frame.add(pane);
+        frame.setSize(1344,756);
+        frame.setVisible(true);
     }
 }

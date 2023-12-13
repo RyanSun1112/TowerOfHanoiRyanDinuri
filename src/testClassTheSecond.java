@@ -1,7 +1,9 @@
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.*;
+import java.awt.image.*;
 import java.io.File;
 import java.io.IOException;
 
@@ -33,7 +35,7 @@ public class testClassTheSecond {
         button.setBorder(BorderFactory.createEmptyBorder());
         button.setOpaque(false);
         button.setContentAreaFilled(false);
-        //button.setBorderPainted(false);
+        button.setBorderPainted(false);
         button.setForeground(white);
 
     }
@@ -42,11 +44,11 @@ public class testClassTheSecond {
     //PAGE METHODS
     public void homePage() {
         JLayeredPane pane = new JLayeredPane();
-        Icon backgroundIcon = new ImageIcon("C:\\Users\\Dinuri\\Downloads\\artPortfolio\\Digital\\towersOfHanoi_homePage.png");
+        File folder = new File("C:\\Users\\Dinuri\\Downloads\\artPortfolio\\Digital\\towersOfHanoi_homePage.png");
+        Icon backgroundIcon = new ImageIcon(String.valueOf(folder));
         JLabel background = new JLabel(backgroundIcon);
 
-        JButton instructionsButton = new JButton();
-        formatButton(instructionsButton);
+        JButton instructionsButton = new JButton("how to play");
         instructionsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -55,8 +57,11 @@ public class testClassTheSecond {
             }
         });
 
-        JButton exit = new JButton();
-        formatButton(exit);
+        formatButton(instructionsButton);
+        instructionsButton.setBounds(315,565,376,80);
+        pane.add(instructionsButton);
+        JButton exit = new JButton("exit...");
+
         exit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -65,6 +70,9 @@ public class testClassTheSecond {
             }
         });
 
+        formatButton(exit);
+        exit.setBounds(615,565,376,80);
+        pane.add(exit);
         JButton playButton = new JButton("Start!   >");
         playButton.addActionListener(new ActionListener() {
             @Override
@@ -75,7 +83,7 @@ public class testClassTheSecond {
         });
 
         formatButton(playButton);
-        playButton.setBounds(85,575,376,80);
+        playButton.setBounds(35,565,376,80);
         pane.add(playButton);
 
         background.setBounds(0,0,1344,756);

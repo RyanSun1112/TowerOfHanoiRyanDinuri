@@ -21,7 +21,8 @@ public class Options extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 //uhihiiojpk
                 dispose();
-                StartPage cool = new StartPage();
+                testClassTheSecond cool = new testClassTheSecond();
+                cool.homePage();
             }
         });
         Level4x4.addActionListener(new ActionListener() {
