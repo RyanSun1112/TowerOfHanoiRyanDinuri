@@ -3,7 +3,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.net.URL;
+import java.util.Scanner;
 
 public class Level5x5 extends JFrame{
     private JPanel Level5x5; //program doesn't run unless this line is present :0
@@ -14,6 +18,7 @@ public class Level5x5 extends JFrame{
     private JLabel Third;
     private JLabel Fifth;
     private JButton Back;
+    private JLabel Moves;
     private boolean drag1 = false;
     private boolean drag2 = false;
 
@@ -21,6 +26,24 @@ public class Level5x5 extends JFrame{
 
     private boolean drag4 = false;
     private boolean drag5 = false;
+    public void check(){
+        try{
+            Scanner myReader = new Scanner(Options.myObj);
+            String data = myReader.nextLine();
+            int writing = Integer.parseInt(data);
+            writing++;
+            FileWriter myWriter = new FileWriter("filename.txt");
+            Moves.setText("Moves: " + Integer.toString(writing));
+            myWriter.write(Integer.toString(writing));
+            myWriter.close();
+            myReader.close();
+        } catch (FileNotFoundException ex) {
+            System.out.println("An error occurred.");
+            ex.printStackTrace();
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
+        }
+    }
     public Level5x5(){
 
         JLayeredPane pane = new JLayeredPane();
@@ -35,18 +58,27 @@ public class Level5x5 extends JFrame{
                 if(drag1 == true){
                     First.setBounds(e.getX(), e.getY(), 50,50);
                     drag1 = false;
+                    check();
                 }else if(drag2 == true){
                     Second.setBounds(e.getX(), e.getY(), 50,50);
                     drag2 = false;
+                    check();
+
                 }else if(drag3 == true){
                     Third.setBounds(e.getX(), e.getY(), 50,50);
                     drag3 = false;
+                    check();
+
                 } else if(drag4 == true){
                     Fourth.setBounds(e.getX(), e.getY(), 50,50);
                     drag4 = false;
+                    check();
+
                 } else if(drag5 == true){
                     Fifth.setBounds(e.getX(), e.getY(), 50,50);
                     drag5 = false;
+                    check();
+
                 }
             }
         });
@@ -141,7 +173,8 @@ public class Level5x5 extends JFrame{
         });
         Back.setBounds(250, 0, 50,50);
         pane.add(Back);
-
+        Moves.setBounds(100,100, 100, 10);
+        pane.add(Moves);
         background.setBounds(0,0,1152,648);
         pane.add(background,JLayeredPane.DEFAULT_LAYER);
 

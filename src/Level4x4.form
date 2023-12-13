@@ -69,7 +69,7 @@
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
-          <text value="Moves : 0"/>
+          <text value="Moves: 0"/>
         </properties>
       </component>
     </children>
