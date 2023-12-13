@@ -5,7 +5,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class Level6x6 extends JFrame{
-    private JPanel Level6x6;
+    private JPanel Level6x6; //program doesn't run unless this line is present :0
+    private JFrame frame = new JFrame("The Towers of Hanoi.");
     private JLabel First;
     private JLabel Second;
     private JLabel Third;
@@ -23,13 +24,12 @@ public class Level6x6 extends JFrame{
     private boolean drag6 = false;
 
     public Level6x6() {
-        setContentPane(Level6x6);
-        setTitle("eTransfer");
-        setSize(800,600);
-        setLocationRelativeTo(null);
-        setVisible(true);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        Level6x6.addMouseListener(new MouseAdapter() {
+
+        JLayeredPane pane = new JLayeredPane();
+        Icon backgroundIcon = new ImageIcon("C:\\Users\\Dinuri\\Downloads\\artPortfolio\\Digital\\towersOfHanoi_gamePage.png");
+        JLabel background = new JLabel(backgroundIcon);
+
+        frame.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 if(drag1 == true){
@@ -53,6 +53,7 @@ public class Level6x6 extends JFrame{
                 }
             }
         });
+
         First.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -66,6 +67,9 @@ public class Level6x6 extends JFrame{
 
             }
         });
+        First.setBounds(0, 0, 50,50);
+        pane.add(First);
+
         Second.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -80,6 +84,9 @@ public class Level6x6 extends JFrame{
 
             }
         });
+        Second.setBounds(50, 0, 50,50);
+        pane.add(Second);
+
         Third.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -95,6 +102,9 @@ public class Level6x6 extends JFrame{
 
             }
         });
+        Third.setBounds(100, 0, 50,50);
+        pane.add(Third);
+
         Fourth.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -110,6 +120,9 @@ public class Level6x6 extends JFrame{
 
             }
         });
+        Fourth.setBounds(150, 0, 50,50);
+        pane.add(Fourth);
+
         Fifth.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -125,13 +138,9 @@ public class Level6x6 extends JFrame{
 
             }
         });
-        Back.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                dispose();
-                Options cool = new Options();
-            }
-        });
+        Fifth.setBounds(200, 0, 50,50);
+        pane.add(Fifth);
+
         Sixth.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -144,5 +153,25 @@ public class Level6x6 extends JFrame{
                 drag6 = true;
             }
         });
+        Sixth.setBounds(250, 0, 50,50);
+        pane.add(Sixth);
+
+        Back.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.setVisible(false);
+                Options cool = new Options();
+            }
+        });
+        Back.setBounds(300, 0, 50,50);
+        pane.add(Back);
+
+        background.setBounds(0,0,1344,756);
+        pane.add(background,JLayeredPane.DEFAULT_LAYER);
+
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        frame.add(pane);
+        frame.setSize(1344,756);
+        frame.setVisible(true);
     }
 }

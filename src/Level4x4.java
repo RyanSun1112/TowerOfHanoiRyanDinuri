@@ -7,7 +7,7 @@ import java.awt.event.MouseEvent;
 
 public class Level4x4 extends JFrame {
     private JPanel Level4x4; //program doesn't run unless this line is present :0
-    private JFrame frame = new JFrame("cool");
+    private JFrame frame = new JFrame("The Towers of Hanoi.");
     private JLabel First;
     private JLabel Fourth;
     private JLabel Second;
