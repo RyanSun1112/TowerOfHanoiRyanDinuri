@@ -58,7 +58,7 @@ public class Instructions extends JFrame{
         JLabel background = new JLabel(backgroundIcon);
 
         String instructionText = new String("<HTML>" +
-                "GOAL: shift ALL the rings to another peg of snowmen (in the same order)." +
+                "GOAL: shift ALL the rings to the third peg of snowmen (in the same order)." +
                 "<BR>" +
                 "<BR>RULES:" +
                 "<BR>   * Bigger rings cannot be placed on top of smaller rings" +
