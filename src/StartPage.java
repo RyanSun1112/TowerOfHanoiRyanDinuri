@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 
+
 public class StartPage {
     //INSTANCE VARIABLES
     JFrame frame = new JFrame("This is the epic-est name of all time.");
@@ -13,12 +14,18 @@ public class StartPage {
 
 
     //FORMATTING METHODS
-    private Font theNormalFont(int size){
+    private Font theNormalFont(int size)  {
 
         GraphicsEnvironment graphics = GraphicsEnvironment.getLocalGraphicsEnvironment();
         ClassLoader classloader = Thread.currentThread().getContextClassLoader();
-        URL url = classloader.getResource("CaviarDreams.ttf");
-        File fontFile = new File(String.valueOf(url));
+        URL url = classloader.getResource("CaviarDreams/CaviarDreams.ttf");
+        File fontFile = null;
+        try {
+            fontFile = new File(url.toURI());
+        } catch(Exception e) {
+            System.out.println("Something");
+        }
+
         Font caviarDreams = null;
 
         try {
@@ -52,7 +59,7 @@ public class StartPage {
         Icon backgroundIcon = new ImageIcon(url);
         JLabel background = new JLabel(backgroundIcon);
 
-        JButton instructionsButton = new JButton("how to play");
+        JButton instructionsButton = new JButton("How to play");
         instructionsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -60,12 +67,11 @@ public class StartPage {
                 Instructions cool = new Instructions();
             }
         });
-
         formatButton(instructionsButton);
-        instructionsButton.setBounds(315,565,376,80);
+        instructionsButton.setBounds(320,478,230,80);
         pane.add(instructionsButton);
-        JButton exit = new JButton("exit...");
 
+        JButton exit = new JButton("Exit...");
         exit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -73,10 +79,10 @@ public class StartPage {
                 System.exit(0);
             }
         });
-
         formatButton(exit);
-        exit.setBounds(615,565,376,80);
+        exit.setBounds(570,478,230,80);
         pane.add(exit);
+
         JButton playButton = new JButton("Start!   >");
         playButton.addActionListener(new ActionListener() {
             @Override
@@ -85,9 +91,8 @@ public class StartPage {
                 Options cool = new Options();
             }
         });
-
         formatButton(playButton);
-        playButton.setBounds(35,565,376,80);
+        playButton.setBounds(65,478,230,80);
         pane.add(playButton);
 
         background.setBounds(0,0,1152,648);

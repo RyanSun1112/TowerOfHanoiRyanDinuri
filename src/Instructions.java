@@ -13,11 +13,20 @@ public class Instructions extends JFrame{
     private JFrame frame = new JFrame("The Towers of Hanoi...");
     private JButton Back;
 
-    private Font theNormalFont(int size) {
+    private Font theNormalFont(int size)  {
 
         GraphicsEnvironment graphics = GraphicsEnvironment.getLocalGraphicsEnvironment();
-        File fontFile = new File("C:\\Users\\Dinuri\\Pictures\\Saved Pictures\\Other\\Fonts\\CaviarDreams\\CaviarDreams.ttf\\");
+        ClassLoader classloader = Thread.currentThread().getContextClassLoader();
+        URL url = classloader.getResource("CaviarDreams/CaviarDreams.ttf");
+        File fontFile = null;
+        try {
+            fontFile = new File(url.toURI());
+        } catch(Exception e) {
+            System.out.println("Something");
+        }
+
         Font caviarDreams = null;
+
         try {
             caviarDreams = Font.createFont(Font.TRUETYPE_FONT,fontFile).deriveFont(Font.BOLD,size);
             graphics.registerFont(Font.createFont(Font.TRUETYPE_FONT, fontFile));
@@ -25,8 +34,10 @@ public class Instructions extends JFrame{
         } catch (IOException | FontFormatException e) {
             System.out.println("ERROR! Code in 'e.printStackTrace()' to print stack trace: ");
         }
+
         return caviarDreams;
     }
+
     private void formatButton(JButton button) {
         button.setFont(theNormalFont(35));
         button.setFocusable(false);
@@ -37,6 +48,7 @@ public class Instructions extends JFrame{
         button.setForeground(white);
 
     }
+
     public Instructions(){
 
         JLayeredPane pane = new JLayeredPane();
