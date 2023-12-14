@@ -103,8 +103,8 @@ public class Level4x4 extends JFrame {
             if (stack3.elementAt(0).getText().equals("fourth") && stack3.elementAt(1).getText().equals("third") && stack3.elementAt(2).getText().equals(" second")&& stack3.elementAt(3).getText().equals("first")) {
                 frame.setVisible(false);
 
-                StartPage cool = new StartPage();
-                cool.homePage();
+                EndPage doesThisWork = new EndPage();
+                doesThisWork.conquerorPage();
 
             }
         }catch(Exception ex){

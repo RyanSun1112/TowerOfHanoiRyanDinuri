@@ -60,7 +60,8 @@ public class EndPage {
         Icon backgroundIcon = new ImageIcon(url);
         JLabel background = new JLabel(backgroundIcon);
 
-        JLabel conquered = new JLabel("You solved the puzzle in " + numOfSteps + " steps!");
+        //JLabel conquered = new JLabel("You solved the puzzle in " + numOfSteps + " steps!");
+        JLabel conquered = new JLabel("You solved the puzzle in ## steps!");
         conquered.setFont(theNormalFont(35));
         conquered.setFocusable(false);
         conquered.setBorder(BorderFactory.createEmptyBorder());
