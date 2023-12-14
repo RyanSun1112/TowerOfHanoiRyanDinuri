@@ -3,9 +3,9 @@
 public class Main {
     public static void main(String[] args) {
 
-        //StartPage coolAsChristmas = new StartPage();
-        //coolAsChristmas.homePage();
-        Instructions o = new Instructions(); //**not permanent, just until options is designed properly
+        StartPage coolAsChristmas = new StartPage();
+        coolAsChristmas.homePage();
+        //Instructions o = new Instructions(); //**not permanent, just until options is designed properly
 
     }
 }
