@@ -943,6 +943,7 @@ public class Level4x4 extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.setVisible(false);
+                dispose();
                 Options cool = new Options();
             }
         });
@@ -950,6 +951,20 @@ public class Level4x4 extends JFrame {
         Back.setText("<   back!");
         formatButton(Back);
         pane.add(Back);
+
+        JButton restart = new JButton("restart");
+        restart.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.setVisible(false);
+                dispose();
+                Level4x4 restarted = new Level4x4();
+            }
+        });
+        restart.setBounds(545,63,232,80);
+        formatButton(restart);
+        pane.add(restart);
+
         Moves.setBounds(100,65, 232, 80);
         formatLabel(Moves);
         pane.add(Moves);

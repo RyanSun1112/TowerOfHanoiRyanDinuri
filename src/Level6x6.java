@@ -261,6 +261,20 @@ public class Level6x6 extends JFrame{
         Back.setText("<   back!");
         formatButton(Back);
         pane.add(Back);
+
+        JButton restart = new JButton("restart");
+        restart.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.setVisible(false);
+                dispose();
+                Level6x6 restarted = new Level6x6();
+            }
+        });
+        restart.setBounds(545,63,232,80);
+        formatButton(restart);
+        pane.add(restart);
+
         Moves.setBounds(100,65, 232, 80);
         formatLabel(Moves);
         pane.add(Moves);

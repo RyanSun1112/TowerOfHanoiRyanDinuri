@@ -224,6 +224,7 @@ public class Level5x5 extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.setVisible(false);
+                dispose();
                 Options cool = new Options();
             }
         });
@@ -231,9 +232,24 @@ public class Level5x5 extends JFrame{
         Back.setText("<   back!");
         formatButton(Back);
         pane.add(Back);
+
+        JButton restart = new JButton("restart");
+        restart.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.setVisible(false);
+                dispose();
+                Level5x5 restarted = new Level5x5();
+            }
+        });
+        restart.setBounds(545,63,232,80);
+        formatButton(restart);
+        pane.add(restart);
+
         Moves.setBounds(100,65, 232, 80);
         formatLabel(Moves);
         pane.add(Moves);
+
         background.setBounds(0,0,1152,648);
         pane.add(background,JLayeredPane.DEFAULT_LAYER);
 
