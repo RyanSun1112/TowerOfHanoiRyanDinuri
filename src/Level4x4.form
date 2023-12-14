@@ -15,7 +15,7 @@
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
-          <background color="-13947600"/>
+          <background color="-13595121"/>
           <foreground color="-394241"/>
           <opaque value="true"/>
           <text value="first"/>
@@ -27,6 +27,7 @@
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
+          <background color="-3467764"/>
           <opaque value="true"/>
           <text value=" second"/>
         </properties>
@@ -37,6 +38,7 @@
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
+          <background color="-1511681"/>
           <opaque value="true"/>
           <text value="third"/>
         </properties>
@@ -47,6 +49,7 @@
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
+          <background color="-4947179"/>
           <opaque value="true"/>
           <text value="fourth"/>
         </properties>
