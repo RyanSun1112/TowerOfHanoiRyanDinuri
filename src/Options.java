@@ -86,7 +86,8 @@ public class Options extends JFrame {
                 Level4x4 cool = new Level4x4();
             }
         });
-        Level4x4.setBounds(50,0,230,80);
+        Level4x4.setBounds(50,100,230,80);
+        formatButton(Level4x4);
         pane.add(Level4x4);
 
         Level5x5.addActionListener(new ActionListener() {
@@ -96,7 +97,8 @@ public class Options extends JFrame {
                 Level5x5 cool = new Level5x5();
             }
         });
-        Level5x5.setBounds(100,0,230,80);
+        Level5x5.setBounds(100,100,230,80);
+        formatButton(Level5x5);
         pane.add(Level5x5);
 
         Level6x6.addActionListener(new ActionListener() {
@@ -106,7 +108,8 @@ public class Options extends JFrame {
                 Level6x6 cool = new Level6x6();
             }
         });
-        Level6x6.setBounds(150,0,230,80);
+        Level6x6.setBounds(150,100,230,80);
+        formatButton(Level6x6);
         pane.add(Level6x6);
 
         background.setBounds(0,0,1152,648);
