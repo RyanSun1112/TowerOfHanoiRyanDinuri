@@ -89,7 +89,8 @@ public class Options extends JFrame {
         Level4x4.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                dispose();
+                frame.setVisible(false);
+
                 Level4x4 cool = new Level4x4();
             }
         });
