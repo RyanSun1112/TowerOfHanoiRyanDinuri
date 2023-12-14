@@ -64,6 +64,7 @@ public class Instructions extends JFrame{
                 "<BR>   * Bigger rings cannot be placed on top of smaller rings" +
                 "<BR>   * Only one ring can be moved at a time (a stack of rings can't be moved together)" +
                 "<BR>   * Only the ring at the top of any stack can be moved (none from the middle/bottom)" +
+                "<BR>   * Click and drop (not drag and drop) to move the chosen Hanoi Ring" +
                 "<BR>" +
                 "<BR>TIP: Try to do it in as few moves as possible! Good luck, player!" +
                 "</HTML>");
@@ -74,7 +75,7 @@ public class Instructions extends JFrame{
         instructionsToShow.setBorder(BorderFactory.createEmptyBorder());
         instructionsToShow.setOpaque(false);
         instructionsToShow.setForeground(white);
-        instructionsToShow.setBounds(320,300,760,400);
+        instructionsToShow.setBounds(320,275,760,400);
         pane.add(instructionsToShow);
 
         JLabel instructionsShadow = new JLabel(instructionText);
@@ -83,13 +84,14 @@ public class Instructions extends JFrame{
         instructionsShadow.setBorder(BorderFactory.createEmptyBorder());
         instructionsShadow.setOpaque(false);
         instructionsShadow.setForeground(new Color(54, 68, 65));
-        instructionsShadow.setBounds(322,301,760,400);
+        instructionsShadow.setBounds(322,276,760,400);
         pane.add(instructionsShadow);
 
         Back.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.setVisible(false);
+                dispose();
                 StartPage cool = new StartPage();
                 cool.homePage();
             }
