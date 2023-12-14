@@ -46,43 +46,55 @@ public class Level6x6 extends JFrame{
             throw new RuntimeException(ex);
         }
     }
+
+    public JLabel makeImage(String fileName) {
+        ClassLoader classloader = Thread.currentThread().getContextClassLoader();
+        URL url = classloader.getResource(fileName);
+        Icon backgroundIcon = new ImageIcon(url);
+        JLabel background = new JLabel(backgroundIcon);
+        return background;
+    }
+
     public Level6x6() {
 
         JLayeredPane pane = new JLayeredPane();
-        ClassLoader classloader = Thread.currentThread().getContextClassLoader();
-        URL url = classloader.getResource("towersOfHanoi_gamePage.png");
-        Icon backgroundIcon = new ImageIcon(url);
-        JLabel background = new JLabel(backgroundIcon);
+        JLabel background = makeImage("towersOfHanoi_gamePage.png");
+        First = makeImage("towersOfHanoi_HanoiRing1.png");
+        Second = makeImage("towersOfHanoi_HanoiRing2.png");
+        Third = makeImage("towersOfHanoi_HanoiRing3.png");
+        Fourth = makeImage("towersOfHanoi_HanoiRing4.png");
+        Fifth = makeImage("towersOfHanoi_HanoiRing5.png");
+        Sixth = makeImage("towersOfHanoi_HanoiRing6.png");
 
         frame.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 if(drag1 == true){
-                    First.setBounds(e.getX(), e.getY(), 50,50);
+                    First.setBounds(e.getX(), e.getY(), 207,64);
                     drag1 = false;
                     check();
                 }else if(drag2 == true){
-                    Second.setBounds(e.getX(), e.getY(), 50,50);
+                    Second.setBounds(e.getX(), e.getY(), 227,64);
                     drag2 = false;
                     check();
 
                 }else if(drag3 == true){
-                    Third.setBounds(e.getX(), e.getY(), 50,50);
+                    Third.setBounds(e.getX(), e.getY(), 245,64);
                     drag3 = false;
                     check();
 
                 } else if(drag4 == true){
-                    Fourth.setBounds(e.getX(), e.getY(), 50,50);
+                    Fourth.setBounds(e.getX(), e.getY(), 269,64);
                     drag4 = false;
                     check();
 
                 } else if(drag5 == true){
-                    Fifth.setBounds(e.getX(), e.getY(), 50,50);
+                    Fifth.setBounds(e.getX(), e.getY(), 289,64);
                     drag5 = false;
                     check();
 
                 }else if(drag6 == true){
-                    Sixth.setBounds(e.getX(), e.getY(), 50,50);
+                    Sixth.setBounds(e.getX(), e.getY(), 314,65);
                     drag6 = false;
                     check();
 
@@ -103,7 +115,7 @@ public class Level6x6 extends JFrame{
 
             }
         });
-        First.setBounds(0, 0, 50,50);
+        First.setBounds(120, 264, 207,64);
         pane.add(First);
 
         Second.addMouseListener(new MouseAdapter() {
@@ -120,7 +132,7 @@ public class Level6x6 extends JFrame{
 
             }
         });
-        Second.setBounds(50, 0, 50,50);
+        Second.setBounds(110, 328, 227,64);
         pane.add(Second);
 
         Third.addMouseListener(new MouseAdapter() {
@@ -138,7 +150,7 @@ public class Level6x6 extends JFrame{
 
             }
         });
-        Third.setBounds(100, 0, 50,50);
+        Third.setBounds(100, 391, 245,64);
         pane.add(Third);
 
         Fourth.addMouseListener(new MouseAdapter() {
@@ -156,7 +168,7 @@ public class Level6x6 extends JFrame{
 
             }
         });
-        Fourth.setBounds(150, 0, 50,50);
+        Fourth.setBounds(90, 455, 269,64);
         pane.add(Fourth);
 
         Fifth.addMouseListener(new MouseAdapter() {
@@ -174,7 +186,7 @@ public class Level6x6 extends JFrame{
 
             }
         });
-        Fifth.setBounds(200, 0, 50,50);
+        Fifth.setBounds(80, 518, 289,64);
         pane.add(Fifth);
 
         Sixth.addMouseListener(new MouseAdapter() {
@@ -189,7 +201,7 @@ public class Level6x6 extends JFrame{
                 drag6 = true;
             }
         });
-        Sixth.setBounds(250, 0, 50,50);
+        Sixth.setBounds(70, 579, 314,65);
         pane.add(Sixth);
 
         Back.addActionListener(new ActionListener() {
