@@ -71,6 +71,15 @@
           <text value="Back"/>
         </properties>
       </component>
+      <component id="8a6ed" class="javax.swing.JLabel" binding="Moves">
+        <constraints>
+          <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <gridbag weightx="0.0" weighty="0.0"/>
+        </constraints>
+        <properties>
+          <text value="Moves: 0"/>
+        </properties>
+      </component>
     </children>
   </grid>
 </form>
