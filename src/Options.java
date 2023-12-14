@@ -21,11 +21,20 @@ public class Options extends JFrame {
     private Color white = new Color(255,255,255);
 
     //FORMAT METHODS
-    private Font theNormalFont(int size) {
+    private Font theNormalFont(int size)  {
 
         GraphicsEnvironment graphics = GraphicsEnvironment.getLocalGraphicsEnvironment();
-        File fontFile = new File("C:\\Users\\Dinuri\\Pictures\\Saved Pictures\\Other\\Fonts\\CaviarDreams\\CaviarDreams.ttf\\");
+        ClassLoader classloader = Thread.currentThread().getContextClassLoader();
+        URL url = classloader.getResource("CaviarDreams/CaviarDreams.ttf");
+        File fontFile = null;
+        try {
+            fontFile = new File(url.toURI());
+        } catch(Exception e) {
+            System.out.println("Something");
+        }
+
         Font caviarDreams = null;
+
         try {
             caviarDreams = Font.createFont(Font.TRUETYPE_FONT,fontFile).deriveFont(Font.BOLD,size);
             graphics.registerFont(Font.createFont(Font.TRUETYPE_FONT, fontFile));
@@ -33,6 +42,7 @@ public class Options extends JFrame {
         } catch (IOException | FontFormatException e) {
             System.out.println("ERROR! Code in 'e.printStackTrace()' to print stack trace: ");
         }
+
         return caviarDreams;
     }
 
@@ -40,9 +50,6 @@ public class Options extends JFrame {
         button.setFont(theNormalFont(35));
         button.setFocusable(false);
         button.setBorder(BorderFactory.createEmptyBorder());
-        button.setOpaque(false);
-        button.setContentAreaFilled(false);
-        button.setBorderPainted(false);
         button.setForeground(white);
 
     }
@@ -68,8 +75,8 @@ public class Options extends JFrame {
         Back.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                //uhihiiojpk
                 frame.setVisible(false);
-                dispose();
                 StartPage cool = new StartPage();
                 cool.homePage();
             }
@@ -82,36 +89,33 @@ public class Options extends JFrame {
         Level4x4.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                frame.setVisible(false);
                 dispose();
                 Level4x4 cool = new Level4x4();
             }
         });
-        Level4x4.setBounds(213,390,232,80);
+        Level4x4.setBounds(215,390,230,80);
         formatButton(Level4x4);
         pane.add(Level4x4);
 
         Level5x5.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                frame.setVisible(false);
                 dispose();
                 Level5x5 cool = new Level5x5();
             }
         });
-        Level5x5.setBounds(463,390,232,80);
+        Level5x5.setBounds(465,390,230,80);
         formatButton(Level5x5);
         pane.add(Level5x5);
 
         Level6x6.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                frame.setVisible(false);
                 dispose();
                 Level6x6 cool = new Level6x6();
             }
         });
-        Level6x6.setBounds(713,390,232,80);
+        Level6x6.setBounds(715,390,230,80);
         formatButton(Level6x6);
         pane.add(Level6x6);
 
