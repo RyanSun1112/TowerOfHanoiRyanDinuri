@@ -74,7 +74,7 @@ public class Options extends JFrame {
                 cool.homePage();
             }
         });
-        Back.setBounds(200,140,230,80);
+        Back.setBounds(148,85,228,80);
         formatButton(Back);
         Back.setText("<   back");
         pane.add(Back);
