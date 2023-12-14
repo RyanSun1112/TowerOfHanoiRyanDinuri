@@ -22,8 +22,7 @@ public class Level4x4_Duplicate extends JFrame {
     private JLabel Fourth;
     private JLabel Second;
     private JLabel Third;
-    private JButton Back;
-    private JLabel Moves;
+    private JLabel Moves = new JLabel("moves: ");
     private boolean drag1 = false;
     private boolean drag2 = false;
 
@@ -37,6 +36,14 @@ public class Level4x4_Duplicate extends JFrame {
     private Stack<JLabel> stack1 = new Stack();
     private Stack<JLabel> stack2 = new Stack();
     private Stack<JLabel> stack3 = new Stack();
+
+    public JLabel makeImage(String fileName) {
+        ClassLoader classloader = Thread.currentThread().getContextClassLoader();
+        URL url = classloader.getResource(fileName);
+        Icon backgroundIcon = new ImageIcon(url);
+        JLabel background = new JLabel(backgroundIcon);
+        return background;
+    }
 
     private Font theNormalFont(int size)  {
 
@@ -102,10 +109,9 @@ public class Level4x4_Duplicate extends JFrame {
         try{
             if (stack3.elementAt(0).getText().equals("fourth") && stack3.elementAt(1).getText().equals("third") && stack3.elementAt(2).getText().equals(" second")&& stack3.elementAt(3).getText().equals("first")) {
                 frame.setVisible(false);
-
-                StartPage cool = new StartPage();
-                cool.homePage();
-
+                dispose();
+                EndPage end = new EndPage();
+                end.conquerorPage();
             }
         }catch(Exception ex){
             System.out.print("");
@@ -122,10 +128,11 @@ public class Level4x4_Duplicate extends JFrame {
         }
 
         JLayeredPane pane = new JLayeredPane();
-        ClassLoader classloader = Thread.currentThread().getContextClassLoader();
-        URL url = classloader.getResource("towersOfHanoi_gamePage.png");
-        Icon backgroundIcon = new ImageIcon(url);
-        JLabel background = new JLabel(backgroundIcon);
+        JLabel background = makeImage("towersOfHanoi_gamePage.png");
+        First = makeImage("towersOfHanoi_HanoiRing1.png");
+        Second = makeImage("towersOfHanoi_HanoiRing2.png");
+        Third = makeImage("towersOfHanoi_HanoiRing3.png");
+        Fourth = makeImage("towersOfHanoi_HanoiRing4.png");
 
         frame.addMouseListener(new MouseAdapter() {
             @Override
@@ -146,26 +153,26 @@ public class Level4x4_Duplicate extends JFrame {
 
                             stack2.push(First);
                             if(stack2.size() - stack2.search(First) == 3)
-                                First.setBounds(530, 200, 100,50);
+                                First.setBounds(530, 200, 207,64);
                             if(stack2.size() - stack2.search(First) == 2)
-                                First.setBounds(530, 250, 100,50);
+                                First.setBounds(530, 250, 207,64);
                             if(stack2.size() - stack2.search(First) == 1)
-                                First.setBounds(530, 300, 100,50);
+                                First.setBounds(530, 300, 207,64);
                             if(stack2.size() - stack2.search(First) == 0)
-                                First.setBounds(530, 350, 100,50);
+                                First.setBounds(530, 350, 207,64);
                             check();
                         }
                         else if( e.getX()< 1050 && e.getX()> 850){
                             stack1.pop();
                             stack3.push(First);
                             if(stack3.size() - stack3.search(First) == 3)
-                                First.setBounds(875, 200, 100,50);
+                                First.setBounds(875, 200, 207,64);
                             if(stack3.size() - stack3.search(First) == 2)
-                                First.setBounds(875, 250, 100,50);
+                                First.setBounds(875, 250, 207,64);
                             if(stack3.size() - stack3.search(First) == 1)
-                                First.setBounds(875, 300, 100,50);
+                                First.setBounds(875, 300, 207,64);
                             if(stack3.size() - stack3.search(First) == 0)
-                                First.setBounds(875, 350, 100,50);
+                                First.setBounds(875, 350, 207,64);
                             check();
                         }
 
@@ -177,26 +184,26 @@ public class Level4x4_Duplicate extends JFrame {
 
                             stack1.push(First);
                             if(stack1.size() - stack1.search(First) == 3)
-                                First.setBounds(200, 200, 100,50);
+                                First.setBounds(200, 200, 207,64);
                             if(stack1.size() - stack1.search(First) == 2)
-                                First.setBounds(200, 250, 100,50);
+                                First.setBounds(200, 250, 207,64);
                             if(stack1.size() - stack1.search(First) == 1)
-                                First.setBounds(200, 300, 100,50);
+                                First.setBounds(200, 300, 207,64);
                             if(stack1.size() - stack1.search(First) == 0)
-                                First.setBounds(200, 350, 100,50);
+                                First.setBounds(200, 350, 207,64);
                             check();
                         }
                         else if( e.getX()< 1050 && e.getX()> 850){
                             stack2.pop();
                             stack3.push(First);
                             if(stack3.size() - stack3.search(First) == 3)
-                                First.setBounds(875, 200, 100,50);
+                                First.setBounds(875, 200, 207,64);
                             if(stack3.size() - stack3.search(First) == 2)
-                                First.setBounds(875, 250, 100,50);
+                                First.setBounds(875, 250, 207,64);
                             if(stack3.size() - stack3.search(First) == 1)
-                                First.setBounds(875, 300, 100,50);
+                                First.setBounds(875, 300, 207,64);
                             if(stack3.size() - stack3.search(First) == 0)
-                                First.setBounds(875, 350, 100,50);
+                                First.setBounds(875, 350, 207,64);
                             check();
                         }
 
@@ -209,26 +216,26 @@ public class Level4x4_Duplicate extends JFrame {
 
                             stack1.push(First);
                             if(stack1.size() - stack1.search(First) == 3)
-                                First.setBounds(200, 200, 100,50);
+                                First.setBounds(200, 200, 207,64);
                             if(stack1.size() - stack1.search(First) == 2)
-                                First.setBounds(200, 250, 100,50);
+                                First.setBounds(200, 250, 207,64);
                             if(stack1.size() - stack1.search(First) == 1)
-                                First.setBounds(200, 300, 100,50);
+                                First.setBounds(200, 300, 207,64);
                             if(stack1.size() - stack1.search(First) == 0)
-                                First.setBounds(200, 350, 100,50);
+                                First.setBounds(200, 350, 207,64);
                             check();
                         }
                         else if(e.getX()< 700 && e.getX()> 500){
                             stack3.pop();
                             stack2.push(First);
                             if(stack2.size() - stack2.search(First) == 3)
-                                First.setBounds(530, 200, 100,50);
+                                First.setBounds(530, 200, 207,64);
                             if(stack2.size() - stack2.search(First) == 2)
-                                First.setBounds(530, 250, 100,50);
+                                First.setBounds(530, 250, 207,64);
                             if(stack2.size() - stack2.search(First) == 1)
-                                First.setBounds(530, 300, 100,50);
+                                First.setBounds(530, 300, 207,64);
                             if(stack2.size() - stack2.search(First) == 0)
-                                First.setBounds(530, 350, 100,50);
+                                First.setBounds(530, 350, 207,64);
                             check();
                         }
 
@@ -247,26 +254,26 @@ public class Level4x4_Duplicate extends JFrame {
                                     stack1.pop();
                                     stack2.push(Second);
                                     if(stack2.size() - stack2.search(Second) == 3)
-                                        Second.setBounds(530, 200, 150,50);
+                                        Second.setBounds(530, 200, 227,64);
                                     if(stack2.size() - stack2.search(Second) == 2)
-                                        Second.setBounds(530, 250, 150,50);
+                                        Second.setBounds(530, 250, 227,64);
                                     if(stack2.size() - stack2.search(Second) == 1)
-                                        Second.setBounds(530, 300, 150,50);
+                                        Second.setBounds(530, 300, 227,64);
                                     if(stack2.size() - stack2.search(Second) == 0)
-                                        Second.setBounds(530, 350, 150,50);
+                                        Second.setBounds(530, 350, 227,64);
                                     check();
                                 }
                             }catch(Exception ex){
                                 stack1.pop();
                                 stack2.push(Second);
                                 if(stack2.size() - stack2.search(Second) == 3)
-                                    Second.setBounds(530, 200, 150,50);
+                                    Second.setBounds(530, 200, 227,64);
                                 if(stack2.size() - stack2.search(Second) == 2)
-                                    Second.setBounds(530, 250, 150,50);
+                                    Second.setBounds(530, 250, 227,64);
                                 if(stack2.size() - stack2.search(Second) == 1)
-                                    Second.setBounds(530, 300, 150,50);
+                                    Second.setBounds(530, 300, 227,64);
                                 if(stack2.size() - stack2.search(Second) == 0)
-                                    Second.setBounds(530, 350, 150,50);
+                                    Second.setBounds(530, 350, 227,64);
                                 check();
 
                             }
@@ -280,26 +287,26 @@ public class Level4x4_Duplicate extends JFrame {
                                 stack1.pop();
                                 stack3.push(Second);
                                 if (stack3.size() - stack3.search(Second) == 3)
-                                    Second.setBounds(875, 200, 150, 50);
+                                    Second.setBounds(875, 200, 227,64);
                                 if (stack3.size() - stack3.search(Second) == 2)
-                                    Second.setBounds(875, 250, 150, 50);
+                                    Second.setBounds(875, 250, 227,64);
                                 if (stack3.size() - stack3.search(Second) == 1)
-                                    Second.setBounds(875, 300, 150, 50);
+                                    Second.setBounds(875, 300, 227,64);
                                 if (stack3.size() - stack3.search(Second) == 0)
-                                    Second.setBounds(875, 350, 150, 50);
+                                    Second.setBounds(875, 350, 227,64);
                                 check();
                             }
                             }catch(Exception ex){
                                 stack1.pop();
                                 stack3.push(Second);
                                 if (stack3.size() - stack3.search(Second) == 3)
-                                    Second.setBounds(875, 200, 150, 50);
+                                    Second.setBounds(875, 200, 227,64);
                                 if (stack3.size() - stack3.search(Second) == 2)
-                                    Second.setBounds(875, 250, 150, 50);
+                                    Second.setBounds(875, 250, 227,64);
                                 if (stack3.size() - stack3.search(Second) == 1)
-                                    Second.setBounds(875, 300, 150, 50);
+                                    Second.setBounds(875, 300, 227,64);
                                 if (stack3.size() - stack3.search(Second) == 0)
-                                    Second.setBounds(875, 350, 150, 50);
+                                    Second.setBounds(875, 350, 227,64);
                                 check();
 
                             }
@@ -318,26 +325,26 @@ public class Level4x4_Duplicate extends JFrame {
                                 stack2.pop();
                                 stack3.push(Second);
                                 if (stack3.size() - stack3.search(Second) == 3)
-                                    Second.setBounds(875, 200, 150, 50);
+                                    Second.setBounds(875, 200, 227,64);
                                 if (stack3.size() - stack3.search(Second) == 2)
-                                    Second.setBounds(875, 250, 150, 50);
+                                    Second.setBounds(875, 250, 227,64);
                                 if (stack3.size() - stack3.search(Second) == 1)
-                                    Second.setBounds(875, 300, 150, 50);
+                                    Second.setBounds(875, 300, 227,64);
                                 if (stack3.size() - stack3.search(Second) == 0)
-                                    Second.setBounds(875, 350, 150, 50);
+                                    Second.setBounds(875, 350, 227,64);
                                 check();
                             }
                             }catch(Exception ex) {
                                 stack2.pop();
                                 stack3.push(Second);
                                 if (stack3.size() - stack3.search(Second) == 3)
-                                    Second.setBounds(875, 200, 150, 50);
+                                    Second.setBounds(875, 200, 227,64);
                                 if (stack3.size() - stack3.search(Second) == 2)
-                                    Second.setBounds(875, 250, 150, 50);
+                                    Second.setBounds(875, 250, 227,64);
                                 if (stack3.size() - stack3.search(Second) == 1)
-                                    Second.setBounds(875, 300, 150, 50);
+                                    Second.setBounds(875, 300, 227,64);
                                 if (stack3.size() - stack3.search(Second) == 0)
-                                    Second.setBounds(875, 350, 150, 50);
+                                    Second.setBounds(875, 350, 227,64);
                                 check();
 
                             }
@@ -350,26 +357,26 @@ public class Level4x4_Duplicate extends JFrame {
                                 stack2.pop();
                                 stack1.push(Second);
                                 if (stack1.size() - stack1.search(Second) == 3)
-                                    Second.setBounds(200, 200, 150, 50);
+                                    Second.setBounds(200, 200, 227,64);
                                 if (stack1.size() - stack1.search(Second) == 2)
-                                    Second.setBounds(200, 250, 150, 50);
+                                    Second.setBounds(200, 250, 227,64);
                                 if (stack1.size() - stack1.search(Second) == 1)
-                                    Second.setBounds(200, 300, 150, 50);
+                                    Second.setBounds(200, 300, 227,64);
                                 if (stack1.size() - stack1.search(Second) == 0)
-                                    Second.setBounds(200, 350, 150, 50);
+                                    Second.setBounds(200, 350, 227,64);
                                 check();
                             }
                             }catch(Exception ex){
                                 stack2.pop();
                                 stack1.push(Second);
                                 if (stack1.size() - stack1.search(Second) == 3)
-                                    Second.setBounds(200, 200, 150, 50);
+                                    Second.setBounds(200, 200, 227,64);
                                 if (stack1.size() - stack1.search(Second) == 2)
-                                    Second.setBounds(200, 250, 150, 50);
+                                    Second.setBounds(200, 250, 227,64);
                                 if (stack1.size() - stack1.search(Second) == 1)
-                                    Second.setBounds(200, 300, 150, 50);
+                                    Second.setBounds(200, 300, 227,64);
                                 if (stack1.size() - stack1.search(Second) == 0)
-                                    Second.setBounds(200, 350, 150, 50);
+                                    Second.setBounds(200, 350, 227,64);
                                 check();
 
                             }
@@ -390,26 +397,26 @@ public class Level4x4_Duplicate extends JFrame {
                                 stack3.pop();
                                 stack2.push(Second);
                                 if(stack2.size() - stack2.search(Second) == 3)
-                                    Second.setBounds(530, 200, 150,50);
+                                    Second.setBounds(530, 200, 227,64);
                                 if(stack2.size() - stack2.search(Second) == 2)
-                                    Second.setBounds(530, 250, 150,50);
+                                    Second.setBounds(530, 250, 227,64);
                                 if(stack2.size() - stack2.search(Second) == 1)
-                                    Second.setBounds(530, 300, 150,50);
+                                    Second.setBounds(530, 300, 227,64);
                                 if(stack2.size() - stack2.search(Second) == 0)
-                                    Second.setBounds(530, 350, 150,50);
+                                    Second.setBounds(530, 350, 227,64);
                                 check();
                             }
                             }catch(Exception ex){
                                 stack3.pop();
                                 stack2.push(Second);
                                 if(stack2.size() - stack2.search(Second) == 3)
-                                    Second.setBounds(530, 200, 150,50);
+                                    Second.setBounds(530, 200, 227,64);
                                 if(stack2.size() - stack2.search(Second) == 2)
-                                    Second.setBounds(530, 250, 150,50);
+                                    Second.setBounds(530, 250, 227,64);
                                 if(stack2.size() - stack2.search(Second) == 1)
-                                    Second.setBounds(530, 300, 150,50);
+                                    Second.setBounds(530, 300, 227,64);
                                 if(stack2.size() - stack2.search(Second) == 0)
-                                    Second.setBounds(530, 350, 150,50);
+                                    Second.setBounds(530, 350, 227,64);
                                 check();
 
                             }
@@ -422,26 +429,26 @@ public class Level4x4_Duplicate extends JFrame {
                                 stack3.pop();
                                 stack1.push(Second);
                                 if (stack1.size() - stack1.search(Second) == 3)
-                                    Second.setBounds(200, 200, 150, 50);
+                                    Second.setBounds(200, 200, 227,64);
                                 if (stack1.size() - stack1.search(Second) == 2)
-                                    Second.setBounds(200, 250, 150, 50);
+                                    Second.setBounds(200, 250, 227,64);
                                 if (stack1.size() - stack1.search(Second) == 1)
-                                    Second.setBounds(200, 300, 150, 50);
+                                    Second.setBounds(200, 300, 227,64);
                                 if (stack1.size() - stack1.search(Second) == 0)
-                                    Second.setBounds(200, 350, 150, 50);
+                                    Second.setBounds(200, 350, 227,64);
                                 check();
                             }
                             }catch(Exception ex){
                                 stack3.pop();
                                 stack1.push(Second);
                                 if (stack1.size() - stack1.search(Second) == 3)
-                                    Second.setBounds(200, 200, 150, 50);
+                                    Second.setBounds(200, 200, 227,64);
                                 if (stack1.size() - stack1.search(Second) == 2)
-                                    Second.setBounds(200, 250, 150, 50);
+                                    Second.setBounds(200, 250, 227,64);
                                 if (stack1.size() - stack1.search(Second) == 1)
-                                    Second.setBounds(200, 300, 150, 50);
+                                    Second.setBounds(200, 300, 227,64);
                                 if (stack1.size() - stack1.search(Second) == 0)
-                                    Second.setBounds(200, 350, 150, 50);
+                                    Second.setBounds(200, 350, 227,64);
                                 check();
 
                             }
@@ -463,26 +470,26 @@ public class Level4x4_Duplicate extends JFrame {
                                     stack1.pop();
                                     stack2.push(Third);
                                     if(stack2.size() - stack2.search(Third) == 3)
-                                        Third.setBounds(530, 200, 200,50);
+                                        Third.setBounds(530, 200, 245,64);
                                     if(stack2.size() - stack2.search(Third) == 2)
-                                        Third.setBounds(530, 250, 200,50);
+                                        Third.setBounds(530, 250, 245,64);
                                     if(stack2.size() - stack2.search(Third) == 1)
-                                        Third.setBounds(530, 300, 200,50);
+                                        Third.setBounds(530, 300, 245,64);
                                     if(stack2.size() - stack2.search(Third) == 0)
-                                        Third.setBounds(530, 350, 200,50);
+                                        Third.setBounds(530, 350, 245,64);
                                     check();
                                 }
                             }catch(Exception ex){
                                 stack1.pop();
                                 stack2.push(Third);
                                 if(stack2.size() - stack2.search(Third) == 3)
-                                    Third.setBounds(530, 200, 200,50);
+                                    Third.setBounds(530, 200, 245,64);
                                 if(stack2.size() - stack2.search(Third) == 2)
-                                    Third.setBounds(530, 250, 200,50);
+                                    Third.setBounds(530, 250, 245,64);
                                 if(stack2.size() - stack2.search(Third) == 1)
-                                    Third.setBounds(530, 300, 200,50);
+                                    Third.setBounds(530, 300, 245,64);
                                 if(stack2.size() - stack2.search(Third) == 0)
-                                    Third.setBounds(530, 350, 200,50);
+                                    Third.setBounds(530, 350, 245,64);
                                 check();
 
                             }
@@ -496,26 +503,26 @@ public class Level4x4_Duplicate extends JFrame {
                                     stack1.pop();
                                     stack3.push(Third);
                                     if (stack3.size() - stack3.search(Third) == 3)
-                                        Third.setBounds(875, 200, 200, 50);
+                                        Third.setBounds(875, 200, 245,64);
                                     if (stack3.size() - stack3.search(Third) == 2)
-                                        Third.setBounds(875, 250, 200, 50);
+                                        Third.setBounds(875, 250, 245,64);
                                     if (stack3.size() - stack3.search(Third) == 1)
-                                        Third.setBounds(875, 300, 200, 50);
+                                        Third.setBounds(875, 300, 245,64);
                                     if (stack3.size() - stack3.search(Third) == 0)
-                                        Third.setBounds(875, 350, 200, 50);
+                                        Third.setBounds(875, 350, 245,64);
                                     check();
                                 }
                             }catch(Exception ex){
                                 stack1.pop();
                                 stack3.push(Third);
                                 if (stack3.size() - stack3.search(Third) == 3)
-                                    Third.setBounds(875, 200, 200, 50);
+                                    Third.setBounds(875, 200, 245,64);
                                 if (stack3.size() - stack3.search(Third) == 2)
-                                    Third.setBounds(875, 250, 200, 50);
+                                    Third.setBounds(875, 250, 245,64);
                                 if (stack3.size() - stack3.search(Third) == 1)
-                                    Third.setBounds(875, 300, 200, 50);
+                                    Third.setBounds(875, 300, 245,64);
                                 if (stack3.size() - stack3.search(Third) == 0)
-                                    Third.setBounds(875, 350, 200, 50);
+                                    Third.setBounds(875, 350, 245,64);
                                 check();
 
                             }
@@ -534,26 +541,26 @@ public class Level4x4_Duplicate extends JFrame {
                                     stack2.pop();
                                     stack3.push(Third);
                                     if (stack3.size() - stack3.search(Third) == 3)
-                                        Third.setBounds(875, 200, 200, 50);
+                                        Third.setBounds(875, 200, 245,64);
                                     if (stack3.size() - stack3.search(Third) == 2)
-                                        Third.setBounds(875, 250, 200, 50);
+                                        Third.setBounds(875, 250, 245,64);
                                     if (stack3.size() - stack3.search(Third) == 1)
-                                        Third.setBounds(875, 300, 200, 50);
+                                        Third.setBounds(875, 300, 245,64);
                                     if (stack3.size() - stack3.search(Third) == 0)
-                                        Third.setBounds(875, 350, 200, 50);
+                                        Third.setBounds(875, 350, 245,64);
                                     check();
                                 }
                             }catch(Exception ex) {
                                 stack2.pop();
                                 stack3.push(Third);
                                 if (stack3.size() - stack3.search(Third) == 3)
-                                    Third.setBounds(875, 200, 200, 50);
+                                    Third.setBounds(875, 200, 245,64);
                                 if (stack3.size() - stack3.search(Third) == 2)
-                                    Third.setBounds(875, 250, 200, 50);
+                                    Third.setBounds(875, 250, 245,64);
                                 if (stack3.size() - stack3.search(Third) == 1)
-                                    Third.setBounds(875, 300, 200, 50);
+                                    Third.setBounds(875, 300, 245,64);
                                 if (stack3.size() - stack3.search(Third) == 0)
-                                    Third.setBounds(875, 350, 200, 50);
+                                    Third.setBounds(875, 350, 245,64);
                                 check();
 
                             }
@@ -566,26 +573,26 @@ public class Level4x4_Duplicate extends JFrame {
                                     stack2.pop();
                                     stack1.push(Third);
                                     if (stack1.size() - stack1.search(Third) == 3)
-                                        Third.setBounds(200, 200, 200, 50);
+                                        Third.setBounds(200, 200, 245,64);
                                     if (stack1.size() - stack1.search(Third) == 2)
-                                        Third.setBounds(200, 250, 200, 50);
+                                        Third.setBounds(200, 250, 245,64);
                                     if (stack1.size() - stack1.search(Third) == 1)
-                                        Third.setBounds(200, 300, 200, 50);
+                                        Third.setBounds(200, 300, 245,64);
                                     if (stack1.size() - stack1.search(Third) == 0)
-                                        Third.setBounds(200, 350, 200, 50);
+                                        Third.setBounds(200, 350, 245,64);
                                     check();
                                 }
                             }catch(Exception ex){
                                 stack2.pop();
                                 stack1.push(Third);
                                 if (stack1.size() - stack1.search(Third) == 3)
-                                    Third.setBounds(200, 200, 200, 50);
+                                    Third.setBounds(200, 200, 245,64);
                                 if (stack1.size() - stack1.search(Third) == 2)
-                                    Third.setBounds(200, 250, 200, 50);
+                                    Third.setBounds(200, 250, 245,64);
                                 if (stack1.size() - stack1.search(Third) == 1)
-                                    Third.setBounds(200, 300, 200, 50);
+                                    Third.setBounds(200, 300, 245,64);
                                 if (stack1.size() - stack1.search(Third) == 0)
-                                    Third.setBounds(200, 350, 200, 50);
+                                    Third.setBounds(200, 350, 245,64);
                                 check();
 
                             }
@@ -606,26 +613,26 @@ public class Level4x4_Duplicate extends JFrame {
                                     stack3.pop();
                                     stack2.push(Third);
                                     if(stack2.size() - stack2.search(Third) == 3)
-                                        Third.setBounds(530, 200, 200,50);
+                                        Third.setBounds(530, 200, 245,64);
                                     if(stack2.size() - stack2.search(Third) == 2)
-                                        Third.setBounds(530, 250, 200,50);
+                                        Third.setBounds(530, 250, 245,64);
                                     if(stack2.size() - stack2.search(Third) == 1)
-                                        Third.setBounds(530, 300, 200,50);
+                                        Third.setBounds(530, 300, 245,64);
                                     if(stack2.size() - stack2.search(Third) == 0)
-                                        Third.setBounds(530, 350, 200,50);
+                                        Third.setBounds(530, 350, 245,64);
                                     check();
                                 }
                             }catch(Exception ex){
                                 stack3.pop();
                                 stack2.push(Third);
                                 if(stack2.size() - stack2.search(Third) == 3)
-                                    Third.setBounds(530, 200, 200,50);
+                                    Third.setBounds(530, 200, 245,64);
                                 if(stack2.size() - stack2.search(Third) == 2)
-                                    Third.setBounds(530, 250, 200,50);
+                                    Third.setBounds(530, 250, 245,64);
                                 if(stack2.size() - stack2.search(Third) == 1)
-                                    Third.setBounds(530, 300, 200,50);
+                                    Third.setBounds(530, 300, 245,64);
                                 if(stack2.size() - stack2.search(Third) == 0)
-                                    Third.setBounds(530, 350, 200,50);
+                                    Third.setBounds(530, 350, 245,64);
                                 check();
 
                             }
@@ -638,26 +645,26 @@ public class Level4x4_Duplicate extends JFrame {
                                     stack3.pop();
                                     stack1.push(Third);
                                     if (stack1.size() - stack1.search(Third) == 3)
-                                        Third.setBounds(200, 200, 200, 50);
+                                        Third.setBounds(200, 200, 245,64);
                                     if (stack1.size() - stack1.search(Third) == 2)
-                                        Third.setBounds(200, 250, 200, 50);
+                                        Third.setBounds(200, 250, 245,64);
                                     if (stack1.size() - stack1.search(Third) == 1)
-                                        Third.setBounds(200, 300, 200, 50);
+                                        Third.setBounds(200, 300, 245,64);
                                     if (stack1.size() - stack1.search(Third) == 0)
-                                        Third.setBounds(200, 350, 200, 50);
+                                        Third.setBounds(200, 350, 245,64);
                                     check();
                                 }
                             }catch(Exception ex){
                                 stack3.pop();
                                 stack1.push(Third);
                                 if (stack1.size() - stack1.search(Third) == 3)
-                                    Third.setBounds(200, 200, 200, 50);
+                                    Third.setBounds(200, 200, 245,64);
                                 if (stack1.size() - stack1.search(Third) == 2)
-                                    Third.setBounds(200, 250, 200, 50);
+                                    Third.setBounds(200, 250, 245,64);
                                 if (stack1.size() - stack1.search(Third) == 1)
-                                    Third.setBounds(200, 300, 200, 50);
+                                    Third.setBounds(200, 300, 245,64);
                                 if (stack1.size() - stack1.search(Third) == 0)
-                                    Third.setBounds(200, 350, 200, 50);
+                                    Third.setBounds(200, 350, 245,64);
                                 check();
 
                             }
@@ -679,26 +686,26 @@ public class Level4x4_Duplicate extends JFrame {
                                     stack1.pop();
                                     stack2.push(Fourth);
                                     if(stack2.size() - stack2.search(Fourth) == 3)
-                                        Fourth.setBounds(530, 200, 250,50);
+                                        Fourth.setBounds(530, 200, 269,64);
                                     if(stack2.size() - stack2.search(Fourth) == 2)
-                                        Fourth.setBounds(530, 250, 250,50);
+                                        Fourth.setBounds(530, 250, 269,64);
                                     if(stack2.size() - stack2.search(Fourth) == 1)
-                                        Fourth.setBounds(530, 300, 250,50);
+                                        Fourth.setBounds(530, 300, 269,64);
                                     if(stack2.size() - stack2.search(Fourth) == 0)
-                                        Fourth.setBounds(530, 350, 250,50);
+                                        Fourth.setBounds(530, 350, 269,64);
                                     check();
                                 }
                             }catch(Exception ex){
                                 stack1.pop();
                                 stack2.push(Fourth);
                                 if(stack2.size() - stack2.search(Fourth) == 3)
-                                    Fourth.setBounds(530, 200, 250,50);
+                                    Fourth.setBounds(530, 200, 269,64);
                                 if(stack2.size() - stack2.search(Fourth) == 2)
-                                    Fourth.setBounds(530, 250, 250,50);
+                                    Fourth.setBounds(530, 250, 269,64);
                                 if(stack2.size() - stack2.search(Fourth) == 1)
-                                    Fourth.setBounds(530, 300, 250,50);
+                                    Fourth.setBounds(530, 300, 269,64);
                                 if(stack2.size() - stack2.search(Fourth) == 0)
-                                    Fourth.setBounds(530, 350, 250,50);
+                                    Fourth.setBounds(530, 350, 269,64);
                                 check();
 
                             }
@@ -712,26 +719,26 @@ public class Level4x4_Duplicate extends JFrame {
                                     stack1.pop();
                                     stack3.push(Fourth);
                                     if (stack3.size() - stack3.search(Fourth) == 3)
-                                        Fourth.setBounds(875, 200, 250, 50);
+                                        Fourth.setBounds(875, 200, 269,64);
                                     if (stack3.size() - stack3.search(Fourth) == 2)
-                                        Fourth.setBounds(875, 250, 250, 50);
+                                        Fourth.setBounds(875, 250, 269,64);
                                     if (stack3.size() - stack3.search(Fourth) == 1)
-                                        Fourth.setBounds(875, 300, 250, 50);
+                                        Fourth.setBounds(875, 300, 269,64);
                                     if (stack3.size() - stack3.search(Fourth) == 0)
-                                        Fourth.setBounds(875, 350, 250, 50);
+                                        Fourth.setBounds(875, 350, 269,64);
                                     check();
                                 }
                             }catch(Exception ex){
                                 stack1.pop();
                                 stack3.push(Fourth);
                                 if (stack3.size() - stack3.search(Fourth) == 3)
-                                    Fourth.setBounds(875, 200, 250, 50);
+                                    Fourth.setBounds(875, 200, 269,64);
                                 if (stack3.size() - stack3.search(Fourth) == 2)
-                                    Fourth.setBounds(875, 250, 250, 50);
+                                    Fourth.setBounds(875, 250, 269,64);
                                 if (stack3.size() - stack3.search(Fourth) == 1)
-                                    Fourth.setBounds(875, 300, 250, 50);
+                                    Fourth.setBounds(875, 300, 269,64);
                                 if (stack3.size() - stack3.search(Fourth) == 0)
-                                    Fourth.setBounds(875, 350, 250, 50);
+                                    Fourth.setBounds(875, 350, 269,64);
                                 check();
 
                             }
@@ -750,26 +757,26 @@ public class Level4x4_Duplicate extends JFrame {
                                     stack2.pop();
                                     stack3.push(Fourth);
                                     if (stack3.size() - stack3.search(Fourth) == 3)
-                                        Fourth.setBounds(875, 200, 250, 50);
+                                        Fourth.setBounds(875, 200, 269,64);
                                     if (stack3.size() - stack3.search(Fourth) == 2)
-                                        Fourth.setBounds(875, 250, 250, 50);
+                                        Fourth.setBounds(875, 250, 269,64);
                                     if (stack3.size() - stack3.search(Fourth) == 1)
-                                        Fourth.setBounds(875, 300, 250, 50);
+                                        Fourth.setBounds(875, 300, 269,64);
                                     if (stack3.size() - stack3.search(Fourth) == 0)
-                                        Fourth.setBounds(875, 350, 250, 50);
+                                        Fourth.setBounds(875, 350, 269,64);
                                     check();
                                 }
                             }catch(Exception ex) {
                                 stack2.pop();
                                 stack3.push(Fourth);
                                 if (stack3.size() - stack3.search(Fourth) == 3)
-                                    Fourth.setBounds(875, 200, 250, 50);
+                                    Fourth.setBounds(875, 200, 269,64);
                                 if (stack3.size() - stack3.search(Fourth) == 2)
-                                    Fourth.setBounds(875, 250, 250, 50);
+                                    Fourth.setBounds(875, 250, 269,64);
                                 if (stack3.size() - stack3.search(Fourth) == 1)
-                                    Fourth.setBounds(875, 300, 250, 50);
+                                    Fourth.setBounds(875, 300, 269,64);
                                 if (stack3.size() - stack3.search(Fourth) == 0)
-                                    Fourth.setBounds(875, 350, 250, 50);
+                                    Fourth.setBounds(875, 350, 269,64);
                                 check();
 
                             }
@@ -782,26 +789,26 @@ public class Level4x4_Duplicate extends JFrame {
                                     stack2.pop();
                                     stack1.push(Fourth);
                                     if (stack1.size() - stack1.search(Fourth) == 3)
-                                        Fourth.setBounds(200, 200, 250, 50);
+                                        Fourth.setBounds(200, 200, 269,64);
                                     if (stack1.size() - stack1.search(Fourth) == 2)
-                                        Fourth.setBounds(200, 250, 250, 50);
+                                        Fourth.setBounds(200, 250, 269,64);
                                     if (stack1.size() - stack1.search(Fourth) == 1)
-                                        Fourth.setBounds(200, 300, 250, 50);
+                                        Fourth.setBounds(200, 300, 269,64);
                                     if (stack1.size() - stack1.search(Fourth) == 0)
-                                        Fourth.setBounds(200, 350, 250, 50);
+                                        Fourth.setBounds(200, 350, 269,64);
                                     check();
                                 }
                             }catch(Exception ex){
                                 stack2.pop();
                                 stack1.push(Fourth);
                                 if (stack1.size() - stack1.search(Fourth) == 3)
-                                    Fourth.setBounds(200, 200, 250, 50);
+                                    Fourth.setBounds(200, 200, 269,64);
                                 if (stack1.size() - stack1.search(Fourth) == 2)
-                                    Fourth.setBounds(200, 250, 250, 50);
+                                    Fourth.setBounds(200, 250, 269,64);
                                 if (stack1.size() - stack1.search(Fourth) == 1)
-                                    Fourth.setBounds(200, 300, 250, 50);
+                                    Fourth.setBounds(200, 300, 269,64);
                                 if (stack1.size() - stack1.search(Fourth) == 0)
-                                    Fourth.setBounds(200, 350, 250, 50);
+                                    Fourth.setBounds(200, 350, 269,64);
                                 check();
 
                             }
@@ -822,26 +829,26 @@ public class Level4x4_Duplicate extends JFrame {
                                     stack3.pop();
                                     stack2.push(Fourth);
                                     if(stack2.size() - stack2.search(Fourth) == 3)
-                                        Fourth.setBounds(530, 200, 250,50);
+                                        Fourth.setBounds(530, 200, 269,64);
                                     if(stack2.size() - stack2.search(Fourth) == 2)
-                                        Fourth.setBounds(530, 250, 250,50);
+                                        Fourth.setBounds(530, 250, 269,64);
                                     if(stack2.size() - stack2.search(Fourth) == 1)
-                                        Fourth.setBounds(530, 300, 250,50);
+                                        Fourth.setBounds(530, 300, 269,64);
                                     if(stack2.size() - stack2.search(Fourth) == 0)
-                                        Fourth.setBounds(530, 350, 250,50);
+                                        Fourth.setBounds(530, 350, 269,64);
                                     check();
                                 }
                             }catch(Exception ex){
                                 stack3.pop();
                                 stack2.push(Fourth);
                                 if(stack2.size() - stack2.search(Fourth) == 3)
-                                    Fourth.setBounds(530, 200, 250,50);
+                                    Fourth.setBounds(530, 200, 269,64);
                                 if(stack2.size() - stack2.search(Fourth) == 2)
-                                    Fourth.setBounds(530, 250, 250,50);
+                                    Fourth.setBounds(530, 250, 269,64);
                                 if(stack2.size() - stack2.search(Fourth) == 1)
-                                    Fourth.setBounds(530, 300, 250,50);
+                                    Fourth.setBounds(530, 300, 269,64);
                                 if(stack2.size() - stack2.search(Fourth) == 0)
-                                    Fourth.setBounds(530, 350, 250,50);
+                                    Fourth.setBounds(530, 350, 269,64);
                                 check();
 
                             }
@@ -854,26 +861,26 @@ public class Level4x4_Duplicate extends JFrame {
                                     stack3.pop();
                                     stack1.push(Fourth);
                                     if (stack1.size() - stack1.search(Fourth) == 3)
-                                        Fourth.setBounds(200, 200, 250, 50);
+                                        Fourth.setBounds(200, 200, 269,64);
                                     if (stack1.size() - stack1.search(Fourth) == 2)
-                                        Fourth.setBounds(200, 250, 250, 50);
+                                        Fourth.setBounds(200, 250, 269,64);
                                     if (stack1.size() - stack1.search(Fourth) == 1)
-                                        Fourth.setBounds(200, 300, 250, 50);
+                                        Fourth.setBounds(200, 300, 269,64);
                                     if (stack1.size() - stack1.search(Fourth) == 0)
-                                        Fourth.setBounds(200, 350, 250, 50);
+                                        Fourth.setBounds(200, 350, 269,64);
                                     check();
                                 }
                             }catch(Exception ex){
                                 stack3.pop();
                                 stack1.push(Fourth);
                                 if (stack1.size() - stack1.search(Fourth) == 3)
-                                    Fourth.setBounds(200, 200, 250, 50);
+                                    Fourth.setBounds(200, 200, 269,64);
                                 if (stack1.size() - stack1.search(Fourth) == 2)
-                                    Fourth.setBounds(200, 250, 250, 50);
+                                    Fourth.setBounds(200, 250, 269,64);
                                 if (stack1.size() - stack1.search(Fourth) == 1)
-                                    Fourth.setBounds(200, 300, 250, 50);
+                                    Fourth.setBounds(200, 300, 269,64);
                                 if (stack1.size() - stack1.search(Fourth) == 0)
-                                    Fourth.setBounds(200, 350, 250, 50);
+                                    Fourth.setBounds(200, 350, 269,64);
                                 check();
 
                             }
@@ -895,7 +902,7 @@ public class Level4x4_Duplicate extends JFrame {
                 drag4 = false;
             }
         });
-        First.setBounds(200, 200, 100,50);
+        First.setBounds(200, 200, 207,64);
         formatLabel(First);
         pane.add(First);
 
@@ -908,7 +915,7 @@ public class Level4x4_Duplicate extends JFrame {
                 drag4 = false;
             }
         });
-        Second.setBounds(200, 250, 150,50);
+        Second.setBounds(200, 250, 227,64);
         formatLabel(Second);
         pane.add(Second);
 
@@ -923,7 +930,7 @@ public class Level4x4_Duplicate extends JFrame {
                 drag4 = false;
             }
         });
-        Third.setBounds(200, 300, 200,50);
+        Third.setBounds(200, 300, 245,64);
         formatLabel(Third);
         pane.add(Third);
 
@@ -938,11 +945,11 @@ public class Level4x4_Duplicate extends JFrame {
                 drag3 = false;
             }
         });
-        Fourth.setBounds(200, 350, 250,50);
+        Fourth.setBounds(200, 350, 269,64);
         formatLabel(Fourth);
         pane.add(Fourth);
 
-
+        JButton Back = new JButton();
         Back.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

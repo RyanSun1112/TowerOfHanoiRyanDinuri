@@ -13,7 +13,7 @@ import java.util.Scanner;
 
 public class Level5x5 extends JFrame{
     private JPanel Level5x5; //program doesn't run unless this line is present :0
-    private JFrame frame = new JFrame("The Towers of Hanoi.");
+    private JFrame frame = new JFrame("The Towers of Hanoi...");
     private JLabel Fourth;
     private JLabel First;
     private JLabel Second;
