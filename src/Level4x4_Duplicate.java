@@ -119,13 +119,6 @@ public class Level4x4_Duplicate extends JFrame {
 
     }
     public Level4x4_Duplicate() {
-        if(first == true){
-            stack1.push(Fourth);
-            stack1.push(Third);
-            stack1.push(Second);
-            stack1.push(First);
-            first = false;
-        }
 
         JLayeredPane pane = new JLayeredPane();
         JLabel background = makeImage("towersOfHanoi_gamePage.png");
@@ -133,6 +126,14 @@ public class Level4x4_Duplicate extends JFrame {
         Second = makeImage("towersOfHanoi_HanoiRing2.png");
         Third = makeImage("towersOfHanoi_HanoiRing3.png");
         Fourth = makeImage("towersOfHanoi_HanoiRing4.png");
+
+        if(first == true){
+            stack1.push(Fourth);
+            stack1.push(Third);
+            stack1.push(Second);
+            stack1.push(First);
+            first = false;
+        }
 
         frame.addMouseListener(new MouseAdapter() {
             @Override
@@ -902,7 +903,7 @@ public class Level4x4_Duplicate extends JFrame {
                 drag4 = false;
             }
         });
-        First.setBounds(200, 200, 207,64);
+        First.setBounds(120, 391, 207,64);
         formatLabel(First);
         pane.add(First);
 
@@ -915,7 +916,7 @@ public class Level4x4_Duplicate extends JFrame {
                 drag4 = false;
             }
         });
-        Second.setBounds(200, 250, 227,64);
+        Second.setBounds(110, 455, 227,64);
         formatLabel(Second);
         pane.add(Second);
 
@@ -930,7 +931,7 @@ public class Level4x4_Duplicate extends JFrame {
                 drag4 = false;
             }
         });
-        Third.setBounds(200, 300, 245,64);
+        Third.setBounds(100, 518, 245,64);
         formatLabel(Third);
         pane.add(Third);
 
@@ -945,7 +946,7 @@ public class Level4x4_Duplicate extends JFrame {
                 drag3 = false;
             }
         });
-        Fourth.setBounds(200, 350, 269,64);
+        Fourth.setBounds(90, 580, 269,64);
         formatLabel(Fourth);
         pane.add(Fourth);
 

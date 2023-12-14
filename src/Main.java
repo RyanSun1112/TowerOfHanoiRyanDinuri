@@ -3,8 +3,9 @@
 public class Main {
     public static void main(String[] args) {
 
-        StartPage coolAsChristmas = new StartPage();
-        coolAsChristmas.homePage();
+        //StartPage coolAsChristmas = new StartPage();
+        //coolAsChristmas.homePage();
+        Level4x4_Duplicate clone = new Level4x4_Duplicate();
 
     }
 }
