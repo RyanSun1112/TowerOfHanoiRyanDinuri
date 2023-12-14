@@ -63,7 +63,7 @@ public class Level4x4 extends JFrame {
         return caviarDreams;
     }
 
-    private void formatButton(JLabel button) {
+    private void formatLabel(JLabel button) {
         button.setFont(theNormalFont(35));
         button.setFocusable(false);
         button.setBorder(BorderFactory.createEmptyBorder());
@@ -80,6 +80,7 @@ public class Level4x4 extends JFrame {
         button.setForeground(white);
 
     }
+
     public void check(){
         try{
             Scanner myReader = new Scanner(Options.myObj);
@@ -87,7 +88,7 @@ public class Level4x4 extends JFrame {
             int writing = Integer.parseInt(data);
             writing++;
             FileWriter myWriter = new FileWriter("filename.txt");
-            Moves.setText("Moves: " + Integer.toString(writing));
+            Moves.setText("moves: " + Integer.toString(writing));
             myWriter.write(Integer.toString(writing));
             myWriter.close();
             myReader.close();
@@ -891,8 +892,8 @@ public class Level4x4 extends JFrame {
             }
         });
         First.setBounds(200, 200, 100,50);
+        formatLabel(First);
         pane.add(First);
-        formatButton(First);
 
         Second.addMouseListener(new MouseAdapter() {
             @Override
@@ -904,8 +905,8 @@ public class Level4x4 extends JFrame {
             }
         });
         Second.setBounds(200, 250, 150,50);
+        formatLabel(Second);
         pane.add(Second);
-        formatButton(Second);
 
 
         Third.addMouseListener(new MouseAdapter() {
@@ -919,8 +920,8 @@ public class Level4x4 extends JFrame {
             }
         });
         Third.setBounds(200, 300, 200,50);
+        formatLabel(Third);
         pane.add(Third);
-        formatButton(Third);
 
 
         Fourth.addMouseListener(new MouseAdapter() {
@@ -934,8 +935,8 @@ public class Level4x4 extends JFrame {
             }
         });
         Fourth.setBounds(200, 350, 250,50);
+        formatLabel(Fourth);
         pane.add(Fourth);
-        formatButton(Fourth);
 
 
         Back.addActionListener(new ActionListener() {
@@ -945,14 +946,13 @@ public class Level4x4 extends JFrame {
                 Options cool = new Options();
             }
         });
-        Back.setBounds(80, 5, 200,200);
-        pane.add(Back);
+        Back.setBounds(305, 65, 232,80);
+        Back.setText("<   back!");
         formatButton(Back);
-        Moves.setBounds(500,0, 300, 100);
+        pane.add(Back);
+        Moves.setBounds(100,65, 232, 80);
+        formatLabel(Moves);
         pane.add(Moves);
-        formatButton(Moves);
-
-
         background.setBounds(0,0,1152,648);
         pane.add(background,JLayeredPane.DEFAULT_LAYER);
 

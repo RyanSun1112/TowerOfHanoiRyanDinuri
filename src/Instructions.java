@@ -90,6 +90,7 @@ public class Instructions extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.setVisible(false);
+                dispose();
                 StartPage cool = new StartPage();
                 cool.homePage();
             }

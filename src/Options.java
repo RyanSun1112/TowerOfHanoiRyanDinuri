@@ -89,7 +89,8 @@ public class Options extends JFrame {
         Level4x4.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                dispose();
+                dispose(); //program needs both this and the following line to properly close the current window :0
+                frame.setVisible(false);
                 Level4x4 cool = new Level4x4();
             }
         });
@@ -100,7 +101,8 @@ public class Options extends JFrame {
         Level5x5.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                dispose();
+                dispose(); //program needs both this and the following line to properly close the current window :0
+                frame.setVisible(false);
                 Level5x5 cool = new Level5x5();
             }
         });
@@ -111,7 +113,8 @@ public class Options extends JFrame {
         Level6x6.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                dispose();
+                dispose(); //program needs both this and the following line to properly close the current window :0
+                frame.setVisible(false);
                 Level6x6 cool = new Level6x6();
             }
         });
@@ -124,7 +127,7 @@ public class Options extends JFrame {
 
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.add(pane);
-        frame.setSize(1152,648);
+        frame.setSize(1152,678);
         frame.setVisible(true);
     }
 }
