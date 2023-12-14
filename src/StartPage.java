@@ -59,7 +59,7 @@ public class StartPage {
         Icon backgroundIcon = new ImageIcon(url);
         JLabel background = new JLabel(backgroundIcon);
 
-        JButton instructionsButton = new JButton("How to play");
+        JButton instructionsButton = new JButton("how to play");
         instructionsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -71,7 +71,7 @@ public class StartPage {
         instructionsButton.setBounds(320,478,230,80);
         pane.add(instructionsButton);
 
-        JButton exit = new JButton("Exit...");
+        JButton exit = new JButton("exit...");
         exit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -83,7 +83,7 @@ public class StartPage {
         exit.setBounds(570,478,230,80);
         pane.add(exit);
 
-        JButton playButton = new JButton("Start!   >");
+        JButton playButton = new JButton("start!   >");
         playButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

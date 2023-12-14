@@ -65,7 +65,8 @@ public class Instructions extends JFrame{
                 cool.homePage();
             }
         });
-        Back.setBounds(280,120,50,50);
+        Back.setBounds(150,85,230,80);
+        Back.setText("<   back!");
         formatButton(Back);
 
         pane.add(Back);

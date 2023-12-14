@@ -74,7 +74,7 @@ public class Options extends JFrame {
                 cool.homePage();
             }
         });
-        Back.setBounds(200,140,100,50);
+        Back.setBounds(200,140,230,80);
         formatButton(Back);
         Back.setText("<   back");
         pane.add(Back);
@@ -86,7 +86,7 @@ public class Options extends JFrame {
                 Level4x4 cool = new Level4x4();
             }
         });
-        Level4x4.setBounds(50,0,50,50);
+        Level4x4.setBounds(50,0,230,80);
         pane.add(Level4x4);
 
         Level5x5.addActionListener(new ActionListener() {
@@ -96,7 +96,7 @@ public class Options extends JFrame {
                 Level5x5 cool = new Level5x5();
             }
         });
-        Level5x5.setBounds(100,0,50,50);
+        Level5x5.setBounds(100,0,230,80);
         pane.add(Level5x5);
 
         Level6x6.addActionListener(new ActionListener() {
@@ -106,7 +106,7 @@ public class Options extends JFrame {
                 Level6x6 cool = new Level6x6();
             }
         });
-        Level6x6.setBounds(150,0,50,50);
+        Level6x6.setBounds(150,0,230,80);
         pane.add(Level6x6);
 
         background.setBounds(0,0,1152,648);
