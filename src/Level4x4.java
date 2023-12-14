@@ -37,7 +37,36 @@ public class Level4x4 extends JFrame {
     private Stack<JLabel> stack1 = new Stack();
     private Stack<JLabel> stack2 = new Stack();
     private Stack<JLabel> stack3 = new Stack();
-
+    private void movement1(JLabel cool ){
+        if(stack1.size() - stack1.search(cool) == 3)
+            cool.setLocation(200, 200);
+        if(stack1.size() - stack1.search(cool) == 2)
+            cool.setLocation(200, 250);
+        if(stack1.size() - stack1.search(cool) == 1)
+            cool.setLocation(200, 300);
+        if(stack1.size() - stack1.search(cool) == 0)
+            cool.setLocation(200, 350);
+    }
+    private void movement2(JLabel cool ){
+        if(stack2.size() - stack2.search(cool) == 3)
+            cool.setLocation(530, 200);
+        if(stack2.size() - stack2.search(cool) == 2)
+            cool.setLocation(530, 250);
+        if(stack2.size() - stack2.search(cool) == 1)
+            cool.setLocation(530, 300);
+        if(stack2.size() - stack2.search(cool) == 0)
+            cool.setLocation(530, 350);
+    }
+    private void movement3(JLabel cool ){
+        if(stack3.size() - stack3.search(cool) == 3)
+            cool.setLocation(875, 200);
+        if(stack3.size() - stack3.search(cool) == 2)
+            cool.setLocation(875, 250);
+        if(stack3.size() - stack3.search(cool) == 1)
+            cool.setLocation(875, 300);
+        if(stack3.size() - stack3.search(cool) == 0)
+            cool.setLocation(875, 350);
+    }
     private Font theNormalFont(int size)  {
 
         GraphicsEnvironment graphics = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -145,27 +174,13 @@ public class Level4x4 extends JFrame {
                             stack1.pop();
 
                             stack2.push(First);
-                            if(stack2.size() - stack2.search(First) == 3)
-                                First.setBounds(530, 200, 100,50);
-                            if(stack2.size() - stack2.search(First) == 2)
-                                First.setBounds(530, 250, 100,50);
-                            if(stack2.size() - stack2.search(First) == 1)
-                                First.setBounds(530, 300, 100,50);
-                            if(stack2.size() - stack2.search(First) == 0)
-                                First.setBounds(530, 350, 100,50);
+                            movement2(First);
                             check();
                         }
                         else if( e.getX()< 1050 && e.getX()> 850){
                             stack1.pop();
                             stack3.push(First);
-                            if(stack3.size() - stack3.search(First) == 3)
-                                First.setBounds(875, 200, 100,50);
-                            if(stack3.size() - stack3.search(First) == 2)
-                                First.setBounds(875, 250, 100,50);
-                            if(stack3.size() - stack3.search(First) == 1)
-                                First.setBounds(875, 300, 100,50);
-                            if(stack3.size() - stack3.search(First) == 0)
-                                First.setBounds(875, 350, 100,50);
+                            movement3(First);
                             check();
                         }
 
@@ -176,27 +191,13 @@ public class Level4x4 extends JFrame {
                             stack2.pop();
 
                             stack1.push(First);
-                            if(stack1.size() - stack1.search(First) == 3)
-                                First.setBounds(200, 200, 100,50);
-                            if(stack1.size() - stack1.search(First) == 2)
-                                First.setBounds(200, 250, 100,50);
-                            if(stack1.size() - stack1.search(First) == 1)
-                                First.setBounds(200, 300, 100,50);
-                            if(stack1.size() - stack1.search(First) == 0)
-                                First.setBounds(200, 350, 100,50);
+                            movement1(First);
                             check();
                         }
                         else if( e.getX()< 1050 && e.getX()> 850){
                             stack2.pop();
                             stack3.push(First);
-                            if(stack3.size() - stack3.search(First) == 3)
-                                First.setBounds(875, 200, 100,50);
-                            if(stack3.size() - stack3.search(First) == 2)
-                                First.setBounds(875, 250, 100,50);
-                            if(stack3.size() - stack3.search(First) == 1)
-                                First.setBounds(875, 300, 100,50);
-                            if(stack3.size() - stack3.search(First) == 0)
-                                First.setBounds(875, 350, 100,50);
+                            movement3(First);
                             check();
                         }
 
@@ -208,27 +209,14 @@ public class Level4x4 extends JFrame {
                             stack3.pop();
 
                             stack1.push(First);
-                            if(stack1.size() - stack1.search(First) == 3)
-                                First.setBounds(200, 200, 100,50);
-                            if(stack1.size() - stack1.search(First) == 2)
-                                First.setBounds(200, 250, 100,50);
-                            if(stack1.size() - stack1.search(First) == 1)
-                                First.setBounds(200, 300, 100,50);
-                            if(stack1.size() - stack1.search(First) == 0)
-                                First.setBounds(200, 350, 100,50);
+
+                            movement1(First);
                             check();
                         }
                         else if(e.getX()< 700 && e.getX()> 500){
                             stack3.pop();
                             stack2.push(First);
-                            if(stack2.size() - stack2.search(First) == 3)
-                                First.setBounds(530, 200, 100,50);
-                            if(stack2.size() - stack2.search(First) == 2)
-                                First.setBounds(530, 250, 100,50);
-                            if(stack2.size() - stack2.search(First) == 1)
-                                First.setBounds(530, 300, 100,50);
-                            if(stack2.size() - stack2.search(First) == 0)
-                                First.setBounds(530, 350, 100,50);
+                            movement2(First);
                             check();
                         }
 
@@ -246,27 +234,13 @@ public class Level4x4 extends JFrame {
                                 }else{
                                     stack1.pop();
                                     stack2.push(Second);
-                                    if(stack2.size() - stack2.search(Second) == 3)
-                                        Second.setBounds(530, 200, 150,50);
-                                    if(stack2.size() - stack2.search(Second) == 2)
-                                        Second.setBounds(530, 250, 150,50);
-                                    if(stack2.size() - stack2.search(Second) == 1)
-                                        Second.setBounds(530, 300, 150,50);
-                                    if(stack2.size() - stack2.search(Second) == 0)
-                                        Second.setBounds(530, 350, 150,50);
+                                    movement2(Second);
                                     check();
                                 }
                             }catch(Exception ex){
                                 stack1.pop();
                                 stack2.push(Second);
-                                if(stack2.size() - stack2.search(Second) == 3)
-                                    Second.setBounds(530, 200, 150,50);
-                                if(stack2.size() - stack2.search(Second) == 2)
-                                    Second.setBounds(530, 250, 150,50);
-                                if(stack2.size() - stack2.search(Second) == 1)
-                                    Second.setBounds(530, 300, 150,50);
-                                if(stack2.size() - stack2.search(Second) == 0)
-                                    Second.setBounds(530, 350, 150,50);
+                                movement2(Second);
                                 check();
 
                             }
@@ -279,27 +253,13 @@ public class Level4x4 extends JFrame {
                             } else {
                                 stack1.pop();
                                 stack3.push(Second);
-                                if (stack3.size() - stack3.search(Second) == 3)
-                                    Second.setBounds(875, 200, 150, 50);
-                                if (stack3.size() - stack3.search(Second) == 2)
-                                    Second.setBounds(875, 250, 150, 50);
-                                if (stack3.size() - stack3.search(Second) == 1)
-                                    Second.setBounds(875, 300, 150, 50);
-                                if (stack3.size() - stack3.search(Second) == 0)
-                                    Second.setBounds(875, 350, 150, 50);
+                                movement3(Second);
                                 check();
                             }
                             }catch(Exception ex){
                                 stack1.pop();
                                 stack3.push(Second);
-                                if (stack3.size() - stack3.search(Second) == 3)
-                                    Second.setBounds(875, 200, 150, 50);
-                                if (stack3.size() - stack3.search(Second) == 2)
-                                    Second.setBounds(875, 250, 150, 50);
-                                if (stack3.size() - stack3.search(Second) == 1)
-                                    Second.setBounds(875, 300, 150, 50);
-                                if (stack3.size() - stack3.search(Second) == 0)
-                                    Second.setBounds(875, 350, 150, 50);
+                                movement3(Second);
                                 check();
 
                             }
@@ -317,27 +277,13 @@ public class Level4x4 extends JFrame {
                             } else {
                                 stack2.pop();
                                 stack3.push(Second);
-                                if (stack3.size() - stack3.search(Second) == 3)
-                                    Second.setBounds(875, 200, 150, 50);
-                                if (stack3.size() - stack3.search(Second) == 2)
-                                    Second.setBounds(875, 250, 150, 50);
-                                if (stack3.size() - stack3.search(Second) == 1)
-                                    Second.setBounds(875, 300, 150, 50);
-                                if (stack3.size() - stack3.search(Second) == 0)
-                                    Second.setBounds(875, 350, 150, 50);
+                                movement3(Second);
                                 check();
                             }
                             }catch(Exception ex) {
                                 stack2.pop();
                                 stack3.push(Second);
-                                if (stack3.size() - stack3.search(Second) == 3)
-                                    Second.setBounds(875, 200, 150, 50);
-                                if (stack3.size() - stack3.search(Second) == 2)
-                                    Second.setBounds(875, 250, 150, 50);
-                                if (stack3.size() - stack3.search(Second) == 1)
-                                    Second.setBounds(875, 300, 150, 50);
-                                if (stack3.size() - stack3.search(Second) == 0)
-                                    Second.setBounds(875, 350, 150, 50);
+                                movement3(Second);
                                 check();
 
                             }
@@ -349,27 +295,13 @@ public class Level4x4 extends JFrame {
                             } else {
                                 stack2.pop();
                                 stack1.push(Second);
-                                if (stack1.size() - stack1.search(Second) == 3)
-                                    Second.setBounds(200, 200, 150, 50);
-                                if (stack1.size() - stack1.search(Second) == 2)
-                                    Second.setBounds(200, 250, 150, 50);
-                                if (stack1.size() - stack1.search(Second) == 1)
-                                    Second.setBounds(200, 300, 150, 50);
-                                if (stack1.size() - stack1.search(Second) == 0)
-                                    Second.setBounds(200, 350, 150, 50);
+                                movement1(Second);
                                 check();
                             }
                             }catch(Exception ex){
                                 stack2.pop();
                                 stack1.push(Second);
-                                if (stack1.size() - stack1.search(Second) == 3)
-                                    Second.setBounds(200, 200, 150, 50);
-                                if (stack1.size() - stack1.search(Second) == 2)
-                                    Second.setBounds(200, 250, 150, 50);
-                                if (stack1.size() - stack1.search(Second) == 1)
-                                    Second.setBounds(200, 300, 150, 50);
-                                if (stack1.size() - stack1.search(Second) == 0)
-                                    Second.setBounds(200, 350, 150, 50);
+                                movement1(Second);
                                 check();
 
                             }
@@ -389,27 +321,13 @@ public class Level4x4 extends JFrame {
                             }else{
                                 stack3.pop();
                                 stack2.push(Second);
-                                if(stack2.size() - stack2.search(Second) == 3)
-                                    Second.setBounds(530, 200, 150,50);
-                                if(stack2.size() - stack2.search(Second) == 2)
-                                    Second.setBounds(530, 250, 150,50);
-                                if(stack2.size() - stack2.search(Second) == 1)
-                                    Second.setBounds(530, 300, 150,50);
-                                if(stack2.size() - stack2.search(Second) == 0)
-                                    Second.setBounds(530, 350, 150,50);
+                                movement2(Second);
                                 check();
                             }
                             }catch(Exception ex){
                                 stack3.pop();
                                 stack2.push(Second);
-                                if(stack2.size() - stack2.search(Second) == 3)
-                                    Second.setBounds(530, 200, 150,50);
-                                if(stack2.size() - stack2.search(Second) == 2)
-                                    Second.setBounds(530, 250, 150,50);
-                                if(stack2.size() - stack2.search(Second) == 1)
-                                    Second.setBounds(530, 300, 150,50);
-                                if(stack2.size() - stack2.search(Second) == 0)
-                                    Second.setBounds(530, 350, 150,50);
+                                movement2(Second);
                                 check();
 
                             }
@@ -421,27 +339,13 @@ public class Level4x4 extends JFrame {
                             } else {
                                 stack3.pop();
                                 stack1.push(Second);
-                                if (stack1.size() - stack1.search(Second) == 3)
-                                    Second.setBounds(200, 200, 150, 50);
-                                if (stack1.size() - stack1.search(Second) == 2)
-                                    Second.setBounds(200, 250, 150, 50);
-                                if (stack1.size() - stack1.search(Second) == 1)
-                                    Second.setBounds(200, 300, 150, 50);
-                                if (stack1.size() - stack1.search(Second) == 0)
-                                    Second.setBounds(200, 350, 150, 50);
+                                movement1(Second);
                                 check();
                             }
                             }catch(Exception ex){
                                 stack3.pop();
                                 stack1.push(Second);
-                                if (stack1.size() - stack1.search(Second) == 3)
-                                    Second.setBounds(200, 200, 150, 50);
-                                if (stack1.size() - stack1.search(Second) == 2)
-                                    Second.setBounds(200, 250, 150, 50);
-                                if (stack1.size() - stack1.search(Second) == 1)
-                                    Second.setBounds(200, 300, 150, 50);
-                                if (stack1.size() - stack1.search(Second) == 0)
-                                    Second.setBounds(200, 350, 150, 50);
+                                movement1(Second);
                                 check();
 
                             }
@@ -462,27 +366,14 @@ public class Level4x4 extends JFrame {
                                 }else{
                                     stack1.pop();
                                     stack2.push(Third);
-                                    if(stack2.size() - stack2.search(Third) == 3)
-                                        Third.setBounds(530, 200, 200,50);
-                                    if(stack2.size() - stack2.search(Third) == 2)
-                                        Third.setBounds(530, 250, 200,50);
-                                    if(stack2.size() - stack2.search(Third) == 1)
-                                        Third.setBounds(530, 300, 200,50);
-                                    if(stack2.size() - stack2.search(Third) == 0)
-                                        Third.setBounds(530, 350, 200,50);
+                                    movement2(Third);
                                     check();
                                 }
                             }catch(Exception ex){
                                 stack1.pop();
                                 stack2.push(Third);
-                                if(stack2.size() - stack2.search(Third) == 3)
-                                    Third.setBounds(530, 200, 200,50);
-                                if(stack2.size() - stack2.search(Third) == 2)
-                                    Third.setBounds(530, 250, 200,50);
-                                if(stack2.size() - stack2.search(Third) == 1)
-                                    Third.setBounds(530, 300, 200,50);
-                                if(stack2.size() - stack2.search(Third) == 0)
-                                    Third.setBounds(530, 350, 200,50);
+                                movement2(Third);
+
                                 check();
 
                             }
@@ -495,33 +386,21 @@ public class Level4x4 extends JFrame {
                                 } else {
                                     stack1.pop();
                                     stack3.push(Third);
-                                    if (stack3.size() - stack3.search(Third) == 3)
-                                        Third.setBounds(875, 200, 200, 50);
-                                    if (stack3.size() - stack3.search(Third) == 2)
-                                        Third.setBounds(875, 250, 200, 50);
-                                    if (stack3.size() - stack3.search(Third) == 1)
-                                        Third.setBounds(875, 300, 200, 50);
-                                    if (stack3.size() - stack3.search(Third) == 0)
-                                        Third.setBounds(875, 350, 200, 50);
+                                    movement3(Third);
+
                                     check();
                                 }
                             }catch(Exception ex){
                                 stack1.pop();
                                 stack3.push(Third);
-                                if (stack3.size() - stack3.search(Third) == 3)
-                                    Third.setBounds(875, 200, 200, 50);
-                                if (stack3.size() - stack3.search(Third) == 2)
-                                    Third.setBounds(875, 250, 200, 50);
-                                if (stack3.size() - stack3.search(Third) == 1)
-                                    Third.setBounds(875, 300, 200, 50);
-                                if (stack3.size() - stack3.search(Third) == 0)
-                                    Third.setBounds(875, 350, 200, 50);
+                                movement3(Third);
+
                                 check();
 
                             }
                         }
 
-                        drag2 = false;
+                        drag3 = false;
                     }else if(stack2.search(Third) == 1){
 
 
@@ -533,27 +412,15 @@ public class Level4x4 extends JFrame {
                                 } else {
                                     stack2.pop();
                                     stack3.push(Third);
-                                    if (stack3.size() - stack3.search(Third) == 3)
-                                        Third.setBounds(875, 200, 200, 50);
-                                    if (stack3.size() - stack3.search(Third) == 2)
-                                        Third.setBounds(875, 250, 200, 50);
-                                    if (stack3.size() - stack3.search(Third) == 1)
-                                        Third.setBounds(875, 300, 200, 50);
-                                    if (stack3.size() - stack3.search(Third) == 0)
-                                        Third.setBounds(875, 350, 200, 50);
+                                    movement3(Third);
+
                                     check();
                                 }
                             }catch(Exception ex) {
                                 stack2.pop();
                                 stack3.push(Third);
-                                if (stack3.size() - stack3.search(Third) == 3)
-                                    Third.setBounds(875, 200, 200, 50);
-                                if (stack3.size() - stack3.search(Third) == 2)
-                                    Third.setBounds(875, 250, 200, 50);
-                                if (stack3.size() - stack3.search(Third) == 1)
-                                    Third.setBounds(875, 300, 200, 50);
-                                if (stack3.size() - stack3.search(Third) == 0)
-                                    Third.setBounds(875, 350, 200, 50);
+                                movement3(Third);
+
                                 check();
 
                             }
@@ -565,32 +432,20 @@ public class Level4x4 extends JFrame {
                                 } else {
                                     stack2.pop();
                                     stack1.push(Third);
-                                    if (stack1.size() - stack1.search(Third) == 3)
-                                        Third.setBounds(200, 200, 200, 50);
-                                    if (stack1.size() - stack1.search(Third) == 2)
-                                        Third.setBounds(200, 250, 200, 50);
-                                    if (stack1.size() - stack1.search(Third) == 1)
-                                        Third.setBounds(200, 300, 200, 50);
-                                    if (stack1.size() - stack1.search(Third) == 0)
-                                        Third.setBounds(200, 350, 200, 50);
+                                    movement1(Third);
+
                                     check();
                                 }
                             }catch(Exception ex){
                                 stack2.pop();
                                 stack1.push(Third);
-                                if (stack1.size() - stack1.search(Third) == 3)
-                                    Third.setBounds(200, 200, 200, 50);
-                                if (stack1.size() - stack1.search(Third) == 2)
-                                    Third.setBounds(200, 250, 200, 50);
-                                if (stack1.size() - stack1.search(Third) == 1)
-                                    Third.setBounds(200, 300, 200, 50);
-                                if (stack1.size() - stack1.search(Third) == 0)
-                                    Third.setBounds(200, 350, 200, 50);
+                                movement1(Third);
+
                                 check();
 
                             }
                         }
-                        drag2 = false;
+                        drag3 = false;
 
                     }
                     else if(stack3.search(Third) == 1){
@@ -605,27 +460,15 @@ public class Level4x4 extends JFrame {
                                 }else{
                                     stack3.pop();
                                     stack2.push(Third);
-                                    if(stack2.size() - stack2.search(Third) == 3)
-                                        Third.setBounds(530, 200, 200,50);
-                                    if(stack2.size() - stack2.search(Third) == 2)
-                                        Third.setBounds(530, 250, 200,50);
-                                    if(stack2.size() - stack2.search(Third) == 1)
-                                        Third.setBounds(530, 300, 200,50);
-                                    if(stack2.size() - stack2.search(Third) == 0)
-                                        Third.setBounds(530, 350, 200,50);
+                                    movement2(Third);
+
                                     check();
                                 }
                             }catch(Exception ex){
                                 stack3.pop();
                                 stack2.push(Third);
-                                if(stack2.size() - stack2.search(Third) == 3)
-                                    Third.setBounds(530, 200, 200,50);
-                                if(stack2.size() - stack2.search(Third) == 2)
-                                    Third.setBounds(530, 250, 200,50);
-                                if(stack2.size() - stack2.search(Third) == 1)
-                                    Third.setBounds(530, 300, 200,50);
-                                if(stack2.size() - stack2.search(Third) == 0)
-                                    Third.setBounds(530, 350, 200,50);
+                                movement2(Third);
+
                                 check();
 
                             }
@@ -637,32 +480,20 @@ public class Level4x4 extends JFrame {
                                 } else {
                                     stack3.pop();
                                     stack1.push(Third);
-                                    if (stack1.size() - stack1.search(Third) == 3)
-                                        Third.setBounds(200, 200, 200, 50);
-                                    if (stack1.size() - stack1.search(Third) == 2)
-                                        Third.setBounds(200, 250, 200, 50);
-                                    if (stack1.size() - stack1.search(Third) == 1)
-                                        Third.setBounds(200, 300, 200, 50);
-                                    if (stack1.size() - stack1.search(Third) == 0)
-                                        Third.setBounds(200, 350, 200, 50);
+                                    movement1(Third);
+
                                     check();
                                 }
                             }catch(Exception ex){
                                 stack3.pop();
                                 stack1.push(Third);
-                                if (stack1.size() - stack1.search(Third) == 3)
-                                    Third.setBounds(200, 200, 200, 50);
-                                if (stack1.size() - stack1.search(Third) == 2)
-                                    Third.setBounds(200, 250, 200, 50);
-                                if (stack1.size() - stack1.search(Third) == 1)
-                                    Third.setBounds(200, 300, 200, 50);
-                                if (stack1.size() - stack1.search(Third) == 0)
-                                    Third.setBounds(200, 350, 200, 50);
+                                movement1(Third);
+
                                 check();
 
                             }
                         }
-                        drag2 = false;
+                        drag3 = false;
 
                     }
 
@@ -678,27 +509,15 @@ public class Level4x4 extends JFrame {
                                 }else{
                                     stack1.pop();
                                     stack2.push(Fourth);
-                                    if(stack2.size() - stack2.search(Fourth) == 3)
-                                        Fourth.setBounds(530, 200, 250,50);
-                                    if(stack2.size() - stack2.search(Fourth) == 2)
-                                        Fourth.setBounds(530, 250, 250,50);
-                                    if(stack2.size() - stack2.search(Fourth) == 1)
-                                        Fourth.setBounds(530, 300, 250,50);
-                                    if(stack2.size() - stack2.search(Fourth) == 0)
-                                        Fourth.setBounds(530, 350, 250,50);
+                                    movement2(Fourth);
+
                                     check();
                                 }
                             }catch(Exception ex){
                                 stack1.pop();
                                 stack2.push(Fourth);
-                                if(stack2.size() - stack2.search(Fourth) == 3)
-                                    Fourth.setBounds(530, 200, 250,50);
-                                if(stack2.size() - stack2.search(Fourth) == 2)
-                                    Fourth.setBounds(530, 250, 250,50);
-                                if(stack2.size() - stack2.search(Fourth) == 1)
-                                    Fourth.setBounds(530, 300, 250,50);
-                                if(stack2.size() - stack2.search(Fourth) == 0)
-                                    Fourth.setBounds(530, 350, 250,50);
+                                movement2(Fourth);
+
                                 check();
 
                             }
@@ -711,33 +530,21 @@ public class Level4x4 extends JFrame {
                                 } else {
                                     stack1.pop();
                                     stack3.push(Fourth);
-                                    if (stack3.size() - stack3.search(Fourth) == 3)
-                                        Fourth.setBounds(875, 200, 250, 50);
-                                    if (stack3.size() - stack3.search(Fourth) == 2)
-                                        Fourth.setBounds(875, 250, 250, 50);
-                                    if (stack3.size() - stack3.search(Fourth) == 1)
-                                        Fourth.setBounds(875, 300, 250, 50);
-                                    if (stack3.size() - stack3.search(Fourth) == 0)
-                                        Fourth.setBounds(875, 350, 250, 50);
+                                    movement3(Fourth);
+
                                     check();
                                 }
                             }catch(Exception ex){
                                 stack1.pop();
                                 stack3.push(Fourth);
-                                if (stack3.size() - stack3.search(Fourth) == 3)
-                                    Fourth.setBounds(875, 200, 250, 50);
-                                if (stack3.size() - stack3.search(Fourth) == 2)
-                                    Fourth.setBounds(875, 250, 250, 50);
-                                if (stack3.size() - stack3.search(Fourth) == 1)
-                                    Fourth.setBounds(875, 300, 250, 50);
-                                if (stack3.size() - stack3.search(Fourth) == 0)
-                                    Fourth.setBounds(875, 350, 250, 50);
+                                movement3(Fourth);
+
                                 check();
 
                             }
                         }
 
-                        drag2 = false;
+                        drag4 = false;
                     }else if(stack2.search(Fourth) == 1){
 
 
@@ -749,27 +556,15 @@ public class Level4x4 extends JFrame {
                                 } else {
                                     stack2.pop();
                                     stack3.push(Fourth);
-                                    if (stack3.size() - stack3.search(Fourth) == 3)
-                                        Fourth.setBounds(875, 200, 250, 50);
-                                    if (stack3.size() - stack3.search(Fourth) == 2)
-                                        Fourth.setBounds(875, 250, 250, 50);
-                                    if (stack3.size() - stack3.search(Fourth) == 1)
-                                        Fourth.setBounds(875, 300, 250, 50);
-                                    if (stack3.size() - stack3.search(Fourth) == 0)
-                                        Fourth.setBounds(875, 350, 250, 50);
+                                    movement3(Fourth);
+
                                     check();
                                 }
                             }catch(Exception ex) {
                                 stack2.pop();
                                 stack3.push(Fourth);
-                                if (stack3.size() - stack3.search(Fourth) == 3)
-                                    Fourth.setBounds(875, 200, 250, 50);
-                                if (stack3.size() - stack3.search(Fourth) == 2)
-                                    Fourth.setBounds(875, 250, 250, 50);
-                                if (stack3.size() - stack3.search(Fourth) == 1)
-                                    Fourth.setBounds(875, 300, 250, 50);
-                                if (stack3.size() - stack3.search(Fourth) == 0)
-                                    Fourth.setBounds(875, 350, 250, 50);
+                                movement3(Fourth);
+
                                 check();
 
                             }
@@ -781,32 +576,20 @@ public class Level4x4 extends JFrame {
                                 } else {
                                     stack2.pop();
                                     stack1.push(Fourth);
-                                    if (stack1.size() - stack1.search(Fourth) == 3)
-                                        Fourth.setBounds(200, 200, 250, 50);
-                                    if (stack1.size() - stack1.search(Fourth) == 2)
-                                        Fourth.setBounds(200, 250, 250, 50);
-                                    if (stack1.size() - stack1.search(Fourth) == 1)
-                                        Fourth.setBounds(200, 300, 250, 50);
-                                    if (stack1.size() - stack1.search(Fourth) == 0)
-                                        Fourth.setBounds(200, 350, 250, 50);
+                                    movement1(Fourth);
+
                                     check();
                                 }
                             }catch(Exception ex){
                                 stack2.pop();
                                 stack1.push(Fourth);
-                                if (stack1.size() - stack1.search(Fourth) == 3)
-                                    Fourth.setBounds(200, 200, 250, 50);
-                                if (stack1.size() - stack1.search(Fourth) == 2)
-                                    Fourth.setBounds(200, 250, 250, 50);
-                                if (stack1.size() - stack1.search(Fourth) == 1)
-                                    Fourth.setBounds(200, 300, 250, 50);
-                                if (stack1.size() - stack1.search(Fourth) == 0)
-                                    Fourth.setBounds(200, 350, 250, 50);
+                                movement1(Fourth);
+
                                 check();
 
                             }
                         }
-                        drag2 = false;
+                        drag4 = false;
 
                     }
                     else if(stack3.search(Fourth) == 1){
@@ -821,27 +604,15 @@ public class Level4x4 extends JFrame {
                                 }else{
                                     stack3.pop();
                                     stack2.push(Fourth);
-                                    if(stack2.size() - stack2.search(Fourth) == 3)
-                                        Fourth.setBounds(530, 200, 250,50);
-                                    if(stack2.size() - stack2.search(Fourth) == 2)
-                                        Fourth.setBounds(530, 250, 250,50);
-                                    if(stack2.size() - stack2.search(Fourth) == 1)
-                                        Fourth.setBounds(530, 300, 250,50);
-                                    if(stack2.size() - stack2.search(Fourth) == 0)
-                                        Fourth.setBounds(530, 350, 250,50);
+                                    movement2(Fourth);
+
                                     check();
                                 }
                             }catch(Exception ex){
                                 stack3.pop();
                                 stack2.push(Fourth);
-                                if(stack2.size() - stack2.search(Fourth) == 3)
-                                    Fourth.setBounds(530, 200, 250,50);
-                                if(stack2.size() - stack2.search(Fourth) == 2)
-                                    Fourth.setBounds(530, 250, 250,50);
-                                if(stack2.size() - stack2.search(Fourth) == 1)
-                                    Fourth.setBounds(530, 300, 250,50);
-                                if(stack2.size() - stack2.search(Fourth) == 0)
-                                    Fourth.setBounds(530, 350, 250,50);
+                                movement2(Fourth);
+
                                 check();
 
                             }
@@ -853,32 +624,20 @@ public class Level4x4 extends JFrame {
                                 } else {
                                     stack3.pop();
                                     stack1.push(Fourth);
-                                    if (stack1.size() - stack1.search(Fourth) == 3)
-                                        Fourth.setBounds(200, 200, 250, 50);
-                                    if (stack1.size() - stack1.search(Fourth) == 2)
-                                        Fourth.setBounds(200, 250, 250, 50);
-                                    if (stack1.size() - stack1.search(Fourth) == 1)
-                                        Fourth.setBounds(200, 300, 250, 50);
-                                    if (stack1.size() - stack1.search(Fourth) == 0)
-                                        Fourth.setBounds(200, 350, 250, 50);
+                                    movement1(Fourth);
+
                                     check();
                                 }
                             }catch(Exception ex){
                                 stack3.pop();
                                 stack1.push(Fourth);
-                                if (stack1.size() - stack1.search(Fourth) == 3)
-                                    Fourth.setBounds(200, 200, 250, 50);
-                                if (stack1.size() - stack1.search(Fourth) == 2)
-                                    Fourth.setBounds(200, 250, 250, 50);
-                                if (stack1.size() - stack1.search(Fourth) == 1)
-                                    Fourth.setBounds(200, 300, 250, 50);
-                                if (stack1.size() - stack1.search(Fourth) == 0)
-                                    Fourth.setBounds(200, 350, 250, 50);
+                                movement1(Fourth);
+
                                 check();
 
                             }
                         }
-                        drag2 = false;
+                        drag4 = false;
 
                     }
 
