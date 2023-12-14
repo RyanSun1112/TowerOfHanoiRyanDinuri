@@ -57,6 +57,35 @@ public class Instructions extends JFrame{
         Icon backgroundIcon = new ImageIcon(url);
         JLabel background = new JLabel(backgroundIcon);
 
+        String instructionText = new String("<HTML>" +
+                "GOAL: shift ALL the rings to another peg of snowmen (in the same order)." +
+                "<BR>" +
+                "<BR>RULES:" +
+                "<BR>   * Bigger rings cannot be placed on top of smaller rings" +
+                "<BR>   * Only one ring can be moved at a time (a stack of rings can't be moved together)" +
+                "<BR>   * Only the ring at the top of any stack can be moved (none from the middle/bottom)" +
+                "<BR>" +
+                "<BR>TIP: Try to do it in as few moves as possible! Good luck, player!" +
+                "</HTML>");
+
+        JLabel instructionsToShow = new JLabel(instructionText);
+        instructionsToShow.setFont(theNormalFont(18));
+        instructionsToShow.setFocusable(false);
+        instructionsToShow.setBorder(BorderFactory.createEmptyBorder());
+        instructionsToShow.setOpaque(false);
+        instructionsToShow.setForeground(white);
+        instructionsToShow.setBounds(320,300,760,400);
+        pane.add(instructionsToShow);
+
+        JLabel instructionsShadow = new JLabel(instructionText);
+        instructionsShadow.setFont(theNormalFont(18));
+        instructionsShadow.setFocusable(false);
+        instructionsShadow.setBorder(BorderFactory.createEmptyBorder());
+        instructionsShadow.setOpaque(false);
+        instructionsShadow.setForeground(new Color(54, 68, 65));
+        instructionsShadow.setBounds(322,301,760,400);
+        pane.add(instructionsShadow);
+
         Back.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -68,7 +97,6 @@ public class Instructions extends JFrame{
         Back.setBounds(150,85,230,80);
         Back.setText("<   back!");
         formatButton(Back);
-
         pane.add(Back);
 
         background.setBounds(0,0,1152,648);

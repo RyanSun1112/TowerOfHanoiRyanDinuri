@@ -5,7 +5,7 @@ public class Main {
 
         //StartPage coolAsChristmas = new StartPage();
         //coolAsChristmas.homePage();
-        Options o = new Options(); //**not permanent, just until options is designed properly
+        Instructions o = new Instructions(); //**not permanent, just until options is designed properly
 
     }
 }

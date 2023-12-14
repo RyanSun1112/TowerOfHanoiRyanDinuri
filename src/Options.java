@@ -68,8 +68,8 @@ public class Options extends JFrame {
         Back.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //uhihiiojpk
                 frame.setVisible(false);
+                dispose();
                 StartPage cool = new StartPage();
                 cool.homePage();
             }
@@ -82,33 +82,36 @@ public class Options extends JFrame {
         Level4x4.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                frame.setVisible(false);
                 dispose();
                 Level4x4 cool = new Level4x4();
             }
         });
-        Level4x4.setBounds(50,100,230,80);
+        Level4x4.setBounds(213,390,232,80);
         formatButton(Level4x4);
         pane.add(Level4x4);
 
         Level5x5.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                frame.setVisible(false);
                 dispose();
                 Level5x5 cool = new Level5x5();
             }
         });
-        Level5x5.setBounds(100,100,230,80);
+        Level5x5.setBounds(463,390,232,80);
         formatButton(Level5x5);
         pane.add(Level5x5);
 
         Level6x6.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                frame.setVisible(false);
                 dispose();
                 Level6x6 cool = new Level6x6();
             }
         });
-        Level6x6.setBounds(150,100,230,80);
+        Level6x6.setBounds(713,390,232,80);
         formatButton(Level6x6);
         pane.add(Level6x6);
 
