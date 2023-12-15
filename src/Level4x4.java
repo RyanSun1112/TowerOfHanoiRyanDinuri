@@ -18,7 +18,6 @@ public class Level4x4 extends JFrame {
 
     private JPanel Level4x4; //program doesn't run unless this line is present :0
     private JFrame frame = new JFrame("The Towers of Hanoi...");
-    private int hs;
     private JLabel First;
     private JLabel Fourth;
     private JLabel Second;
@@ -111,20 +110,10 @@ public class Level4x4 extends JFrame {
 
     }
 
-    public void updateHighScore(){
-        String theLine;
-
-        try {
-            FileReader fileReader = new FileReader("src/highScore4x4.txt");
-            BufferedReader bufferedReader = new BufferedReader(fileReader);
-            while ((theLine=bufferedReader.readLine())!=null) {
-                hs=Integer.parseInt(theLine);
-            }
-        } catch(FileNotFoundException e) {
-            System.out.println("Huh... it seems this file wasn't found...!");
-        } catch(IOException i) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE,null,i);
-        }
+    public String updateHighScore() throws FileNotFoundException {
+        Options.f1 = new File("highScore4x4.txt");
+        Scanner input = new Scanner(Options.f1);
+        return input.nextLine();
     }
 
     public void setHighScore() {
@@ -175,17 +164,14 @@ public class Level4x4 extends JFrame {
 
         try{
             if (stack3.elementAt(0).equals(Fourth) && stack3.elementAt(1).equals(Third) && stack3.elementAt(2).equals(Second)&& stack3.elementAt(3).equals(First)) {
-                updateHighScore();
-                int highest4x4 = hs;
+                String number = updateHighScore();
+                int highest4x4= Integer.parseInt(number);
                 int score = getCurrentScore();
 
                 if(highest4x4>score) {
                     System.out.println("\nHighest: "+highest4x4+"\nCurrent: "+score);
-                    hs=score;
-                    System.out.println("High score: "+hs);
                     setHighScore();
-                    updateHighScore();
-                    System.out.println("Updated score: "+hs);
+
                 }
 
                 frame.setVisible(false);

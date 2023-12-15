@@ -12,6 +12,7 @@ public class Options extends JFrame {
     //INSTANCE VARIABLES
     private JPanel options;
     public static File myObj;
+    public static File f1;
 
     private JFrame frame = new JFrame("The Towers of Hanoi...");
     private JButton Level4x4;
