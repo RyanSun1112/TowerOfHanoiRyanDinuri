@@ -967,7 +967,7 @@ public class Level6x6 extends JFrame{
 
             }
         });
-        First.setBounds(120, 210, 180,70);
+        First.setBounds(120, 210, 207,70);
         pane.add(First);
 
         Second.addMouseListener(new MouseAdapter() {
@@ -984,7 +984,7 @@ public class Level6x6 extends JFrame{
 
             }
         });
-        Second.setBounds(115, 280, 210,70);
+        Second.setBounds(115, 280, 227,70);
         pane.add(Second);
 
         Third.addMouseListener(new MouseAdapter() {
@@ -1002,7 +1002,7 @@ public class Level6x6 extends JFrame{
 
             }
         });
-        Third.setBounds(110, 350, 240,70);
+        Third.setBounds(110, 350, 245,70);
         pane.add(Third);
 
         Fourth.addMouseListener(new MouseAdapter() {
@@ -1020,7 +1020,7 @@ public class Level6x6 extends JFrame{
 
             }
         });
-        Fourth.setBounds(100, 420, 270,70);
+        Fourth.setBounds(100, 420, 269,70);
         pane.add(Fourth);
 
         Fifth.addMouseListener(new MouseAdapter() {
@@ -1038,7 +1038,7 @@ public class Level6x6 extends JFrame{
 
             }
         });
-        Fifth.setBounds(85, 490, 300,70);
+        Fifth.setBounds(85, 490, 289,70);
         pane.add(Fifth);
 
         Sixth.addMouseListener(new MouseAdapter() {
@@ -1053,7 +1053,7 @@ public class Level6x6 extends JFrame{
                 drag6 = true;
             }
         });
-        Sixth.setBounds(70, 560, 330,65);
+        Sixth.setBounds(70, 560, 314,65);
         pane.add(Sixth);
 
         Back.addActionListener(new ActionListener() {
