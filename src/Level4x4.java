@@ -744,25 +744,22 @@ public class Level4x4 extends JFrame {
     }
 
     private void createUIComponents() throws IOException {
-        BufferedImage bufferedImage = ImageIO.read(getClass().getResource("towersOfHanoi_HanoiRing1.png"));
-
-        Image image = bufferedImage.getScaledInstance(180, 70, Image.SCALE_DEFAULT);
-        ImageIcon newIcon = new ImageIcon(image);
+        ClassLoader classloader = Thread.currentThread().getContextClassLoader();
+        URL url = classloader.getResource("towersOfHanoi_HanoiRing1.png");
+        Icon newIcon = new ImageIcon(url);
         First = new JLabel(newIcon);
-        bufferedImage = ImageIO.read(getClass().getResource("towersOfHanoi_HanoiRing2.png"));
-
-        image = bufferedImage.getScaledInstance(210, 70, Image.SCALE_DEFAULT);
-        newIcon = new ImageIcon(image);
+        classloader = Thread.currentThread().getContextClassLoader();
+        url = classloader.getResource("towersOfHanoi_HanoiRing2.png");
+        newIcon = new ImageIcon(url);
         Second = new JLabel(newIcon);
-        bufferedImage = ImageIO.read(getClass().getResource("towersOfHanoi_HanoiRing3.png"));
-
-        image = bufferedImage.getScaledInstance(240, 70, Image.SCALE_DEFAULT);
-        newIcon = new ImageIcon(image);
+        classloader = Thread.currentThread().getContextClassLoader();
+        url = classloader.getResource("towersOfHanoi_HanoiRing3.png");
+        newIcon = new ImageIcon(url);
         Third = new JLabel(newIcon);
-        bufferedImage = ImageIO.read(getClass().getResource("towersOfHanoi_HanoiRing4.png"));
-
-        image = bufferedImage.getScaledInstance(270, 70, Image.SCALE_DEFAULT);
-        newIcon = new ImageIcon(image);
+        classloader = Thread.currentThread().getContextClassLoader();
+        url = classloader.getResource("towersOfHanoi_HanoiRing4.png");
+        newIcon = new ImageIcon(url);
         Fourth = new JLabel(newIcon);
+
     }
 }
