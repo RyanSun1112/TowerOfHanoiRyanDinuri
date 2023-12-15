@@ -4,16 +4,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
-import java.io.File;  // Import the File class
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Stack;
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class Level4x4 extends JFrame {
@@ -21,6 +18,7 @@ public class Level4x4 extends JFrame {
 
     private JPanel Level4x4; //program doesn't run unless this line is present :0
     private JFrame frame = new JFrame("The Towers of Hanoi...");
+    private int hs;
     private JLabel First;
     private JLabel Fourth;
     private JLabel Second;
@@ -113,6 +111,53 @@ public class Level4x4 extends JFrame {
 
     }
 
+    public void updateHighScores(){
+        String theLine;
+
+        try {
+            FileReader fileReader = new FileReader("src/highScore4x4.txt");
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            while ((theLine=bufferedReader.readLine())!=null) {
+                hs=Integer.parseInt(theLine);
+            }
+        } catch(FileNotFoundException e) {
+            System.out.println("Huh... it seems this file wasn't found...!");
+        } catch(IOException i) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE,null,i);
+        }
+    }
+
+    public void setHighScores() {
+        try {
+            FileWriter fileWriter= new FileWriter("highScore4x4.txt");
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            bufferedWriter.write(String.valueOf(Options.myObj));
+            bufferedWriter.newLine();
+            bufferedWriter.close();
+        } catch(FileNotFoundException e) {
+            System.out.println("Yikes! It seems the file doesn't exist!");
+        } catch(IOException i) {
+            System.out.println("Uh oh! An error of some sort has arisen!");
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE,null,i);
+        }
+    }
+
+    public int getCurrentScore() {
+        String data = "";
+        try{
+            Scanner myReader = new Scanner(Options.myObj);
+            data = myReader.nextLine();
+            myReader.close();
+        } catch (FileNotFoundException ex) {
+            System.out.println("An error occurred.");
+            ex.printStackTrace();
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
+        }
+        Double dVal = Double.parseDouble(data);
+        return dVal.intValue();
+    }
+
     public void check(){
         try{
             Scanner myReader = new Scanner(Options.myObj);
@@ -133,8 +178,20 @@ public class Level4x4 extends JFrame {
 
         try{
             if (stack3.elementAt(0).equals(Fourth) && stack3.elementAt(1).equals(Third) && stack3.elementAt(2).equals(Second)&& stack3.elementAt(3).equals(First)) {
-                frame.setVisible(false);
+                updateHighScores();
+                int highest4x4 = hs;
+                int score = getCurrentScore();
 
+                if(highest4x4>score) {
+                    System.out.println("\nHighest: "+highest4x4+"\nCurrent: "+score);
+                    hs=score;
+                    System.out.println("High scores array: "+hs);
+                    setHighScores();
+                    updateHighScores();
+                    System.out.println("Updated scores array: "+hs);
+                }
+
+                frame.setVisible(false);
                 EndPage doesThisWork = new EndPage();
                 doesThisWork.conquerorPage();
 
