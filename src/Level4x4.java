@@ -129,7 +129,7 @@ public class Level4x4 extends JFrame {
         }
 
         try{
-            if (stack3.elementAt(0).getText().equals("fourth") && stack3.elementAt(1).getText().equals("third") && stack3.elementAt(2).getText().equals(" second")&& stack3.elementAt(3).getText().equals("first")) {
+            if (stack3.elementAt(0).equals(Fourth) && stack3.elementAt(1).equals(Third) && stack3.elementAt(2).equals(Second) && stack3.elementAt(3).equals(First)){
                 frame.setVisible(false);
 
                 EndPage doesThisWork = new EndPage();
@@ -141,7 +141,24 @@ public class Level4x4 extends JFrame {
         }
 
     }
+
+    public JLabel makeImage(String fileName) {
+        ClassLoader classloader = Thread.currentThread().getContextClassLoader();
+        URL url = classloader.getResource(fileName);
+        Icon backgroundIcon = new ImageIcon(url);
+        JLabel background = new JLabel(backgroundIcon);
+        return background;
+    }
+
     public Level4x4() {
+
+        JLayeredPane pane = new JLayeredPane();
+        JLabel background = makeImage("towersOfHanoi_gamePage.png");
+        First = makeImage("towersOfHanoi_HanoiRing1.png");
+        Second = makeImage("towersOfHanoi_HanoiRing2.png");
+        Third = makeImage("towersOfHanoi_HanoiRing3.png");
+        Fourth = makeImage("towersOfHanoi_HanoiRing4.png");
+
         if(first == true){
             stack1.push(Fourth);
             stack1.push(Third);
@@ -149,12 +166,6 @@ public class Level4x4 extends JFrame {
             stack1.push(First);
             first = false;
         }
-
-        JLayeredPane pane = new JLayeredPane();
-        ClassLoader classloader = Thread.currentThread().getContextClassLoader();
-        URL url = classloader.getResource("towersOfHanoi_gamePage.png");
-        Icon backgroundIcon = new ImageIcon(url);
-        JLabel background = new JLabel(backgroundIcon);
 
         frame.addMouseListener(new MouseAdapter() {
             @Override
@@ -654,7 +665,7 @@ public class Level4x4 extends JFrame {
                 drag4 = false;
             }
         });
-        First.setBounds(200, 200, 100,50);
+        First.setBounds(200, 200, 207,64);
         formatLabel(First);
         pane.add(First);
 
@@ -667,7 +678,7 @@ public class Level4x4 extends JFrame {
                 drag4 = false;
             }
         });
-        Second.setBounds(200, 250, 150,50);
+        Second.setBounds(200, 250, 227,64);
         formatLabel(Second);
         pane.add(Second);
 
@@ -682,7 +693,7 @@ public class Level4x4 extends JFrame {
                 drag4 = false;
             }
         });
-        Third.setBounds(200, 300, 200,50);
+        Third.setBounds(200, 300, 245,64);
         formatLabel(Third);
         pane.add(Third);
 
@@ -697,7 +708,7 @@ public class Level4x4 extends JFrame {
                 drag3 = false;
             }
         });
-        Fourth.setBounds(200, 350, 250,50);
+        Fourth.setBounds(200, 350, 269,64);
         formatLabel(Fourth);
         pane.add(Fourth);
 
