@@ -1095,32 +1095,32 @@ public class Level6x6 extends JFrame{
     }
 
     private void createUIComponents() throws IOException {
-        BufferedImage bufferedImage = ImageIO.read(new File("C:\\Users\\megar\\IdeaProjects\\TowerOfHanoiRyanDinuri\\src\\towersOfHanoi_HanoiRing1.png"));
+        BufferedImage bufferedImage = ImageIO.read(getClass().getResource("towersOfHanoi_HanoiRing1.png"));
 
         Image image = bufferedImage.getScaledInstance(180, 70, Image.SCALE_DEFAULT);
         ImageIcon newIcon = new ImageIcon(image);
         First = new JLabel(newIcon);
-        bufferedImage = ImageIO.read(new File("C:\\Users\\megar\\IdeaProjects\\TowerOfHanoiRyanDinuri\\src\\towersOfHanoi_HanoiRing2.png"));
+        bufferedImage = ImageIO.read(getClass().getResource("towersOfHanoi_HanoiRing2.png"));
 
         image = bufferedImage.getScaledInstance(210, 70, Image.SCALE_DEFAULT);
         newIcon = new ImageIcon(image);
         Second = new JLabel(newIcon);
-        bufferedImage = ImageIO.read(new File("C:\\Users\\megar\\IdeaProjects\\TowerOfHanoiRyanDinuri\\src\\towersOfHanoi_HanoiRing3.png"));
+        bufferedImage = ImageIO.read(getClass().getResource("towersOfHanoi_HanoiRing3.png"));
 
         image = bufferedImage.getScaledInstance(240, 70, Image.SCALE_DEFAULT);
         newIcon = new ImageIcon(image);
         Third = new JLabel(newIcon);
-        bufferedImage = ImageIO.read(new File("C:\\Users\\megar\\IdeaProjects\\TowerOfHanoiRyanDinuri\\src\\towersOfHanoi_HanoiRing4.png"));
+        bufferedImage = ImageIO.read(getClass().getResource("towersOfHanoi_HanoiRing4.png"));
 
         image = bufferedImage.getScaledInstance(270, 70, Image.SCALE_DEFAULT);
         newIcon = new ImageIcon(image);
         Fourth = new JLabel(newIcon);
-        bufferedImage = ImageIO.read(new File("C:\\Users\\megar\\IdeaProjects\\TowerOfHanoiRyanDinuri\\src\\towersOfHanoi_HanoiRing5.png"));
+        bufferedImage = ImageIO.read(getClass().getResource("towersOfHanoi_HanoiRing5.png"));
 
         image = bufferedImage.getScaledInstance(300, 70, Image.SCALE_DEFAULT);
         newIcon = new ImageIcon(image);
         Fifth = new JLabel(newIcon);
-        bufferedImage = ImageIO.read(new File("C:\\Users\\megar\\IdeaProjects\\TowerOfHanoiRyanDinuri\\src\\towersOfHanoi_HanoiRing6.png"));
+        bufferedImage = ImageIO.read(getClass().getResource("towersOfHanoi_HanoiRing6.png"));
 
         image = bufferedImage.getScaledInstance(330, 70, Image.SCALE_DEFAULT);
         newIcon = new ImageIcon(image);
