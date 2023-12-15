@@ -111,7 +111,7 @@ public class Level4x4 extends JFrame {
 
     }
 
-    public void updateHighScores(){
+    public void updateHighScore(){
         String theLine;
 
         try {
@@ -175,7 +175,7 @@ public class Level4x4 extends JFrame {
 
         try{
             if (stack3.elementAt(0).equals(Fourth) && stack3.elementAt(1).equals(Third) && stack3.elementAt(2).equals(Second)&& stack3.elementAt(3).equals(First)) {
-                updateHighScores();
+                updateHighScore();
                 int highest4x4 = hs;
                 int score = getCurrentScore();
 
@@ -184,7 +184,7 @@ public class Level4x4 extends JFrame {
                     hs=score;
                     System.out.println("High score: "+hs);
                     setHighScore();
-                    updateHighScores();
+                    updateHighScore();
                     System.out.println("Updated score: "+hs);
                 }
 
