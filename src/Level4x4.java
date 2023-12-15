@@ -130,9 +130,7 @@ public class Level4x4 extends JFrame {
     public void setHighScore() {
         try {
             FileWriter fileWriter= new FileWriter("highScore4x4.txt");
-            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-            bufferedWriter.write(String.valueOf(getCurrentScore()));
-            bufferedWriter.close();
+            fileWriter.write(String.valueOf(getCurrentScore()));
             fileWriter.close();
         } catch(FileNotFoundException e) {
             System.out.println("Yikes! It seems the file doesn't exist!");
