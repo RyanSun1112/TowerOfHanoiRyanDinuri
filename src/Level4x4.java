@@ -133,6 +133,7 @@ public class Level4x4 extends JFrame {
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             bufferedWriter.write(String.valueOf(getCurrentScore()));
             bufferedWriter.close();
+            fileWriter.close();
         } catch(FileNotFoundException e) {
             System.out.println("Yikes! It seems the file doesn't exist!");
         } catch(IOException i) {
