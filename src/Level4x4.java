@@ -127,12 +127,11 @@ public class Level4x4 extends JFrame {
         }
     }
 
-    public void setHighScores() {
+    public void setHighScore() {
         try {
             FileWriter fileWriter= new FileWriter("highScore4x4.txt");
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-            bufferedWriter.write(String.valueOf(Options.myObj));
-            bufferedWriter.newLine();
+            bufferedWriter.write(String.valueOf(getCurrentScore()));
             bufferedWriter.close();
         } catch(FileNotFoundException e) {
             System.out.println("Yikes! It seems the file doesn't exist!");
@@ -150,9 +149,8 @@ public class Level4x4 extends JFrame {
             myReader.close();
         } catch (FileNotFoundException ex) {
             System.out.println("An error occurred.");
-            ex.printStackTrace();
-        } catch (IOException ex) {
-            throw new RuntimeException(ex);
+        } catch (IOException i) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE,null,i);
         }
         Double dVal = Double.parseDouble(data);
         return dVal.intValue();
@@ -185,10 +183,10 @@ public class Level4x4 extends JFrame {
                 if(highest4x4>score) {
                     System.out.println("\nHighest: "+highest4x4+"\nCurrent: "+score);
                     hs=score;
-                    System.out.println("High scores array: "+hs);
-                    setHighScores();
+                    System.out.println("High score: "+hs);
+                    setHighScore();
                     updateHighScores();
-                    System.out.println("Updated scores array: "+hs);
+                    System.out.println("Updated score: "+hs);
                 }
 
                 frame.setVisible(false);
