@@ -13,6 +13,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Scanner;
 import java.util.Stack;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Level5x5 extends JFrame{
     private JPanel Level5x5; //program doesn't run unless this line is present :0
@@ -70,6 +72,39 @@ public class Level5x5 extends JFrame{
         if(stack3.size() - stack3.search(cool) == 0)
             cool.setLocation(835, 560);
     }
+    public String updateHighScore() throws FileNotFoundException {
+        Options.f2 = new File("highScore5x5.txt");
+        Scanner input = new Scanner(Options.f2);
+        return input.nextLine();
+    }
+
+    public void setHighScore() {
+        try {
+            FileWriter fileWriter= new FileWriter("highScore5x5.txt");
+            fileWriter.write(String.valueOf(getCurrentScore()));
+            fileWriter.close();
+        } catch(FileNotFoundException e) {
+            System.out.println("Yikes! It seems the file doesn't exist!");
+        } catch(IOException i) {
+            System.out.println("Uh oh! An error of some sort has arisen!");
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE,null,i);
+        }
+    }
+
+    public int getCurrentScore() {
+        String data = "";
+        try{
+            Scanner myReader = new Scanner(Options.myObj);
+            data = myReader.nextLine();
+            myReader.close();
+        } catch (FileNotFoundException ex) {
+            System.out.println("An error occurred.");
+        } catch (IOException i) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE,null,i);
+        }
+        Double dVal = Double.parseDouble(data);
+        return dVal.intValue();
+    }
     public void check(){
         try{
             Scanner myReader = new Scanner(Options.myObj);
@@ -89,6 +124,15 @@ public class Level5x5 extends JFrame{
         }
         try{
             if (stack3.elementAt(0).equals(Fifth)&& stack3.elementAt(1).equals(Fourth) && stack3.elementAt(2).equals(Third) && stack3.elementAt(3).equals(Second)&& stack3.elementAt(4).equals(First)) {
+                String number = updateHighScore();
+                int highest5x5= Integer.parseInt(number);
+                int score = getCurrentScore();
+
+                if(highest5x5>score) {
+                    System.out.println("\nHighest: "+highest5x5+"\nCurrent: "+score);
+                    setHighScore();
+
+                }
                 frame.setVisible(false);
 
                 EndPage doesThisWork = new EndPage();

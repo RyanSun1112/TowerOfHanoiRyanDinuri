@@ -13,6 +13,8 @@ public class Options extends JFrame {
     private JPanel options;
     public static File myObj;
     public static File f1;
+    public static File f2;
+    public static File f3;
 
     private JFrame frame = new JFrame("The Towers of Hanoi...");
     private JButton Level4x4;
@@ -58,9 +60,11 @@ public class Options extends JFrame {
     //OTHER METHODS
     public Options() {
         myObj = new File("filename.txt"); // Specify the filename
+
         try {
             FileWriter myWriter = new FileWriter("filename.txt");
             myWriter.write("0");
+
             myWriter.close();
             System.out.println("Successfully wrote to the file.");
         } catch (IOException e) {
