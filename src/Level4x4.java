@@ -657,7 +657,7 @@ public class Level4x4 extends JFrame {
                 drag4 = false;
             }
         });
-        First.setBounds(140, 350, 180,70);
+        First.setBounds(140, 350, 207,70);
         formatLabel(First);
         pane.add(First);
 
@@ -670,7 +670,7 @@ public class Level4x4 extends JFrame {
                 drag4 = false;
             }
         });
-        Second.setBounds(130, 420, 210,70);
+        Second.setBounds(130, 420, 227,70);
         formatLabel(Second);
         pane.add(Second);
 
@@ -685,7 +685,7 @@ public class Level4x4 extends JFrame {
                 drag4 = false;
             }
         });
-        Third.setBounds(115, 490, 240,70);
+        Third.setBounds(115, 490, 245,70);
         formatLabel(Third);
         pane.add(Third);
 
@@ -700,7 +700,7 @@ public class Level4x4 extends JFrame {
                 drag3 = false;
             }
         });
-        Fourth.setBounds(100, 560, 270,70);
+        Fourth.setBounds(100, 560, 269,70);
         formatLabel(Fourth);
         pane.add(Fourth);
 
