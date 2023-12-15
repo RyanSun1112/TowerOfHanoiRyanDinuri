@@ -60,7 +60,7 @@ public class Options extends JFrame {
     }
 
     private void formatLabel(JLabel button) {
-        button.setFont(theNormalFont(35));
+        button.setFont(theNormalFont(30));
         button.setFocusable(false);
         button.setBorder(BorderFactory.createEmptyBorder());
         button.setForeground(white);
@@ -175,13 +175,13 @@ public class Options extends JFrame {
         }
 
         formatLabel(highest4x4);
-        highest4x4.setBounds(215, 500, 230, 80);
+        highest4x4.setBounds(215, 460, 230, 80);
         pane.add(highest4x4);
         formatLabel(highest5x5);
-        highest5x5.setBounds(465, 500, 230, 80);
+        highest5x5.setBounds(465, 460, 230, 80);
         pane.add(highest5x5);
         formatLabel(highest6x6);
-        highest6x6.setBounds(715, 390, 230, 80);
+        highest6x6.setBounds(715, 460, 230, 80);
         pane.add(highest6x6);
 
         background.setBounds(0,0,1152,648);

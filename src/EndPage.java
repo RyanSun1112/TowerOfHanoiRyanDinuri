@@ -106,5 +106,4 @@ public class EndPage {
         frame.setSize(1152,678);
         frame.setVisible(true);
     }
-
 }
