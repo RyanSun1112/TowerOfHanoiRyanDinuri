@@ -3,9 +3,11 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Scanner;
 
 public class Options extends JFrame {
 
@@ -13,6 +15,7 @@ public class Options extends JFrame {
     private JPanel options;
     public static File myObj;
     public static File f1;
+    public static File f3;
 
     private JFrame frame = new JFrame("The Towers of Hanoi...");
     private JButton Level4x4;
@@ -55,8 +58,24 @@ public class Options extends JFrame {
 
     }
 
+    private void formatLabel(JLabel button) {
+        button.setFont(theNormalFont(35));
+        button.setFocusable(false);
+        button.setBorder(BorderFactory.createEmptyBorder());
+        button.setForeground(white);
+
+    }
+
+    //FILE METHODS
+    public String updateHighScore4x4() throws FileNotFoundException {
+        Options.f1 = new File("highScore4x4.txt");
+        Scanner input = new Scanner(Options.f1);
+        return input.nextLine();
+    }
+
     //OTHER METHODS
     public Options() {
+
         myObj = new File("filename.txt"); // Specify the filename
         try {
             FileWriter myWriter = new FileWriter("filename.txt");
@@ -67,6 +86,7 @@ public class Options extends JFrame {
             System.out.println("An error occurred.");
             e.printStackTrace();
         }
+
         JLayeredPane pane = new JLayeredPane();
         ClassLoader classloader = Thread.currentThread().getContextClassLoader();
         URL url = classloader.getResource("towersOfHanoi_optionsPage.png");
@@ -76,7 +96,6 @@ public class Options extends JFrame {
         Back.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //uhihiiojpk
                 frame.setVisible(false);
                 StartPage cool = new StartPage();
                 cool.homePage();
@@ -122,6 +141,14 @@ public class Options extends JFrame {
         Level6x6.setBounds(715,390,230,80);
         formatButton(Level6x6);
         pane.add(Level6x6);
+
+        try{
+            JLabel highest4x4 = new JLabel(updateHighScore4x4());
+            formatLabel(highest4x4);
+            highest4x4.setBounds(215,500,230,80);
+        } catch(Exception e) {
+            System.out.println("\nERROR(S) GALORE! Something went wrong, it seems!");
+        }
 
         background.setBounds(0,0,1152,648);
         pane.add(background,JLayeredPane.DEFAULT_LAYER);
