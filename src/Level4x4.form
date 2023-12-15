@@ -9,7 +9,7 @@
     </properties>
     <border type="none"/>
     <children>
-      <component id="44acb" class="javax.swing.JLabel" binding="First">
+      <component id="44acb" class="javax.swing.JLabel" binding="First" custom-create="true">
         <constraints>
           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
           <gridbag weightx="0.0" weighty="0.0"/>
@@ -17,41 +17,41 @@
         <properties>
           <background color="-13595121"/>
           <foreground color="-394241"/>
-          <opaque value="true"/>
-          <text value="first"/>
+          <opaque value="false"/>
+          <text value=""/>
         </properties>
       </component>
-      <component id="a90d5" class="javax.swing.JLabel" binding="Second">
+      <component id="a90d5" class="javax.swing.JLabel" binding="Second" custom-create="true">
         <constraints>
           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
           <background color="-3467764"/>
-          <opaque value="true"/>
-          <text value=" second"/>
+          <opaque value="false"/>
+          <text value=""/>
         </properties>
       </component>
-      <component id="c351e" class="javax.swing.JLabel" binding="Third">
+      <component id="c351e" class="javax.swing.JLabel" binding="Third" custom-create="true">
         <constraints>
           <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
           <background color="-1511681"/>
-          <opaque value="true"/>
-          <text value="third"/>
+          <opaque value="false"/>
+          <text value=""/>
         </properties>
       </component>
-      <component id="b8476" class="javax.swing.JLabel" binding="Fourth">
+      <component id="b8476" class="javax.swing.JLabel" binding="Fourth" custom-create="true">
         <constraints>
           <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
           <gridbag weightx="0.0" weighty="0.0"/>
         </constraints>
         <properties>
           <background color="-4947179"/>
-          <opaque value="true"/>
-          <text value="fourth"/>
+          <opaque value="false"/>
+          <text value=""/>
         </properties>
       </component>
       <component id="7d0b2" class="javax.swing.JButton" binding="Back">

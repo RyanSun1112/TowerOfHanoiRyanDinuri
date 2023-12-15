@@ -11,6 +11,9 @@ import java.net.URL;
 import java.io.File;  // Import the File class
 import java.util.Scanner;
 import java.util.Stack;
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+
 
 
 public class Level4x4 extends JFrame {
@@ -39,33 +42,33 @@ public class Level4x4 extends JFrame {
     private Stack<JLabel> stack3 = new Stack();
     private void movement1(JLabel cool ){
         if(stack1.size() - stack1.search(cool) == 3)
-            cool.setLocation(200, 200);
+            cool.setLocation(140, 350);
         if(stack1.size() - stack1.search(cool) == 2)
-            cool.setLocation(200, 250);
+            cool.setLocation(130, 420);
         if(stack1.size() - stack1.search(cool) == 1)
-            cool.setLocation(200, 300);
+            cool.setLocation(115, 490);
         if(stack1.size() - stack1.search(cool) == 0)
-            cool.setLocation(200, 350);
+            cool.setLocation(100, 560);
     }
     private void movement2(JLabel cool ){
         if(stack2.size() - stack2.search(cool) == 3)
-            cool.setLocation(530, 200);
-        if(stack2.size() - stack2.search(cool) == 2)
-            cool.setLocation(530, 250);
-        if(stack2.size() - stack2.search(cool) == 1)
-            cool.setLocation(530, 300);
-        if(stack2.size() - stack2.search(cool) == 0)
             cool.setLocation(530, 350);
+        if(stack2.size() - stack2.search(cool) == 2)
+            cool.setLocation(520, 420);
+        if(stack2.size() - stack2.search(cool) == 1)
+            cool.setLocation(505, 490);
+        if(stack2.size() - stack2.search(cool) == 0)
+            cool.setLocation(490, 560);
     }
     private void movement3(JLabel cool ){
         if(stack3.size() - stack3.search(cool) == 3)
-            cool.setLocation(875, 200);
-        if(stack3.size() - stack3.search(cool) == 2)
-            cool.setLocation(875, 250);
-        if(stack3.size() - stack3.search(cool) == 1)
-            cool.setLocation(875, 300);
-        if(stack3.size() - stack3.search(cool) == 0)
             cool.setLocation(875, 350);
+        if(stack3.size() - stack3.search(cool) == 2)
+            cool.setLocation(865, 420);
+        if(stack3.size() - stack3.search(cool) == 1)
+            cool.setLocation(850, 490);
+        if(stack3.size() - stack3.search(cool) == 0)
+            cool.setLocation(835, 560);
     }
     private Font theNormalFont(int size)  {
 
@@ -129,7 +132,7 @@ public class Level4x4 extends JFrame {
         }
 
         try{
-            if (stack3.elementAt(0).equals(Fourth) && stack3.elementAt(1).equals(Third) && stack3.elementAt(2).equals(Second) && stack3.elementAt(3).equals(First)){
+            if (stack3.elementAt(0).equals(Fourth) && stack3.elementAt(1).equals(Third) && stack3.elementAt(2).equals(Second)&& stack3.elementAt(3).equals(First)) {
                 frame.setVisible(false);
 
                 EndPage doesThisWork = new EndPage();
@@ -141,24 +144,7 @@ public class Level4x4 extends JFrame {
         }
 
     }
-
-    public JLabel makeImage(String fileName) {
-        ClassLoader classloader = Thread.currentThread().getContextClassLoader();
-        URL url = classloader.getResource(fileName);
-        Icon backgroundIcon = new ImageIcon(url);
-        JLabel background = new JLabel(backgroundIcon);
-        return background;
-    }
-
     public Level4x4() {
-
-        JLayeredPane pane = new JLayeredPane();
-        JLabel background = makeImage("towersOfHanoi_gamePage.png");
-        First = makeImage("towersOfHanoi_HanoiRing1.png");
-        Second = makeImage("towersOfHanoi_HanoiRing2.png");
-        Third = makeImage("towersOfHanoi_HanoiRing3.png");
-        Fourth = makeImage("towersOfHanoi_HanoiRing4.png");
-
         if(first == true){
             stack1.push(Fourth);
             stack1.push(Third);
@@ -166,6 +152,12 @@ public class Level4x4 extends JFrame {
             stack1.push(First);
             first = false;
         }
+
+        JLayeredPane pane = new JLayeredPane();
+        ClassLoader classloader = Thread.currentThread().getContextClassLoader();
+        URL url = classloader.getResource("towersOfHanoi_gamePage.png");
+        Icon backgroundIcon = new ImageIcon(url);
+        JLabel background = new JLabel(backgroundIcon);
 
         frame.addMouseListener(new MouseAdapter() {
             @Override
@@ -240,7 +232,7 @@ public class Level4x4 extends JFrame {
                         if(e.getX()< 700 && e.getX()> 500){
                             try{
 
-                                if(stack2.firstElement()  == First){
+                                if(stack2.elementAt(stack2.size()-1).equals(First)){
                                     System.out.print("");
                                 }else{
                                     stack1.pop();
@@ -259,7 +251,7 @@ public class Level4x4 extends JFrame {
                         }
                         else if( e.getX()< 1050 && e.getX()> 850) {
                             try{
-                            if (stack3.firstElement()  == First) {
+                            if (stack3.elementAt(stack3.size()-1).equals(First)) {
                                 System.out.print("");
                             } else {
                                 stack1.pop();
@@ -283,7 +275,7 @@ public class Level4x4 extends JFrame {
 
                         if( e.getX()< 1050 && e.getX()> 850){
                             try{
-                            if (stack3.firstElement()  == First) {
+                            if (stack3.elementAt(stack3.size()-1).equals(First)) {
                                 System.out.print("");
                             } else {
                                 stack2.pop();
@@ -301,7 +293,7 @@ public class Level4x4 extends JFrame {
                         }
                         else if( e.getX()< 300 && e.getX()> 150){
                             try{
-                            if (stack1.firstElement()  == First) {
+                            if (stack1.elementAt(stack1.size()-1).equals(First)) {
                                 System.out.print("");
                             } else {
                                 stack2.pop();
@@ -327,7 +319,7 @@ public class Level4x4 extends JFrame {
                             try{
 
 
-                            if(stack2.firstElement()  == First){
+                            if(stack2.elementAt(stack2.size()-1).equals(First)){
                                 System.out.print("");
                             }else{
                                 stack3.pop();
@@ -345,7 +337,7 @@ public class Level4x4 extends JFrame {
                         }
                         else if( e.getX()< 300 && e.getX()> 150){
                             try{
-                            if (stack1.firstElement()  == First) {
+                            if (stack1.elementAt(stack1.size()-1).equals(First)) {
                                 System.out.print("");
                             } else {
                                 stack3.pop();
@@ -372,7 +364,7 @@ public class Level4x4 extends JFrame {
                         if(e.getX()< 700 && e.getX()> 500){
                             try{
 
-                                if(stack2.firstElement()  == First||stack2.firstElement()  == Second){
+                                if(stack2.elementAt(stack2.size()-1).equals(First)||stack2.elementAt(stack2.size()-1).equals(Second)){
                                     System.out.print("");
                                 }else{
                                     stack1.pop();
@@ -392,7 +384,7 @@ public class Level4x4 extends JFrame {
                         }
                         else if( e.getX()< 1050 && e.getX()> 850) {
                             try{
-                                if (stack3.firstElement()  == First||stack3.firstElement()  == Second) {
+                                if (stack3.elementAt(stack3.size()-1).equals(First)||stack3.elementAt(stack3.size()-1).equals(Second)) {
                                     System.out.print("");
                                 } else {
                                     stack1.pop();
@@ -418,7 +410,7 @@ public class Level4x4 extends JFrame {
 
                         if( e.getX()< 1050 && e.getX()> 850){
                             try{
-                                if (stack3.firstElement()  == First||stack3.firstElement()  == Second) {
+                                if (stack3.elementAt(stack3.size()-1).equals(First)||stack3.elementAt(stack3.size()-1).equals(Second)) {
                                     System.out.print("");
                                 } else {
                                     stack2.pop();
@@ -438,7 +430,7 @@ public class Level4x4 extends JFrame {
                         }
                         else if( e.getX()< 300 && e.getX()> 150){
                             try{
-                                if (stack1.firstElement()  == First || stack1.firstElement()  == Second ) {
+                                if (stack1.elementAt(stack1.size()-1).equals(First)||stack1.elementAt(stack1.size()-1).equals(Second)) {
                                     System.out.print("");
                                 } else {
                                     stack2.pop();
@@ -466,7 +458,7 @@ public class Level4x4 extends JFrame {
                             try{
 
 
-                                if(stack2.firstElement()  == First || stack2.firstElement()  == Second ){
+                                if(stack2.elementAt(stack2.size()-1).equals(First)||stack2.elementAt(stack2.size()-1).equals(Second)){
                                     System.out.print("");
                                 }else{
                                     stack3.pop();
@@ -486,7 +478,7 @@ public class Level4x4 extends JFrame {
                         }
                         else if( e.getX()< 300 && e.getX()> 150){
                             try{
-                                if (stack1.firstElement()  == First||stack1.firstElement()  == Second) {
+                                if (stack1.elementAt(stack1.size()-1).equals(First)||stack1.elementAt(stack1.size()-1).equals(Second)) {
                                     System.out.print("");
                                 } else {
                                     stack3.pop();
@@ -515,7 +507,7 @@ public class Level4x4 extends JFrame {
                         if(e.getX()< 700 && e.getX()> 500){
                             try{
 
-                                if(stack2.firstElement()  == First||stack2.firstElement()  == Second||stack2.firstElement()  == Third){
+                                if(stack2.elementAt(stack2.size()-1).equals(First)||stack2.elementAt(stack2.size()-1).equals(Second)||stack2.elementAt(stack2.size()-1).equals(Third)){
                                     System.out.print("");
                                 }else{
                                     stack1.pop();
@@ -536,7 +528,7 @@ public class Level4x4 extends JFrame {
                         }
                         else if( e.getX()< 1050 && e.getX()> 850) {
                             try{
-                                if (stack3.firstElement()  == First||stack3.firstElement()  == Second||stack3.firstElement()  == Third) {
+                                if (stack3.elementAt(stack3.size()-1).equals(First)||stack3.elementAt(stack3.size()-1).equals(Second)||stack3.elementAt(stack3.size()-1).equals(Third)) {
                                     System.out.print("");
                                 } else {
                                     stack1.pop();
@@ -562,7 +554,7 @@ public class Level4x4 extends JFrame {
 
                         if( e.getX()< 1050 && e.getX()> 850){
                             try{
-                                if (stack3.firstElement()  == First||stack3.firstElement()  == Second||stack3.firstElement()  == Third) {
+                                if (stack3.elementAt(stack3.size()-1).equals(First)||stack3.elementAt(stack3.size()-1).equals(Second)||stack3.elementAt(stack3.size()-1).equals(Third)) {
                                     System.out.print("");
                                 } else {
                                     stack2.pop();
@@ -582,7 +574,7 @@ public class Level4x4 extends JFrame {
                         }
                         else if( e.getX()< 300 && e.getX()> 150){
                             try{
-                                if (stack1.firstElement()  == First || stack1.firstElement()  == Second || stack1.firstElement()  == Third) {
+                                if (stack1.elementAt(stack1.size()-1).equals(First)||stack1.elementAt(stack1.size()-1).equals(Second)||stack1.elementAt(stack1.size()-1).equals(Third)) {
                                     System.out.print("");
                                 } else {
                                     stack2.pop();
@@ -610,7 +602,7 @@ public class Level4x4 extends JFrame {
                             try{
 
 
-                                if(stack2.firstElement()  == First || stack2.firstElement()  == Second || stack2.firstElement()  == Third){
+                                if(stack2.elementAt(stack2.size()-1).equals(First)||stack2.elementAt(stack2.size()-1).equals(Second)||stack2.elementAt(stack2.size()-1).equals(Third)){
                                     System.out.print("");
                                 }else{
                                     stack3.pop();
@@ -630,7 +622,7 @@ public class Level4x4 extends JFrame {
                         }
                         else if( e.getX()< 300 && e.getX()> 150){
                             try{
-                                if (stack1.firstElement()  == First||stack1.firstElement()  == Second||stack1.firstElement()  == Third) {
+                                if (stack1.elementAt(stack1.size()-1).equals(First)||stack1.elementAt(stack1.size()-1).equals(Second)||stack1.elementAt(stack1.size()-1).equals(Third)) {
                                     System.out.print("");
                                 } else {
                                     stack3.pop();
@@ -665,7 +657,7 @@ public class Level4x4 extends JFrame {
                 drag4 = false;
             }
         });
-        First.setBounds(200, 200, 207,64);
+        First.setBounds(140, 350, 180,70);
         formatLabel(First);
         pane.add(First);
 
@@ -678,7 +670,7 @@ public class Level4x4 extends JFrame {
                 drag4 = false;
             }
         });
-        Second.setBounds(200, 250, 227,64);
+        Second.setBounds(130, 420, 210,70);
         formatLabel(Second);
         pane.add(Second);
 
@@ -693,7 +685,7 @@ public class Level4x4 extends JFrame {
                 drag4 = false;
             }
         });
-        Third.setBounds(200, 300, 245,64);
+        Third.setBounds(115, 490, 240,70);
         formatLabel(Third);
         pane.add(Third);
 
@@ -708,7 +700,7 @@ public class Level4x4 extends JFrame {
                 drag3 = false;
             }
         });
-        Fourth.setBounds(200, 350, 269,64);
+        Fourth.setBounds(100, 560, 270,70);
         formatLabel(Fourth);
         pane.add(Fourth);
 
@@ -749,5 +741,28 @@ public class Level4x4 extends JFrame {
         frame.add(pane);
         frame.setSize(1152,678);
         frame.setVisible(true);
+    }
+
+    private void createUIComponents() throws IOException {
+        BufferedImage bufferedImage = ImageIO.read(new File("C:\\Users\\megar\\IdeaProjects\\TowerOfHanoiRyanDinuri\\src\\towersOfHanoi_HanoiRing1.png"));
+
+        Image image = bufferedImage.getScaledInstance(180, 70, Image.SCALE_DEFAULT);
+        ImageIcon newIcon = new ImageIcon(image);
+        First = new JLabel(newIcon);
+        bufferedImage = ImageIO.read(new File("C:\\Users\\megar\\IdeaProjects\\TowerOfHanoiRyanDinuri\\src\\towersOfHanoi_HanoiRing2.png"));
+
+        image = bufferedImage.getScaledInstance(210, 70, Image.SCALE_DEFAULT);
+        newIcon = new ImageIcon(image);
+        Second = new JLabel(newIcon);
+        bufferedImage = ImageIO.read(new File("C:\\Users\\megar\\IdeaProjects\\TowerOfHanoiRyanDinuri\\src\\towersOfHanoi_HanoiRing3.png"));
+
+        image = bufferedImage.getScaledInstance(240, 70, Image.SCALE_DEFAULT);
+        newIcon = new ImageIcon(image);
+        Third = new JLabel(newIcon);
+        bufferedImage = ImageIO.read(new File("C:\\Users\\megar\\IdeaProjects\\TowerOfHanoiRyanDinuri\\src\\towersOfHanoi_HanoiRing4.png"));
+
+        image = bufferedImage.getScaledInstance(270, 70, Image.SCALE_DEFAULT);
+        newIcon = new ImageIcon(image);
+        Fourth = new JLabel(newIcon);
     }
 }

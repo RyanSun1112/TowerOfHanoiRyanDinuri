@@ -1,15 +1,18 @@
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Scanner;
+import java.util.Stack;
 
 public class Level5x5 extends JFrame{
     private JPanel Level5x5; //program doesn't run unless this line is present :0
@@ -26,8 +29,47 @@ public class Level5x5 extends JFrame{
     private boolean drag3 = false;
     private boolean drag4 = false;
     private boolean drag5 = false;
+    private boolean first = true;
+    private Stack<JLabel> stack1 = new Stack();
+    private Stack<JLabel> stack2 = new Stack();
+    private Stack<JLabel> stack3 = new Stack();
     private Color white = new Color(255,255,255);
-
+    private void movement1(JLabel cool ){
+        if(stack1.size() - stack1.search(cool) == 4)
+            cool.setLocation(145, 280);
+        if(stack1.size() - stack1.search(cool) == 3)
+            cool.setLocation(140, 350);
+        if(stack1.size() - stack1.search(cool) == 2)
+            cool.setLocation(130, 420);
+        if(stack1.size() - stack1.search(cool) == 1)
+            cool.setLocation(115, 490);
+        if(stack1.size() - stack1.search(cool) == 0)
+            cool.setLocation(100, 560);
+    }
+    private void movement2(JLabel cool ){
+        if(stack2.size() - stack2.search(cool) == 4)
+            cool.setLocation(535, 280);
+        if(stack2.size() - stack2.search(cool) == 3)
+            cool.setLocation(530, 350);
+        if(stack2.size() - stack2.search(cool) == 2)
+            cool.setLocation(520, 420);
+        if(stack2.size() - stack2.search(cool) == 1)
+            cool.setLocation(505, 490);
+        if(stack2.size() - stack2.search(cool) == 0)
+            cool.setLocation(490, 560);
+    }
+    private void movement3(JLabel cool ){
+        if(stack3.size() - stack3.search(cool) == 4)
+            cool.setLocation(880, 280);
+        if(stack3.size() - stack3.search(cool) == 3)
+            cool.setLocation(875, 350);
+        if(stack3.size() - stack3.search(cool) == 2)
+            cool.setLocation(865, 420);
+        if(stack3.size() - stack3.search(cool) == 1)
+            cool.setLocation(850, 490);
+        if(stack3.size() - stack3.search(cool) == 0)
+            cool.setLocation(835, 560);
+    }
     public void check(){
         try{
             Scanner myReader = new Scanner(Options.myObj);
@@ -44,6 +86,17 @@ public class Level5x5 extends JFrame{
             ex.printStackTrace();
         } catch (IOException ex) {
             throw new RuntimeException(ex);
+        }
+        try{
+            if (stack3.elementAt(0).equals(Fifth)&& stack3.elementAt(1).equals(Fourth) && stack3.elementAt(2).equals(Third) && stack3.elementAt(3).equals(Second)&& stack3.elementAt(4).equals(First)) {
+                frame.setVisible(false);
+
+                EndPage doesThisWork = new EndPage();
+                doesThisWork.conquerorPage();
+
+            }
+        }catch(Exception ex){
+            System.out.print("");
         }
     }
 
@@ -99,42 +152,650 @@ public class Level5x5 extends JFrame{
     }
 
     public Level5x5(){
-
+        if(first == true){
+            stack1.push(Fifth);
+            stack1.push(Fourth);
+            stack1.push(Third);
+            stack1.push(Second);
+            stack1.push(First);
+            first = false;
+        }
         JLayeredPane pane = new JLayeredPane();
-        JLabel background = makeImage("towersOfHanoi_gamePage.png");
-        First = makeImage("towersOfHanoi_HanoiRing1.png");
-        Second = makeImage("towersOfHanoi_HanoiRing2.png");
-        Third = makeImage("towersOfHanoi_HanoiRing3.png");
-        Fourth = makeImage("towersOfHanoi_HanoiRing4.png");
-        Fifth = makeImage("towersOfHanoi_HanoiRing5.png");
+        ClassLoader classloader = Thread.currentThread().getContextClassLoader();
+        URL url = classloader.getResource("towersOfHanoi_gamePage.png");
+        Icon backgroundIcon = new ImageIcon(url);
+        JLabel background = new JLabel(backgroundIcon);
+
+
 
         frame.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 if(drag1 == true){
-                    First.setBounds(e.getX(), e.getY(), 207,64);
+                    System.out.println("1 aa"+ stack1.search(First));
+                    System.out.println("1 dd" + stack2.search(First));
+                    System.out.println("1 cc"+ stack3.search(First));
+                    System.out.println(stack1);
+                    System.out.println(stack2);
+
+                    if(stack1.search(First) >= 0){
+
+                        System.out.print(e.getX());
+                        if(e.getX()< 700 && e.getX()> 500){
+
+                            stack1.pop();
+
+                            stack2.push(First);
+                            movement2(First);
+                            check();
+                        }
+                        else if( e.getX()< 1050 && e.getX()> 850){
+                            stack1.pop();
+                            stack3.push(First);
+                            movement3(First);
+                            check();
+                        }
+
+                    }else if(stack2.search(First) >= 0){
+
+                        System.out.print(e.getX());
+                        if( e.getX()< 300 && e.getX()> 150){
+                            stack2.pop();
+
+                            stack1.push(First);
+                            movement1(First);
+                            check();
+                        }
+                        else if( e.getX()< 1050 && e.getX()> 850){
+                            stack2.pop();
+                            stack3.push(First);
+                            movement3(First);
+                            check();
+                        }
+
+                    }
+                    else if(stack3.search(First) >= 0){
+
+                        System.out.print(e.getX());
+                        if( e.getX()< 300 && e.getX()> 150){
+                            stack3.pop();
+
+                            stack1.push(First);
+
+                            movement1(First);
+                            check();
+                        }
+                        else if(e.getX()< 700 && e.getX()> 500){
+                            stack3.pop();
+                            stack2.push(First);
+                            movement2(First);
+                            check();
+                        }
+
+                    }
                     drag1 = false;
-                    check();
                 }else if(drag2 == true){
-                    Second.setBounds(e.getX(), e.getY(), 227,64);
-                    drag2 = false;
-                    check();
+                    if(stack1.search(Second) == 1){
+
+
+                        if(e.getX()< 700 && e.getX()> 500){
+                            try{
+
+                                if(stack2.elementAt(stack2.size()-1).equals(First)){
+                                    System.out.print("");
+                                }else{
+                                    stack1.pop();
+                                    stack2.push(Second);
+                                    movement2(Second);
+                                    check();
+                                }
+                            }catch(Exception ex){
+                                stack1.pop();
+                                stack2.push(Second);
+                                movement2(Second);
+                                check();
+
+                            }
+
+                        }
+                        else if( e.getX()< 1050 && e.getX()> 850) {
+                            try{
+                                if (stack3.elementAt(stack3.size()-1).equals(First)) {
+                                    System.out.print("");
+                                } else {
+                                    stack1.pop();
+                                    stack3.push(Second);
+                                    movement3(Second);
+                                    check();
+                                }
+                            }catch(Exception ex){
+                                stack1.pop();
+                                stack3.push(Second);
+                                movement3(Second);
+                                check();
+
+                            }
+                        }
+
+                        drag2 = false;
+                    }else if(stack2.search(Second) == 1){
+
+
+
+                        if( e.getX()< 1050 && e.getX()> 850){
+                            try{
+                                if (stack3.elementAt(stack3.size()-1).equals(First)) {
+                                    System.out.print("");
+                                } else {
+                                    stack2.pop();
+                                    stack3.push(Second);
+                                    movement3(Second);
+                                    check();
+                                }
+                            }catch(Exception ex) {
+                                stack2.pop();
+                                stack3.push(Second);
+                                movement3(Second);
+                                check();
+
+                            }
+                        }
+                        else if( e.getX()< 300 && e.getX()> 150){
+                            try{
+                                if (stack1.elementAt(stack1.size()-1).equals(First)) {
+                                    System.out.print("");
+                                } else {
+                                    stack2.pop();
+                                    stack1.push(Second);
+                                    movement1(Second);
+                                    check();
+                                }
+                            }catch(Exception ex){
+                                stack2.pop();
+                                stack1.push(Second);
+                                movement1(Second);
+                                check();
+
+                            }
+                        }
+                        drag2 = false;
+
+                    }
+                    else if(stack3.search(Second) == 1){
+
+
+                        if(e.getX()< 700 && e.getX()> 500){
+                            try{
+
+
+                                if(stack2.elementAt(stack2.size()-1).equals(First)){
+                                    System.out.print("");
+                                }else{
+                                    stack3.pop();
+                                    stack2.push(Second);
+                                    movement2(Second);
+                                    check();
+                                }
+                            }catch(Exception ex){
+                                stack3.pop();
+                                stack2.push(Second);
+                                movement2(Second);
+                                check();
+
+                            }
+                        }
+                        else if( e.getX()< 300 && e.getX()> 150){
+                            try{
+                                if (stack1.elementAt(stack1.size()-1).equals(First)) {
+                                    System.out.print("");
+                                } else {
+                                    stack3.pop();
+                                    stack1.push(Second);
+                                    movement1(Second);
+                                    check();
+                                }
+                            }catch(Exception ex){
+                                stack3.pop();
+                                stack1.push(Second);
+                                movement1(Second);
+                                check();
+
+                            }
+                        }
+                        drag2 = false;
+
+                    }
 
                 }else if(drag3 == true){
-                    Third.setBounds(e.getX(), e.getY(), 245,64);
-                    drag3 = false;
-                    check();
+                    if(stack1.search(Third) == 1){
+
+
+                        if(e.getX()< 700 && e.getX()> 500){
+                            try{
+
+                                if(stack2.elementAt(stack2.size()-1).equals(First)||stack2.elementAt(stack2.size()-1).equals(Second)){
+                                    System.out.print("");
+                                }else{
+                                    stack1.pop();
+                                    stack2.push(Third);
+                                    movement2(Third);
+                                    check();
+                                }
+                            }catch(Exception ex){
+                                stack1.pop();
+                                stack2.push(Third);
+                                movement2(Third);
+
+                                check();
+
+                            }
+
+                        }
+                        else if( e.getX()< 1050 && e.getX()> 850) {
+                            try{
+                                if (stack3.elementAt(stack3.size()-1).equals(First)||stack3.elementAt(stack3.size()-1).equals(Second)) {
+                                    System.out.print("");
+                                } else {
+                                    stack1.pop();
+                                    stack3.push(Third);
+                                    movement3(Third);
+
+                                    check();
+                                }
+                            }catch(Exception ex){
+                                stack1.pop();
+                                stack3.push(Third);
+                                movement3(Third);
+
+                                check();
+
+                            }
+                        }
+
+                        drag3 = false;
+                    }else if(stack2.search(Third) == 1){
+
+
+
+                        if( e.getX()< 1050 && e.getX()> 850){
+                            try{
+                                if (stack3.elementAt(stack3.size()-1).equals(First)||stack3.elementAt(stack3.size()-1).equals(Second)) {
+                                    System.out.print("");
+                                } else {
+                                    stack2.pop();
+                                    stack3.push(Third);
+                                    movement3(Third);
+
+                                    check();
+                                }
+                            }catch(Exception ex) {
+                                stack2.pop();
+                                stack3.push(Third);
+                                movement3(Third);
+
+                                check();
+
+                            }
+                        }
+                        else if( e.getX()< 300 && e.getX()> 150){
+                            try{
+                                if (stack1.elementAt(stack1.size()-1).equals(First) || stack1.elementAt(stack1.size()-1).equals(Second) ) {
+                                    System.out.print("");
+                                } else {
+                                    stack2.pop();
+                                    stack1.push(Third);
+                                    movement1(Third);
+
+                                    check();
+                                }
+                            }catch(Exception ex){
+                                stack2.pop();
+                                stack1.push(Third);
+                                movement1(Third);
+
+                                check();
+
+                            }
+                        }
+                        drag3 = false;
+
+                    }
+                    else if(stack3.search(Third) == 1){
+
+
+                        if(e.getX()< 700 && e.getX()> 500){
+                            try{
+
+
+                                if(stack2.elementAt(stack2.size()-1).equals(First) || stack2.elementAt(stack2.size()-1).equals(Second) ){
+                                    System.out.print("");
+                                }else{
+                                    stack3.pop();
+                                    stack2.push(Third);
+                                    movement2(Third);
+
+                                    check();
+                                }
+                            }catch(Exception ex){
+                                stack3.pop();
+                                stack2.push(Third);
+                                movement2(Third);
+
+                                check();
+
+                            }
+                        }
+                        else if( e.getX()< 300 && e.getX()> 150){
+                            try{
+                                if (stack1.elementAt(stack1.size()-1).equals(First)||stack1.elementAt(stack1.size()-1).equals(Second)) {
+                                    System.out.print("");
+                                } else {
+                                    stack3.pop();
+                                    stack1.push(Third);
+                                    movement1(Third);
+
+                                    check();
+                                }
+                            }catch(Exception ex){
+                                stack3.pop();
+                                stack1.push(Third);
+                                movement1(Third);
+
+                                check();
+
+                            }
+                        }
+                        drag3 = false;
+
+                    }
 
                 } else if(drag4 == true){
-                    Fourth.setBounds(e.getX(), e.getY(), 269,64);
-                    drag4 = false;
-                    check();
+                    if(stack1.search(Fourth) == 1){
 
-                } else if(drag5 == true){
-                    Fifth.setBounds(e.getX(), e.getY(), 289,64);
-                    drag5 = false;
-                    check();
 
+                        if(e.getX()< 700 && e.getX()> 500){
+                            try{
+
+                                if(stack2.elementAt(stack2.size()-1).equals(First)||stack2.elementAt(stack2.size()-1).equals(Second)||stack2.elementAt(stack2.size()-1).equals(Third)){
+                                    System.out.print("");
+                                }else{
+                                    stack1.pop();
+                                    stack2.push(Fourth);
+                                    movement2(Fourth);
+
+                                    check();
+                                }
+                            }catch(Exception ex){
+                                stack1.pop();
+                                stack2.push(Fourth);
+                                movement2(Fourth);
+
+                                check();
+
+                            }
+
+                        }
+                        else if( e.getX()< 1050 && e.getX()> 850) {
+                            try{
+                                if (stack3.elementAt(stack3.size()-1).equals(First)||stack3.elementAt(stack3.size()-1).equals(Second)||stack3.elementAt(stack3.size()-1).equals(Third)) {
+                                    System.out.print("");
+                                } else {
+                                    stack1.pop();
+                                    stack3.push(Fourth);
+                                    movement3(Fourth);
+
+                                    check();
+                                }
+                            }catch(Exception ex){
+                                stack1.pop();
+                                stack3.push(Fourth);
+                                movement3(Fourth);
+
+                                check();
+
+                            }
+                        }
+
+                        drag4 = false;
+                    }else if(stack2.search(Fourth) == 1){
+
+
+
+                        if( e.getX()< 1050 && e.getX()> 850){
+                            try{
+                                if (stack3.elementAt(stack3.size()-1).equals(First)||stack3.elementAt(stack3.size()-1).equals(Second)||stack3.elementAt(stack3.size()-1).equals(Third)) {
+                                    System.out.print("");
+                                } else {
+                                    stack2.pop();
+                                    stack3.push(Fourth);
+                                    movement3(Fourth);
+
+                                    check();
+                                }
+                            }catch(Exception ex) {
+                                stack2.pop();
+                                stack3.push(Fourth);
+                                movement3(Fourth);
+
+                                check();
+
+                            }
+                        }
+                        else if( e.getX()< 300 && e.getX()> 150){
+                            try{
+                                if (stack1.elementAt(stack1.size()-1).equals(First) || stack1.elementAt(stack1.size()-1).equals(Second)|| stack1.elementAt(stack1.size()-1).equals(Third)) {
+                                    System.out.print("");
+                                } else {
+                                    stack2.pop();
+                                    stack1.push(Fourth);
+                                    movement1(Fourth);
+
+                                    check();
+                                }
+                            }catch(Exception ex){
+                                stack2.pop();
+                                stack1.push(Fourth);
+                                movement1(Fourth);
+
+                                check();
+
+                            }
+                        }
+                        drag4 = false;
+
+                    }
+                    else if(stack3.search(Fourth) == 1){
+
+
+                        if(e.getX()< 700 && e.getX()> 500){
+                            try{
+
+
+                                if(stack2.elementAt(stack2.size()-1).equals(First) || stack2.elementAt(stack2.size()-1).equals(Second)|| stack2.elementAt(stack2.size()-1).equals(Third)){
+                                    System.out.print("");
+                                }else{
+                                    stack3.pop();
+                                    stack2.push(Fourth);
+                                    movement2(Fourth);
+
+                                    check();
+                                }
+                            }catch(Exception ex){
+                                stack3.pop();
+                                stack2.push(Fourth);
+                                movement2(Fourth);
+
+                                check();
+
+                            }
+                        }
+                        else if( e.getX()< 300 && e.getX()> 150){
+                            try{
+                                if (stack1.elementAt(stack1.size()-1).equals(First)||stack1.elementAt(stack1.size()-1).equals(Second)||stack1.elementAt(stack1.size()-1).equals(Third)) {
+                                    System.out.print("");
+                                } else {
+                                    stack3.pop();
+                                    stack1.push(Fourth);
+                                    movement1(Fourth);
+
+                                    check();
+                                }
+                            }catch(Exception ex){
+                                stack3.pop();
+                                stack1.push(Fourth);
+                                movement1(Fourth);
+
+                                check();
+
+                            }
+                        }
+                        drag4 = false;
+
+                    }
+
+                }else if(drag5 == true){
+                    if(stack1.search(Fifth) == 1){
+
+
+                        if(e.getX()< 700 && e.getX()> 500){
+                            try{
+
+                                if(stack2.elementAt(stack2.size()-1).equals(First)||stack2.elementAt(stack2.size()-1).equals(Second)||stack2.elementAt(stack2.size()-1).equals(Third) || stack2.elementAt(stack2.size()-1).equals(Fourth)){
+                                    System.out.print("");
+                                }else{
+                                    stack1.pop();
+                                    stack2.push(Fifth);
+                                    movement2(Fifth);
+
+                                    check();
+                                }
+                            }catch(Exception ex){
+                                stack1.pop();
+                                stack2.push(Fifth);
+                                movement2(Fifth);
+
+                                check();
+
+                            }
+
+                        }
+                        else if( e.getX()< 1050 && e.getX()> 850) {
+                            try{
+                                if (stack3.elementAt(stack3.size()-1).equals(First)||stack3.elementAt(stack3.size()-1).equals(Second)||stack3.elementAt(stack3.size()-1).equals(Third) || stack3.elementAt(stack3.size()-1).equals(Fourth)) {
+                                    System.out.print("");
+                                } else {
+                                    stack1.pop();
+                                    stack3.push(Fifth);
+                                    movement3(Fifth);
+
+                                    check();
+                                }
+                            }catch(Exception ex){
+                                stack1.pop();
+                                stack3.push(Fifth);
+                                movement3(Fifth);
+
+                                check();
+
+                            }
+                        }
+
+                        drag5 = false;
+                    }else if(stack2.search(Fifth) == 1){
+
+
+
+                        if( e.getX()< 1050 && e.getX()> 850){
+                            try{
+                                if (stack3.elementAt(stack3.size()-1).equals(First)||stack3.elementAt(stack3.size()-1).equals(Second)||stack3.elementAt(stack3.size()-1).equals(Third)|| stack3.elementAt(stack3.size()-1).equals(Fourth)) {
+                                    System.out.print("");
+                                } else {
+                                    stack2.pop();
+                                    stack3.push(Fifth);
+                                    movement3(Fifth);
+
+                                    check();
+                                }
+                            }catch(Exception ex) {
+                                stack2.pop();
+                                stack3.push(Fifth);
+                                movement3(Fifth);
+
+                                check();
+
+                            }
+                        }
+                        else if( e.getX()< 300 && e.getX()> 150){
+                            try{
+                                if (stack1.elementAt(stack1.size()-1).equals(First) || stack1.elementAt(stack1.size()-1).equals(Second) || stack1.elementAt(stack1.size()-1).equals(Third)|| stack1.elementAt(stack1.size()-1).equals(Fourth)) {
+                                    System.out.print("");
+                                } else {
+                                    stack2.pop();
+                                    stack1.push(Fifth);
+                                    movement1(Fifth);
+
+                                    check();
+                                }
+                            }catch(Exception ex){
+                                stack2.pop();
+                                stack1.push(Fifth);
+                                movement1(Fifth);
+
+                                check();
+
+                            }
+                        }
+                        drag5 = false;
+
+                    }
+                    else if(stack3.search(Fifth) == 1){
+
+
+                        if(e.getX()< 700 && e.getX()> 500){
+                            try{
+
+
+                                if(stack2.elementAt(stack2.size()-1).equals(First) || stack2.elementAt(stack2.size()-1).equals(Second) || stack2.elementAt(stack2.size()-1).equals(Third)|| stack2.elementAt(stack2.size()-1).equals(Fourth)){
+                                    System.out.print("");
+                                }else{
+                                    stack3.pop();
+                                    stack2.push(Fifth);
+                                    movement2(Fifth);
+
+                                    check();
+                                }
+                            }catch(Exception ex){
+                                stack3.pop();
+                                stack2.push(Fifth);
+                                movement2(Fifth);
+
+                                check();
+
+                            }
+                        }
+                        else if( e.getX()< 300 && e.getX()> 150){
+                            try{
+                                if (stack1.elementAt(stack1.size()-1).equals(First)||stack1.elementAt(stack1.size()-1).equals(Second)||stack1.elementAt(stack1.size()-1).equals(Third)|| stack1.elementAt(stack1.size()-1).equals(Fourth)) {
+                                    System.out.print("");
+                                } else {
+                                    stack3.pop();
+                                    stack1.push(Fifth);
+                                    movement1(Fifth);
+
+                                    check();
+                                }
+                            }catch(Exception ex){
+                                stack3.pop();
+                                stack1.push(Fifth);
+                                movement1(Fifth);
+
+                                check();
+
+                            }
+                        }
+                        drag5 = false;
+
+                    }
                 }
             }
         });
@@ -150,7 +811,7 @@ public class Level5x5 extends JFrame{
 
             }
         });
-        First.setBounds(120, 328, 207,64);
+        First.setBounds(145, 280, 180,70);
         pane.add(First);
 
         Second.addMouseListener(new MouseAdapter() {
@@ -166,7 +827,7 @@ public class Level5x5 extends JFrame{
 
             }
         });
-        Second.setBounds(110, 391, 227,64);
+        Second.setBounds(140, 350, 210,70);
         pane.add(Second);
 
         Third.addMouseListener(new MouseAdapter() {
@@ -183,7 +844,7 @@ public class Level5x5 extends JFrame{
 
             }
         });
-        Third.setBounds(100, 455, 245,64);
+        Third.setBounds(130, 420, 240,70);
         pane.add(Third);
 
         Fourth.addMouseListener(new MouseAdapter() {
@@ -200,7 +861,7 @@ public class Level5x5 extends JFrame{
 
             }
         });
-        Fourth.setBounds(90, 518, 269,64);
+        Fourth.setBounds(115, 490, 270,70);
         pane.add(Fourth);
 
         Fifth.addMouseListener(new MouseAdapter() {
@@ -217,7 +878,7 @@ public class Level5x5 extends JFrame{
 
             }
         });
-        Fifth.setBounds(80, 580, 289,64);
+        Fifth.setBounds(100, 560, 300,70);
         pane.add(Fifth);
 
         Back.addActionListener(new ActionListener() {
@@ -257,5 +918,33 @@ public class Level5x5 extends JFrame{
         frame.add(pane);
         frame.setSize(1152,678);
         frame.setVisible(true);
+    }
+
+    private void createUIComponents() throws IOException {
+        BufferedImage bufferedImage = ImageIO.read(new File("C:\\Users\\megar\\IdeaProjects\\TowerOfHanoiRyanDinuri\\src\\towersOfHanoi_HanoiRing1.png"));
+
+        Image image = bufferedImage.getScaledInstance(180, 70, Image.SCALE_DEFAULT);
+        ImageIcon newIcon = new ImageIcon(image);
+        First = new JLabel(newIcon);
+        bufferedImage = ImageIO.read(new File("C:\\Users\\megar\\IdeaProjects\\TowerOfHanoiRyanDinuri\\src\\towersOfHanoi_HanoiRing2.png"));
+
+        image = bufferedImage.getScaledInstance(210, 70, Image.SCALE_DEFAULT);
+        newIcon = new ImageIcon(image);
+        Second = new JLabel(newIcon);
+        bufferedImage = ImageIO.read(new File("C:\\Users\\megar\\IdeaProjects\\TowerOfHanoiRyanDinuri\\src\\towersOfHanoi_HanoiRing3.png"));
+
+        image = bufferedImage.getScaledInstance(240, 70, Image.SCALE_DEFAULT);
+        newIcon = new ImageIcon(image);
+        Third = new JLabel(newIcon);
+        bufferedImage = ImageIO.read(new File("C:\\Users\\megar\\IdeaProjects\\TowerOfHanoiRyanDinuri\\src\\towersOfHanoi_HanoiRing4.png"));
+
+        image = bufferedImage.getScaledInstance(270, 70, Image.SCALE_DEFAULT);
+        newIcon = new ImageIcon(image);
+        Fourth = new JLabel(newIcon);
+        bufferedImage = ImageIO.read(new File("C:\\Users\\megar\\IdeaProjects\\TowerOfHanoiRyanDinuri\\src\\towersOfHanoi_HanoiRing5.png"));
+
+        image = bufferedImage.getScaledInstance(300, 70, Image.SCALE_DEFAULT);
+        newIcon = new ImageIcon(image);
+        Fifth = new JLabel(newIcon);
     }
 }
