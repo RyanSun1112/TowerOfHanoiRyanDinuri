@@ -3,8 +3,11 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Scanner;
 
 
 public class EndPage {
@@ -53,7 +56,18 @@ public class EndPage {
 
     //PAGE METHODS
     public void conquerorPage() {
-        int numOfSteps = 0; //save temp score to this variable
+        String data = "";
+        try{
+            Scanner myReader = new Scanner(Options.myObj);
+            data = myReader.nextLine();
+            myReader.close();
+
+        } catch (FileNotFoundException ex) {
+            System.out.println("An error occurred.");
+            ex.printStackTrace();
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
+        }
         JLayeredPane pane = new JLayeredPane();
         ClassLoader classloader = Thread.currentThread().getContextClassLoader();
         URL url = classloader.getResource("towersOfHanoi_endPage.png");
@@ -61,7 +75,7 @@ public class EndPage {
         JLabel background = new JLabel(backgroundIcon);
 
         //JLabel conquered = new JLabel("You solved the puzzle in " + numOfSteps + " steps!");
-        JLabel conquered = new JLabel("You solved the puzzle in ## steps!");
+        JLabel conquered = new JLabel("You solved the puzzle in "+data+" steps!");
         conquered.setFont(theNormalFont(35));
         conquered.setFocusable(false);
         conquered.setBorder(BorderFactory.createEmptyBorder());
