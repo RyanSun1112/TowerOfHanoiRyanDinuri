@@ -3,9 +3,11 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Scanner;
 
 public class Options extends JFrame {
 
@@ -57,6 +59,33 @@ public class Options extends JFrame {
 
     }
 
+    private void formatLabel(JLabel button) {
+        button.setFont(theNormalFont(35));
+        button.setFocusable(false);
+        button.setBorder(BorderFactory.createEmptyBorder());
+        button.setForeground(white);
+
+    }
+
+    //FILE METHODS
+    public String updateHighScore4x4() throws FileNotFoundException {
+        Options.f1 = new File("highScore4x4.txt");
+        Scanner input = new Scanner(Options.f1);
+        return input.nextLine();
+    }
+
+    public String updateHighScore5x5() throws FileNotFoundException {
+        Options.f2 = new File("highScore5x5.txt");
+        Scanner input = new Scanner(Options.f2);
+        return input.nextLine();
+    }
+
+    public String updateHighScore6x6() throws FileNotFoundException {
+        Options.f3 = new File("highScore6x6.txt");
+        Scanner input = new Scanner(Options.f3);
+        return input.nextLine();
+    }
+
     //OTHER METHODS
     public Options() {
         myObj = new File("filename.txt"); // Specify the filename
@@ -64,6 +93,7 @@ public class Options extends JFrame {
         try {
             FileWriter myWriter = new FileWriter("filename.txt");
             myWriter.write("0");
+
 
             myWriter.close();
             System.out.println("Successfully wrote to the file.");
@@ -86,7 +116,7 @@ public class Options extends JFrame {
                 cool.homePage();
             }
         });
-        Back.setBounds(148,85,228,80);
+        Back.setBounds(148, 85, 228, 80);
         formatButton(Back);
         Back.setText("<   back");
         pane.add(Back);
@@ -99,7 +129,7 @@ public class Options extends JFrame {
                 Level4x4 cool = new Level4x4();
             }
         });
-        Level4x4.setBounds(215,390,230,80);
+        Level4x4.setBounds(215, 390, 230, 80);
         formatButton(Level4x4);
         pane.add(Level4x4);
 
@@ -111,7 +141,7 @@ public class Options extends JFrame {
                 Level5x5 cool = new Level5x5();
             }
         });
-        Level5x5.setBounds(465,390,230,80);
+        Level5x5.setBounds(465, 390, 230, 80);
         formatButton(Level5x5);
         pane.add(Level5x5);
 
@@ -123,9 +153,36 @@ public class Options extends JFrame {
                 Level6x6 cool = new Level6x6();
             }
         });
-        Level6x6.setBounds(715,390,230,80);
+        Level6x6.setBounds(715, 390, 230, 80);
         formatButton(Level6x6);
         pane.add(Level6x6);
+
+        JLabel highest4x4 = new JLabel();
+        JLabel highest5x5 = new JLabel();
+        JLabel highest6x6 = new JLabel();
+        try {
+            highest4x4.setText("high score: " + updateHighScore4x4());
+        } catch(Exception e) {
+            System.out.println("\nERROR(S) GALORE! Something has gone terribly awry, it seems! (4x4)");
+        } try {
+            highest5x5.setText("high score: " + updateHighScore5x5());
+        } catch(Exception e) {
+            System.out.println("\nERROR(S) GALORE! Something has gone terribly awry, it seems! (5x5)");
+        } try {
+            highest6x6.setText("high score: " + updateHighScore6x6());
+        } catch(Exception e) {
+            System.out.println("\nERROR(S) GALORE! Something has gone terribly awry, it seems! (6x6)");
+        }
+
+        formatLabel(highest4x4);
+        highest4x4.setBounds(215, 500, 230, 80);
+        pane.add(highest4x4);
+        formatLabel(highest5x5);
+        highest5x5.setBounds(465, 500, 230, 80);
+        pane.add(highest5x5);
+        formatLabel(highest6x6);
+        highest6x6.setBounds(715, 390, 230, 80);
+        pane.add(highest6x6);
 
         background.setBounds(0,0,1152,648);
         pane.add(background,JLayeredPane.DEFAULT_LAYER);
