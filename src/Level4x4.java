@@ -761,6 +761,17 @@ public class Level4x4 extends JFrame {
         restart.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                try{
+                    FileWriter myWriter = new FileWriter("filename.txt");
+                    myWriter.write("0");
+                    myWriter.close();
+                } catch (FileNotFoundException ex) {
+                    System.out.println("An error occurred.");
+                    ex.printStackTrace();
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+
                 frame.setVisible(false);
                 dispose();
                 Level4x4 restarted = new Level4x4();

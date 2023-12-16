@@ -1117,6 +1117,17 @@ public class Level6x6 extends JFrame{
         restart.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                try{
+                    FileWriter myWriter = new FileWriter("filename.txt");
+                    myWriter.write("0");
+                    myWriter.close();
+                } catch (FileNotFoundException ex) {
+                    System.out.println("An error occurred.");
+                    ex.printStackTrace();
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+
                 frame.setVisible(false);
                 dispose();
                 Level6x6 restarted = new Level6x6();
