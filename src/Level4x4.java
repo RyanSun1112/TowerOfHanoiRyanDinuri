@@ -6,7 +6,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.*;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Stack;
 import java.util.logging.Level;
@@ -167,17 +166,17 @@ public class Level4x4 extends JFrame {
                 String number = updateHighScore();
                 int highest4x4= Integer.parseInt(number);
                 int score = getCurrentScore();
+                boolean highestAchieved = false;
 
                 if(highest4x4>score) {
                     System.out.println("\nHighest: "+highest4x4+"\nCurrent: "+score);
+                    highestAchieved=true;
                     setHighScore();
-
                 }
 
                 frame.setVisible(false);
                 EndPage doesThisWork = new EndPage();
-                doesThisWork.conquerorPage();
-
+                doesThisWork.conquerorPage("4x4",highestAchieved);
             }
         }catch(Exception ex){
             System.out.print("");

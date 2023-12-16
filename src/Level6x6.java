@@ -135,17 +135,18 @@ public class Level6x6 extends JFrame{
                 String number = updateHighScore();
                 int highest6x6= Integer.parseInt(number);
                 int score = getCurrentScore();
+                boolean highestAchieved = false;
 
                 if(highest6x6>score) {
                     System.out.println("\nHighest: "+highest6x6+"\nCurrent: "+score);
+                    highestAchieved=true;
                     setHighScore();
 
                 }
+
                 frame.setVisible(false);
-
                 EndPage doesThisWork = new EndPage();
-                doesThisWork.conquerorPage();
-
+                doesThisWork.conquerorPage("6x6",highestAchieved);
             }
         }catch(Exception ex){
             System.out.print("");

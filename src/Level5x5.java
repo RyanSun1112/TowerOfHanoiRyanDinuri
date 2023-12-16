@@ -127,17 +127,18 @@ public class Level5x5 extends JFrame{
                 String number = updateHighScore();
                 int highest5x5= Integer.parseInt(number);
                 int score = getCurrentScore();
+                boolean highestAchieved = false;
 
                 if(highest5x5>score) {
                     System.out.println("\nHighest: "+highest5x5+"\nCurrent: "+score);
+                    highestAchieved=true;
                     setHighScore();
 
                 }
+
                 frame.setVisible(false);
-
                 EndPage doesThisWork = new EndPage();
-                doesThisWork.conquerorPage();
-
+                doesThisWork.conquerorPage("5x5",highestAchieved);
             }
         }catch(Exception ex){
             System.out.print("");
