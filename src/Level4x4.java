@@ -13,8 +13,9 @@ import java.util.logging.Logger;
 
 
 public class Level4x4 extends JFrame {
-    private Color white = new Color(255,255,255);
 
+    //INSTANCE VARIABLES
+    private Color white = new Color(255,255,255);
     private JPanel Level4x4; //program doesn't run unless this line is present :0
     private JFrame frame = new JFrame("The Towers of Hanoi...");
     private JLabel First;
@@ -25,17 +26,16 @@ public class Level4x4 extends JFrame {
     private JLabel Moves;
     private boolean drag1 = false;
     private boolean drag2 = false;
-
     private boolean drag3 = false;
-
     private boolean drag4 = false;
-
     private int mouseX = 200;
     private int mouseY = 100;
     private boolean first = true;
     private Stack<JLabel> stack1 = new Stack();
     private Stack<JLabel> stack2 = new Stack();
     private Stack<JLabel> stack3 = new Stack();
+
+    //MOVEMENT METHODS
     private void movement1(JLabel cool ){
         if(stack1.size() - stack1.search(cool) == 3)
             cool.setLocation(140, 350);
@@ -66,6 +66,8 @@ public class Level4x4 extends JFrame {
         if(stack3.size() - stack3.search(cool) == 0)
             cool.setLocation(835, 560);
     }
+
+    //FORMATTING METHODS
     private Font theNormalFont(int size)  {
 
         GraphicsEnvironment graphics = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -109,6 +111,7 @@ public class Level4x4 extends JFrame {
 
     }
 
+    //SCORING METHODS
     public String updateHighScore() throws FileNotFoundException {
         Options.f1 = new File("highScore4x4.txt");
         Scanner input = new Scanner(Options.f1);
@@ -183,6 +186,8 @@ public class Level4x4 extends JFrame {
         }
 
     }
+
+    //GAME CODE
     public Level4x4() {
         if(first == true){
             stack1.push(Fourth);
@@ -771,7 +776,6 @@ public class Level4x4 extends JFrame {
                 } catch (IOException ex) {
                     throw new RuntimeException(ex);
                 }
-
                 frame.setVisible(false);
                 dispose();
                 Level4x4 restarted = new Level4x4();
@@ -793,6 +797,7 @@ public class Level4x4 extends JFrame {
         frame.setVisible(true);
     }
 
+    //IMAGE METHOD
     private void createUIComponents() throws IOException {
         ClassLoader classloader = Thread.currentThread().getContextClassLoader();
         URL url = classloader.getResource("towersOfHanoi_HanoiRing1.png");
@@ -810,6 +815,5 @@ public class Level4x4 extends JFrame {
         url = classloader.getResource("towersOfHanoi_HanoiRing4.png");
         newIcon = new ImageIcon(url);
         Fourth = new JLabel(newIcon);
-
     }
 }

@@ -17,7 +17,6 @@ public class Options extends JFrame {
     public static File f1;
     public static File f2;
     public static File f3;
-
     private JFrame frame = new JFrame("The Towers of Hanoi...");
     private JButton Level4x4;
     private JButton Level5x5;
@@ -25,7 +24,7 @@ public class Options extends JFrame {
     private JButton Back;
     private Color white = new Color(255,255,255);
 
-    //FORMAT METHODS
+    //FORMATTING METHODS
     private Font theNormalFont(int size)  {
 
         GraphicsEnvironment graphics = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -67,7 +66,7 @@ public class Options extends JFrame {
 
     }
 
-    //FILE METHODS
+    //HIGH SCORE METHODS
     public String updateHighScore4x4() throws FileNotFoundException {
         Options.f1 = new File("highScore4x4.txt");
         Scanner input = new Scanner(Options.f1);
@@ -86,7 +85,7 @@ public class Options extends JFrame {
         return input.nextLine();
     }
 
-    //OTHER METHODS
+    //GAME CODE
     public Options() {
         myObj = new File("filename.txt"); // Specify the filename
 

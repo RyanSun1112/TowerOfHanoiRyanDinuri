@@ -4,13 +4,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Scanner;
 
 
 public class EndPage {
+
     //INSTANCE VARIABLES
     JFrame frame = new JFrame("This is the epic-est name of all time.");
     Color white = new Color(255,255,255);
@@ -81,6 +81,7 @@ public class EndPage {
     }
 
     public String currentScore() {
+
         String data = "";
         try{
             Scanner myReader = new Scanner(Options.myObj);
@@ -97,6 +98,7 @@ public class EndPage {
 
     //PAGE METHODS
     public void conquerorPage(String type, boolean highestAchieved) {
+
         String data = currentScore();
         JLayeredPane pane = new JLayeredPane();
         ClassLoader classloader = Thread.currentThread().getContextClassLoader();

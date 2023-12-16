@@ -7,12 +7,15 @@ import java.io.IOException;
 import java.net.URL;
 
 public class Instructions extends JFrame{
+
+    //INSTANCE VARIABLES
     private JPanel instructions;
     private Color white = new Color(255,255,255);
 
     private JFrame frame = new JFrame("The Towers of Hanoi...");
     private JButton Back;
 
+    //FORMATTING METHODS
     private Font theNormalFont(int size)  {
 
         GraphicsEnvironment graphics = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -46,9 +49,9 @@ public class Instructions extends JFrame{
         button.setContentAreaFilled(false);
         button.setBorderPainted(false);
         button.setForeground(white);
-
     }
 
+    //GAME CODE
     public Instructions(){
 
         JLayeredPane pane = new JLayeredPane();
@@ -68,7 +71,6 @@ public class Instructions extends JFrame{
                 "<BR>" +
                 "<BR>TIP: Try to do it in as few moves as possible! Good luck, player!" +
                 "</HTML>");
-
         JLabel instructionsToShow = new JLabel(instructionText);
         instructionsToShow.setFont(theNormalFont(18));
         instructionsToShow.setFocusable(false);
@@ -108,6 +110,5 @@ public class Instructions extends JFrame{
         frame.add(pane);
         frame.setSize(1152,678);
         frame.setVisible(true);
-
     }
 }

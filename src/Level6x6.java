@@ -1,11 +1,9 @@
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -17,6 +15,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Level6x6 extends JFrame{
+
+    //INSTANCE VARIABLES
     private JPanel Level6x6; //program doesn't run unless this line is present :0
     private JFrame frame = new JFrame("The Towers of Hanoi...");
     private JLabel First;
@@ -38,6 +38,8 @@ public class Level6x6 extends JFrame{
     private Stack<JLabel> stack2 = new Stack();
     private Stack<JLabel> stack3 = new Stack();
     private Color white = new Color(255,255,255);
+
+    //MOVEMENT METHODS
     private void movement1(JLabel cool ){
         if(stack1.size() - stack1.search(cool) == 5)
             cool.setLocation(120, 210);
@@ -52,6 +54,7 @@ public class Level6x6 extends JFrame{
         if(stack1.size() - stack1.search(cool) == 0)
             cool.setLocation(70, 560);
     }
+
     private void movement2(JLabel cool ){
         if(stack2.size() - stack2.search(cool) == 5)
             cool.setLocation(510, 210);
@@ -66,6 +69,7 @@ public class Level6x6 extends JFrame{
         if(stack2.size() - stack2.search(cool) == 0)
             cool.setLocation(460, 560);
     }
+
     private void movement3(JLabel cool ){
         if(stack3.size() - stack3.search(cool) == 5)
             cool.setLocation(855, 210);
@@ -80,6 +84,8 @@ public class Level6x6 extends JFrame{
         if(stack3.size() - stack3.search(cool) == 0)
             cool.setLocation(805, 560);
     }
+
+    //HIGH SCORE METHODS
     public String updateHighScore() throws FileNotFoundException {
         Options.f3 = new File("highScore6x6.txt");
         Scanner input = new Scanner(Options.f3);
@@ -113,6 +119,7 @@ public class Level6x6 extends JFrame{
         Double dVal = Double.parseDouble(data);
         return dVal.intValue();
     }
+
     public void check(){
         try{
             Scanner myReader = new Scanner(Options.myObj);
@@ -141,7 +148,6 @@ public class Level6x6 extends JFrame{
                     System.out.println("\nHighest: "+highest6x6+"\nCurrent: "+score);
                     highestAchieved=true;
                     setHighScore();
-
                 }
 
                 frame.setVisible(false);
@@ -153,6 +159,7 @@ public class Level6x6 extends JFrame{
         }
     }
 
+    //FORMATTING METHODS
     private Font theNormalFont(int size)  {
 
         GraphicsEnvironment graphics = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -196,14 +203,7 @@ public class Level6x6 extends JFrame{
 
     }
 
-    public JLabel makeImage(String fileName) {
-        ClassLoader classloader = Thread.currentThread().getContextClassLoader();
-        URL url = classloader.getResource(fileName);
-        Icon backgroundIcon = new ImageIcon(url);
-        JLabel background = new JLabel(backgroundIcon);
-        return background;
-    }
-
+    //GAME CODE
     public Level6x6() {
 
         if(first == true){
@@ -216,12 +216,12 @@ public class Level6x6 extends JFrame{
             stack1.push(First);
             first = false;
         }
+
         JLayeredPane pane = new JLayeredPane();
         ClassLoader classloader = Thread.currentThread().getContextClassLoader();
         URL url = classloader.getResource("towersOfHanoi_gamePage.png");
         Icon backgroundIcon = new ImageIcon(url);
         JLabel background = new JLabel(backgroundIcon);
-
 
         frame.addMouseListener(new MouseAdapter() {
             @Override
@@ -237,9 +237,7 @@ public class Level6x6 extends JFrame{
 
                         System.out.print(e.getX());
                         if(e.getX()< 700 && e.getX()> 500){
-
                             stack1.pop();
-
                             stack2.push(First);
                             movement2(First);
                             check();
@@ -256,7 +254,6 @@ public class Level6x6 extends JFrame{
                         System.out.print(e.getX());
                         if( e.getX()< 300 && e.getX()> 150){
                             stack2.pop();
-
                             stack1.push(First);
                             movement1(First);
                             check();
@@ -267,16 +264,13 @@ public class Level6x6 extends JFrame{
                             movement3(First);
                             check();
                         }
-
                     }
                     else if(stack3.search(First) >= 0){
 
                         System.out.print(e.getX());
                         if( e.getX()< 300 && e.getX()> 150){
                             stack3.pop();
-
                             stack1.push(First);
-
                             movement1(First);
                             check();
                         }
@@ -286,16 +280,13 @@ public class Level6x6 extends JFrame{
                             movement2(First);
                             check();
                         }
-
                     }
                     drag1 = false;
                 }else if(drag2 == true){
                     if(stack1.search(Second) == 1){
 
-
                         if(e.getX()< 700 && e.getX()> 500){
                             try{
-
                                 if(stack2.elementAt(stack2.size()-1).equals(First)){
                                     System.out.print("");
                                 }else{
@@ -309,9 +300,7 @@ public class Level6x6 extends JFrame{
                                 stack2.push(Second);
                                 movement2(Second);
                                 check();
-
                             }
-
                         }
                         else if( e.getX()< 1050 && e.getX()> 850) {
                             try{
@@ -328,14 +317,11 @@ public class Level6x6 extends JFrame{
                                 stack3.push(Second);
                                 movement3(Second);
                                 check();
-
                             }
                         }
 
                         drag2 = false;
                     }else if(stack2.search(Second) == 1){
-
-
 
                         if( e.getX()< 1050 && e.getX()> 850){
                             try{
@@ -370,19 +356,14 @@ public class Level6x6 extends JFrame{
                                 stack1.push(Second);
                                 movement1(Second);
                                 check();
-
                             }
                         }
                         drag2 = false;
-
                     }
                     else if(stack3.search(Second) == 1){
 
-
                         if(e.getX()< 700 && e.getX()> 500){
                             try{
-
-
                                 if(stack2.elementAt(stack2.size()-1).equals(First)){
                                     System.out.print("");
                                 }else{
@@ -396,7 +377,6 @@ public class Level6x6 extends JFrame{
                                 stack2.push(Second);
                                 movement2(Second);
                                 check();
-
                             }
                         }
                         else if( e.getX()< 300 && e.getX()> 150){
@@ -414,20 +394,16 @@ public class Level6x6 extends JFrame{
                                 stack1.push(Second);
                                 movement1(Second);
                                 check();
-
                             }
                         }
                         drag2 = false;
-
                     }
 
                 }else if(drag3 == true){
                     if(stack1.search(Third) == 1){
 
-
                         if(e.getX()< 700 && e.getX()> 500){
                             try{
-
                                 if(stack2.elementAt(stack2.size()-1).equals(First)||stack2.elementAt(stack2.size()-1).equals(Second)){
                                     System.out.print("");
                                 }else{
@@ -442,9 +418,7 @@ public class Level6x6 extends JFrame{
                                 movement2(Third);
 
                                 check();
-
                             }
-
                         }
                         else if( e.getX()< 1050 && e.getX()> 850) {
                             try{
@@ -463,14 +437,11 @@ public class Level6x6 extends JFrame{
                                 movement3(Third);
 
                                 check();
-
                             }
                         }
 
                         drag3 = false;
                     }else if(stack2.search(Third) == 1){
-
-
 
                         if( e.getX()< 1050 && e.getX()> 850){
                             try{
@@ -489,7 +460,6 @@ public class Level6x6 extends JFrame{
                                 movement3(Third);
 
                                 check();
-
                             }
                         }
                         else if( e.getX()< 300 && e.getX()> 150){
@@ -509,19 +479,14 @@ public class Level6x6 extends JFrame{
                                 movement1(Third);
 
                                 check();
-
                             }
                         }
                         drag3 = false;
-
                     }
                     else if(stack3.search(Third) == 1){
 
-
                         if(e.getX()< 700 && e.getX()> 500){
                             try{
-
-
                                 if(stack2.elementAt(stack2.size()-1).equals(First) || stack2.elementAt(stack2.size()-1).equals(Second) ){
                                     System.out.print("");
                                 }else{
@@ -537,7 +502,6 @@ public class Level6x6 extends JFrame{
                                 movement2(Third);
 
                                 check();
-
                             }
                         }
                         else if( e.getX()< 300 && e.getX()> 150){
@@ -557,20 +521,16 @@ public class Level6x6 extends JFrame{
                                 movement1(Third);
 
                                 check();
-
                             }
                         }
                         drag3 = false;
-
                     }
 
                 } else if(drag4 == true){
                     if(stack1.search(Fourth) == 1){
 
-
                         if(e.getX()< 700 && e.getX()> 500){
                             try{
-
                                 if(stack2.elementAt(stack2.size()-1).equals(First)||stack2.elementAt(stack2.size()-1).equals(Second)||stack2.elementAt(stack2.size()-1).equals(Third)){
                                     System.out.print("");
                                 }else{
@@ -586,9 +546,7 @@ public class Level6x6 extends JFrame{
                                 movement2(Fourth);
 
                                 check();
-
                             }
-
                         }
                         else if( e.getX()< 1050 && e.getX()> 850) {
                             try{
@@ -607,14 +565,11 @@ public class Level6x6 extends JFrame{
                                 movement3(Fourth);
 
                                 check();
-
                             }
                         }
 
                         drag4 = false;
                     }else if(stack2.search(Fourth) == 1){
-
-
 
                         if( e.getX()< 1050 && e.getX()> 850){
                             try{
@@ -633,7 +588,6 @@ public class Level6x6 extends JFrame{
                                 movement3(Fourth);
 
                                 check();
-
                             }
                         }
                         else if( e.getX()< 300 && e.getX()> 150){
@@ -653,19 +607,14 @@ public class Level6x6 extends JFrame{
                                 movement1(Fourth);
 
                                 check();
-
                             }
                         }
                         drag4 = false;
-
                     }
                     else if(stack3.search(Fourth) == 1){
 
-
                         if(e.getX()< 700 && e.getX()> 500){
                             try{
-
-
                                 if(stack2.elementAt(stack2.size()-1).equals(First) || stack2.elementAt(stack2.size()-1).equals(Second) || stack2.elementAt(stack2.size()-1).equals(Third)){
                                     System.out.print("");
                                 }else{
@@ -681,7 +630,6 @@ public class Level6x6 extends JFrame{
                                 movement2(Fourth);
 
                                 check();
-
                             }
                         }
                         else if( e.getX()< 300 && e.getX()> 150){
@@ -701,20 +649,16 @@ public class Level6x6 extends JFrame{
                                 movement1(Fourth);
 
                                 check();
-
                             }
                         }
                         drag4 = false;
-
                     }
 
                 }else if(drag5 == true){
                     if(stack1.search(Fifth) == 1){
 
-
                         if(e.getX()< 700 && e.getX()> 500){
                             try{
-
                                 if(stack2.elementAt(stack2.size()-1).equals(First)||stack2.elementAt(stack2.size()-1).equals(Second)||stack2.elementAt(stack2.size()-1).equals(Third) || stack2.elementAt(stack2.size()-1).equals(Fourth)){
                                     System.out.print("");
                                 }else{
@@ -730,7 +674,6 @@ public class Level6x6 extends JFrame{
                                 movement2(Fifth);
 
                                 check();
-
                             }
 
                         }
@@ -751,14 +694,11 @@ public class Level6x6 extends JFrame{
                                 movement3(Fifth);
 
                                 check();
-
                             }
                         }
 
                         drag5 = false;
                     }else if(stack2.search(Fifth) == 1){
-
-
 
                         if( e.getX()< 1050 && e.getX()> 850){
                             try{
@@ -777,7 +717,6 @@ public class Level6x6 extends JFrame{
                                 movement3(Fifth);
 
                                 check();
-
                             }
                         }
                         else if( e.getX()< 300 && e.getX()> 150){
@@ -797,19 +736,14 @@ public class Level6x6 extends JFrame{
                                 movement1(Fifth);
 
                                 check();
-
                             }
                         }
                         drag5 = false;
-
                     }
                     else if(stack3.search(Fifth) == 1){
 
-
                         if(e.getX()< 700 && e.getX()> 500){
                             try{
-
-
                                 if(stack2.elementAt(stack2.size()-1).equals(First) || stack2.elementAt(stack2.size()-1).equals(Second) || stack2.elementAt(stack2.size()-1).equals(Third)|| stack2.elementAt(stack2.size()-1).equals(Fourth)){
                                     System.out.print("");
                                 }else{
@@ -825,7 +759,6 @@ public class Level6x6 extends JFrame{
                                 movement2(Fifth);
 
                                 check();
-
                             }
                         }
                         else if( e.getX()< 300 && e.getX()> 150){
@@ -845,19 +778,15 @@ public class Level6x6 extends JFrame{
                                 movement1(Fifth);
 
                                 check();
-
                             }
                         }
                         drag5 = false;
-
                     }
                 }else if(drag6 == true){
                     if(stack1.search(Sixth) == 1){
 
-
                         if(e.getX()< 700 && e.getX()> 500){
                             try{
-
                                 if(stack2.elementAt(stack2.size()-1).equals(First)||stack2.elementAt(stack2.size()-1).equals(Second)||stack2.elementAt(stack2.size()-1).equals(Third) || stack2.elementAt(stack2.size()-1).equals(Fourth)||stack2.elementAt(stack2.size()-1).equals(Fifth)){
                                     System.out.print("");
                                 }else{
@@ -873,9 +802,7 @@ public class Level6x6 extends JFrame{
                                 movement2(Sixth);
 
                                 check();
-
                             }
-
                         }
                         else if( e.getX()< 1050 && e.getX()> 850) {
                             try{
@@ -894,14 +821,11 @@ public class Level6x6 extends JFrame{
                                 movement3(Sixth);
 
                                 check();
-
                             }
                         }
 
                         drag6 = false;
                     }else if(stack2.search(Sixth) == 1){
-
-
 
                         if( e.getX()< 1050 && e.getX()> 850){
                             try{
@@ -920,7 +844,6 @@ public class Level6x6 extends JFrame{
                                 movement3(Sixth);
 
                                 check();
-
                             }
                         }
                         else if( e.getX()< 300 && e.getX()> 150){
@@ -940,19 +863,15 @@ public class Level6x6 extends JFrame{
                                 movement1(Sixth);
 
                                 check();
-
                             }
                         }
                         drag6 = false;
-
                     }
                     else if(stack3.search(Sixth) == 1){
 
-
                         if(e.getX()< 700 && e.getX()> 500){
+
                             try{
-
-
                                 if(stack2.elementAt(stack2.size()-1).equals(First) || stack2.elementAt(stack2.size()-1).equals(Second) || stack2.elementAt(stack2.size()-1).equals(Third)|| stack2.elementAt(stack2.size()-1).equals(Fourth) || stack2.elementAt(stack2.size()-1).equals(Fifth) ) {
                                     System.out.print("");
                                 }else{
@@ -968,10 +887,10 @@ public class Level6x6 extends JFrame{
                                 movement2(Sixth);
 
                                 check();
-
                             }
                         }
                         else if( e.getX()< 300 && e.getX()> 150){
+
                             try{
                                 if (stack1.elementAt(stack1.size()-1).equals(First)||stack1.elementAt(stack1.size()-1).equals(Second)||stack1.elementAt(stack1.size()-1).equals(Third)|| stack1.elementAt(stack1.size()-1).equals(Fourth)||stack1.elementAt(stack1.size()-1).equals(Fifth)) {
                                     System.out.print("");
@@ -988,11 +907,9 @@ public class Level6x6 extends JFrame{
                                 movement1(Sixth);
 
                                 check();
-
                             }
                         }
                         drag6 = false;
-
                     }
                 }
             }
@@ -1001,14 +918,13 @@ public class Level6x6 extends JFrame{
         First.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+
                 drag1 = true;
                 drag2 = false;
                 drag3 = false;
                 drag4 = false;
                 drag6 = false;
                 drag5 = false;
-                //fasfsf
-
             }
         });
         First.setBounds(120, 210, 207,70);
@@ -1017,15 +933,13 @@ public class Level6x6 extends JFrame{
         Second.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+
                 drag1 = false;
                 drag2 = true;
                 drag3 = false;
                 drag4 = false;
                 drag5 = false;
                 drag6 = false;
-
-
-
             }
         });
         Second.setBounds(115, 280, 227,70);
@@ -1034,16 +948,13 @@ public class Level6x6 extends JFrame{
         Third.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                drag1 = false;
 
+                drag1 = false;
                 drag3 = true;
                 drag2 = false;
                 drag4 = false;
                 drag5 = false;
                 drag6 = false;
-
-
-
             }
         });
         Third.setBounds(110, 350, 245,70);
@@ -1052,16 +963,13 @@ public class Level6x6 extends JFrame{
         Fourth.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                drag1 = false;
 
+                drag1 = false;
                 drag4 = true;
                 drag2 = false;
                 drag3 = false;
                 drag5 = false;
                 drag6 = false;
-
-
-
             }
         });
         Fourth.setBounds(100, 420, 269,70);
@@ -1070,16 +978,13 @@ public class Level6x6 extends JFrame{
         Fifth.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                drag1 = false;
 
+                drag1 = false;
                 drag5 = true;
                 drag2 = false;
                 drag3 = false;
                 drag4 = false;
                 drag6 = false;
-
-
-
             }
         });
         Fifth.setBounds(85, 490, 289,70);
@@ -1088,8 +993,8 @@ public class Level6x6 extends JFrame{
         Sixth.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                drag1 = false;
 
+                drag1 = false;
                 drag5 = false;
                 drag2 = false;
                 drag3 = false;
@@ -1117,6 +1022,7 @@ public class Level6x6 extends JFrame{
         restart.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 try{
                     FileWriter myWriter = new FileWriter("filename.txt");
                     myWriter.write("0");

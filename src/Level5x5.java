@@ -1,11 +1,9 @@
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -17,6 +15,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Level5x5 extends JFrame{
+
+    //INSTANCE VARIABLES
     private JPanel Level5x5; //program doesn't run unless this line is present :0
     private JFrame frame = new JFrame("The Towers of Hanoi...");
     private JLabel Fourth;
@@ -36,6 +36,8 @@ public class Level5x5 extends JFrame{
     private Stack<JLabel> stack2 = new Stack();
     private Stack<JLabel> stack3 = new Stack();
     private Color white = new Color(255,255,255);
+
+    //MOVEMENT METHODS
     private void movement1(JLabel cool ){
         if(stack1.size() - stack1.search(cool) == 4)
             cool.setLocation(145, 280);
@@ -72,6 +74,8 @@ public class Level5x5 extends JFrame{
         if(stack3.size() - stack3.search(cool) == 0)
             cool.setLocation(835, 560);
     }
+
+    //SCORE METHODS
     public String updateHighScore() throws FileNotFoundException {
         Options.f2 = new File("highScore5x5.txt");
         Scanner input = new Scanner(Options.f2);
@@ -145,6 +149,7 @@ public class Level5x5 extends JFrame{
         }
     }
 
+    //FORMATTING METHODS
     private Font theNormalFont(int size)  {
 
         GraphicsEnvironment graphics = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -188,14 +193,7 @@ public class Level5x5 extends JFrame{
 
     }
 
-    public JLabel makeImage(String fileName) {
-        ClassLoader classloader = Thread.currentThread().getContextClassLoader();
-        URL url = classloader.getResource(fileName);
-        Icon backgroundIcon = new ImageIcon(url);
-        JLabel background = new JLabel(backgroundIcon);
-        return background;
-    }
-
+    //GAME CODE
     public Level5x5(){
         if(first == true){
             stack1.push(Fifth);
@@ -604,8 +602,6 @@ public class Level5x5 extends JFrame{
                         drag4 = false;
                     }else if(stack2.search(Fourth) == 1){
 
-
-
                         if( e.getX()< 1050 && e.getX()> 850){
                             try{
                                 if (stack3.elementAt(stack3.size()-1).equals(First)||stack3.elementAt(stack3.size()-1).equals(Second)||stack3.elementAt(stack3.size()-1).equals(Third)) {
@@ -654,8 +650,6 @@ public class Level5x5 extends JFrame{
 
                         if(e.getX()< 700 && e.getX()> 500){
                             try{
-
-
                                 if(stack2.elementAt(stack2.size()-1).equals(First) || stack2.elementAt(stack2.size()-1).equals(Second)|| stack2.elementAt(stack2.size()-1).equals(Third)){
                                     System.out.print("");
                                 }else{
@@ -867,9 +861,6 @@ public class Level5x5 extends JFrame{
                 drag3 = false;
                 drag4 = false;
                 drag5 = false;
-
-
-
             }
         });
         Second.setBounds(140, 350, 227,70);
@@ -879,14 +870,10 @@ public class Level5x5 extends JFrame{
             @Override
             public void mouseClicked(MouseEvent e) {
                 drag1 = false;
-
                 drag3 = true;
                 drag2 = false;
                 drag4 = false;
                 drag5 = false;
-
-
-
             }
         });
         Third.setBounds(130, 420, 245,70);
@@ -977,6 +964,7 @@ public class Level5x5 extends JFrame{
     }
 
     private void createUIComponents() throws IOException {
+
         ClassLoader classloader = Thread.currentThread().getContextClassLoader();
         URL url = classloader.getResource("towersOfHanoi_HanoiRing1.png");
         Icon newIcon = new ImageIcon(url);
@@ -997,6 +985,5 @@ public class Level5x5 extends JFrame{
         url = classloader.getResource("towersOfHanoi_HanoiRing5.png");
         newIcon = new ImageIcon(url);
         Fifth = new JLabel(newIcon);
-
     }
 }
